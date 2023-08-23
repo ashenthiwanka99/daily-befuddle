@@ -6,26 +6,11 @@
   background-color: #282c34;
 }
 
-.header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .main {
   flex: 1;
   display: flex;
   justify-content: center;
   /* align-items: center; */
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-left: 20px;
 }
 
 .nav button {

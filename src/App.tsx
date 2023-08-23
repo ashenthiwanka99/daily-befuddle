@@ -1,15 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Result from "./Pages/Result/Result";
+import Navigation from "./Components/Navigation/Navigation";
 import "./App.css";
 
 function App() {
   return (
     <div className="body">
-      <div className="header">
-      <header>
-        <div className="logo">Your Logo</div>
-      </header>
+      <div>
+        <Navigation />
       </div>
       <div className="main">
         <BrowserRouter>
@@ -20,11 +19,11 @@ function App() {
         </BrowserRouter>
       </div>
       <div className="footer">
-      <div className="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-        </div>  
+        <div className="social-media">
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+        </div>
       </div>
     </div>
   );

@@ -1,13 +1,15 @@
 .container {
-  min-width: 70vh;
-
-  .hint-row {
+  .hint-list {
     display: flex;
-    justify-content: space-around;
-    margin: 10px;
+    flex-direction: column;
+    .hint-row {
+      display: flex;
+      justify-content: space-around;
+      margin: 10px;
 
-    .hint-text {
-      color: azure;
+      .hint-text {
+        color: azure;
+      }
     }
   }
 
@@ -38,13 +40,28 @@
     .inner-box {
       display: flex;
       margin: 8px;
+      padding: 10px;
       width: 250px;
       height: 35px;
       border-radius: 5px;
       background: gray;
       border: 1px solid black;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: space-between;
+      
+      .img-box {
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+
+        &.correct {
+          background-image: url('../../Assets/Images/correct.png');
+        }
+
+        &.wrong {
+          background-image: url('../../Assets/Images/wrong.png');
+        }
+      }
     }
   }
 
@@ -71,23 +88,23 @@
     }
   }
 
-  .button-raw{
+  .button-raw {
     display: flex;
     justify-content: space-evenly;
     .button {
-        background-color: lightgrey; /* Green */
-        border: 1px solid black;
-        color: black;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        font-weight: 500;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 12px;
-        min-width: 100px;
-      }
-}
+      background-color: lightgrey; /* Green */
+      border: 1px solid black;
+      color: black;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+      min-width: 100px;
+    }
+  }
 }
