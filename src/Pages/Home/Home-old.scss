@@ -1,0 +1,163 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .left-container {
+    min-width: 5vw;
+
+    .info-logo {
+      width: 30px;
+    }
+    .stats-logo {
+      width: 30px;
+    }
+
+    .snap-logo {
+      width: 30px;
+    }
+  }
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 1000px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 10%);
+
+    .hint-list {
+      display: flex;
+      align-items: baseline;
+      flex-direction: column;
+      margin: 10px 0 0 0;
+      height: 117px;
+      .hint-row {
+        display: flex;
+        justify-content: space-around;
+        margin: 5px;
+
+        .hint-text {
+          color: #fff;
+          width: 300px;
+          font-family:  'Work Sans', sans-serif;
+          font-size: 16px;
+          font-style: normal;
+        }
+      }
+    }
+
+    .guess-word {
+      display: flex;
+      margin: 10px;
+      flex-direction: column;
+      align-items: center;
+
+      .box {
+        padding: 0 20px;
+        height: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        background: #101010;
+        .guess-word-text {
+          color: #fff;
+          font-family: 'Alumni Sans', sans-serif;
+          font-size: 28px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    .guesses-box-row {
+      display: flex;
+      justify-content: space-around;
+      margin: 10px;
+
+      .inner-box {
+        display: flex;
+        width: 300px;
+        height: 35px;
+        margin: 10px;
+        padding: 0 16px 0 16px;
+        border-bottom: 1px solid #dbd8d8;
+        align-items: center;
+        justify-content: space-between;
+
+        .guess-word-text {
+          color: #fff;
+          font-family: 'Alumni Sans', sans-serif;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          text-transform: capitalize;
+        }
+
+        .img-box {
+          width: 20px;
+          height: 20px;
+          background-size: cover;
+
+          &.correct {
+            background-image: url("../../Assets/Images/correct.svg");
+          }
+
+          &.wrong {
+            background-image: url("../../Assets/Images/wrong.svg");
+          }
+        }
+      }
+    }
+
+    .textbox-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+
+      .textbox input[type="text"] {
+        padding: 15px 20px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        width: 30px;
+        width: 70vh;
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #FFF;
+        background: rgba(255, 255, 255, 0.60);
+      }
+    }
+
+    .button-raw {
+      display: flex;
+      justify-content: space-evenly;
+      .button {
+        background-color: lightgrey; /* Green */
+        border: 1px solid black;
+        color: black;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 500;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        min-width: 100px;
+      }
+    }
+  }
+  .right-container {
+    min-width: 200px;
+    .girl-img {
+      width: 200px;
+    }
+  }
+}

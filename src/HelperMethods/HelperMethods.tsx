@@ -11,7 +11,7 @@ export async function xlsxDataHandle(setValue) {
       header: true,
       complete: (results) => {
         //setValue(results.data[datePosition - 1]);
-        setValue(results.data[145]);
+        setValue(results.data[20]);
       },
     }
   );

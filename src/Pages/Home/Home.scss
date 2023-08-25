@@ -1,110 +1,175 @@
 .container {
-  .hint-list {
-    display: flex;
-    flex-direction: column;
-    .hint-row {
-      display: flex;
-      justify-content: space-around;
-      margin: 10px;
+  width: 100vw;
+  height: calc(98vh - 100px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.side-col {
+  width: 15vw;
+  height: 100%;
+}
+.left-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.left-container .btn-area .div-btn + .div-btn {
+  margin-top: 20px;
+}
+.right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+.center-container {
+  width: 100%;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 10%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  margin: 20px 0px;
+  z-index: 1;
+}
+.inner-container {
+  width: calc(100% - 300px);
+}
+.hint-list {
+  display: block;
+  width: 700px;
+  height: 117px;
+  margin-left: 150px;
 
-      .hint-text {
-        color: azure;
-      }
+  .hint-text {
+    display: inline-block;
+    text-align: left;
+    width: 350px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+}
+.guess-word {
+  display: flex;
+  justify-content: center;
+
+  .box {
+    padding: 15px 50px;
+    border-radius: 20px;
+    background: #101010;
+    //width: 400px;
+    text-align: center;
+
+    .guess-word-text {
+      color: #fff;
+      font-family: "Alumni Sans", sans-serif;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: capitalize;
     }
   }
+}
 
-  .guess-word {
+.guesses-box-row {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+
+  .inner-box {
     display: flex;
-    margin: 20px;
-    flex-direction: column;
-    align-items: center;
-
-    .box {
-      width: 250px;
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      background-color: orange;
-      border: 3px solid black;
-      border-radius: 5px;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-  .guesses-box-row {
-    display: flex;
-    justify-content: space-around;
+    width: 300px;
+    height: 35px;
     margin: 10px;
+    padding: 0 16px 0 16px;
+    border-bottom: 1px solid #dbd8d8;
+    align-items: center;
+    justify-content: space-between;
 
-    .inner-box {
-      display: flex;
-      margin: 8px;
-      padding: 10px;
-      width: 250px;
-      height: 35px;
-      border-radius: 5px;
-      background: gray;
-      border: 1px solid black;
-      align-items: center;
-      justify-content: space-between;
-      
-      .img-box {
-        width: 20px;
-        height: 20px;
-        background-size: cover;
+    .guess-word-text {
+      color: #fff;
+      font-family: "Alumni Sans", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: capitalize;
+    }
 
-        &.correct {
-          background-image: url('../../Assets/Images/correct.png');
-        }
+    .img-box {
+      width: 20px;
+      height: 20px;
+      background-size: cover;
 
-        &.wrong {
-          background-image: url('../../Assets/Images/wrong.png');
-        }
+      &.correct {
+        background-image: url("../../Assets/Images/correct.svg");
+      }
+
+      &.wrong {
+        background-image: url("../../Assets/Images/wrong.svg");
       }
     }
   }
+}
+.textbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 
-  .textbox-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
+  .textbox input[type="text"] {
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 44vw;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    color: #101010;
+    font-family: "Work Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+}
 
-    .textbox {
-      width: 70vh;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: white;
-    }
-
-    .textbox input[type="text"] {
-      padding: 10px;
-      border: none;
-      outline: none;
-      font-size: 16px;
-      width: 67vh;
-    }
+.button-raw {
+  display: flex;
+  justify-content: space-evenly;
+  .button {
+    padding: 10px 20px;
+    color: #fff;
+    font-family: "Work Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-variant: small-caps;
+    cursor: pointer;
   }
 
-  .button-raw {
-    display: flex;
-    justify-content: space-evenly;
-    .button {
-      background-color: lightgrey; /* Green */
-      border: 1px solid black;
-      color: black;
-      padding: 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      font-weight: 500;
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 12px;
-      min-width: 100px;
-    }
+  .primary-btn {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(238deg, #7f30ff 0%, #ff4880 100%);
+  }
+
+  .skip {
+    border-radius: 12px;
+    border: 2px solid #b59494;
+    background: rgba(255, 255, 255, 0.1);
   }
 }

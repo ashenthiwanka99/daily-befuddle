@@ -3,8 +3,10 @@ import { InfoStore, StatsStore } from "../../Store/Store";
 import { UTCExpireTime, xlsxDataHandle, HintGenarator, EncryptOT, DecryptOT , AccuracyCheck } from "../../HelperMethods/HelperMethods";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import Girl from "../../Assets/Images/template-1.png";
 import "./Home.scss";
-
+import Navigation from "../../Components/Navigation/Navigation";
+import SideImage from "../../Components/GirlImage/Image";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -22,7 +24,6 @@ export default function Home() {
   const [guess4Res, setGuess4Res] = useState(false);
   const [guess5Res, setGuess5Res] = useState(false);
   const [decryptOT, setDecryptOT] = useState("");
-  const [expireDateTime, setExpireDateTime] = useState(null as any);
   const [gameStatus, setGameStatus] = useState(false);
   const [guessArray] = useState([]);
   const [cookiesOT, setCookieOT, removeCookieOT] = useCookies(["OriginalTitle"]);
@@ -33,41 +34,51 @@ export default function Home() {
   const [cookiesHint4, setCookieHint4, removeCookieHint4] = useCookies(["Hint-4"]);
   const [cookiesHint5, setCookieHint5, removeCookieHint5] = useCookies(["Hint-5"]);
   const [cookiesGuessArray, setCookieGuessArray, removeCookieGuessArray] = useCookies(["GuessArray"]);
+  const [cookiesGameStatus, setCookieGameStatus, removeCookieGameStatus] = useCookies(["GameStatus"]);
  
 
   const [data, setXlsxData]=useState({} as any)
   
   useEffect(() => {  
-    xlsxDataHandle(setXlsxData)
-  },[]);
-  
-  useEffect(() => {
-    setCookieGuessArray("GuessArray" , JSON.stringify(guessArray) , { path: '/',  expires : expireDateTime});
-    
-    if(gameStatus)
+    if(cookiesGameStatus.GameStatus === "Ended")
     {
       navigate("/result/");
     }
+    else
+    {
+      xlsxDataHandle(setXlsxData)
+    }
+  },[]);
+  
+  useEffect(() => {
+
+    console.log(guessArray.length);
+    
+    setCookieGuessArray("GuessArray" , guessArray.length === 0? cookiesGuessArray.GuessArray : JSON.stringify(guessArray) , { path: '/',  expires : UTCExpireTime()});
+  
+      if(gameStatus)
+      {
+        navigate("/result/");
+        setCookieGameStatus("GameStatus" , "Ended" , { path: '/',  expires : UTCExpireTime()});
+      }
   }, [gameStatus])
   
 
   useEffect(() => {      
     if(Object.keys(data).length !== 0){
      let Hints = HintGenarator(data);
-
      let encryptOT = EncryptOT(data["Original Title"]);
-     setDecryptOT(DecryptOT(encryptOT));
-     setExpireDateTime(UTCExpireTime());      
+     setDecryptOT(DecryptOT(encryptOT));         
      
      if(cookiesHint1["Hint-1"] === undefined && cookiesHint2["Hint-2"] === undefined && cookiesHint3["Hint-3"] === undefined && cookiesHint4["Hint-4"] === undefined && cookiesHint5["Hint-5"] === undefined && cookiesOT.OriginalTitle === undefined && cookiesTranslation.Translation === undefined)
      {
-        setCookieOT('OriginalTitle',encryptOT,{ path: '/',  expires : expireDateTime});
-        setCookieTranslation('Translation',data["Translation"],{ path: '/',  expires : expireDateTime});
-        setCookieHint1('Hint-1',Hints.Hint1,{ path: '/',  expires : expireDateTime});
-        setCookieHint2('Hint-2',Hints.Hint2,{ path: '/',  expires : expireDateTime});
-        setCookieHint3('Hint-3',Hints.Hint3,{ path: '/',  expires : expireDateTime});
-        setCookieHint4('Hint-4',Hints.Hint4,{ path: '/',  expires : expireDateTime});
-        setCookieHint5('Hint-5',Hints.Hint5,{ path: '/',  expires : expireDateTime});    
+        setCookieOT('OriginalTitle',encryptOT,{ path: '/',  expires : UTCExpireTime()});
+        setCookieTranslation('Translation',data["Translation"],{ path: '/',  expires : UTCExpireTime()});
+        setCookieHint1('Hint-1',Hints.Hint1,{ path: '/',  expires : UTCExpireTime()});
+        setCookieHint2('Hint-2',Hints.Hint2,{ path: '/',  expires : UTCExpireTime()});
+        setCookieHint3('Hint-3',Hints.Hint3,{ path: '/',  expires : UTCExpireTime()});
+        setCookieHint4('Hint-4',Hints.Hint4,{ path: '/',  expires : UTCExpireTime()});
+        setCookieHint5('Hint-5',Hints.Hint5,{ path: '/',  expires : UTCExpireTime()});    
      }
      
     }
@@ -152,38 +163,40 @@ export default function Home() {
 
   return (
     <div className="container">
+
+      <div className="left-container side-col">
+       <Navigation />
+      </div>
+
+      <div className="center-container inner-container">
       <div className="hint-list">
-        <div className="hint-row">
-          <span className="hint-text">{cookiesHint1["Hint-1"]}</span>
-          <span className="hint-text">{guess1 !== "" ? cookiesHint2["Hint-2"] : ""}</span>
-        </div>
-        <div className="hint-row">
-          <span className="hint-text">{guess2 !== "" ? cookiesHint3["Hint-3"] : ""}</span>
-          <span className="hint-text">{guess3 !== "" ? cookiesHint4["Hint-4"] : ""}</span>
-        </div>
-        <div className="hint-row">
-          <span className="hint-text">{guess4 !== "" ? cookiesHint5["Hint-5"] : ""}</span>
-        </div>
+          <label className="hint-text">{cookiesHint1["Hint-1"] === undefined ? "" : "01. " + cookiesHint1["Hint-1"]}</label>
+          <label className="hint-text">{guess1 !== "" ? "02. " + cookiesHint2["Hint-2"] : ""}</label>
+
+          <label className="hint-text">{guess2 !== "" ? "03. " + cookiesHint3["Hint-3"] : ""}</label>
+          <label className="hint-text">{guess3 !== "" ? "04. " + cookiesHint4["Hint-4"] : ""}</label>
+
+          <label className="hint-text">{guess4 !== "" ? "05. " + cookiesHint5["Hint-5"] : ""}</label>
       </div>
 
-      <div className="guess-word">
+      <div className="guess-word inner-container">
         <div className="box">
-          <h2 className="guess-word-text">{cookiesTranslation.Translation}</h2>
+          <label className="guess-word-text">{cookiesTranslation.Translation}</label>
         </div>
       </div>
 
-      <div className="guesses-box">
+      <div className="guesses-box inner-container">
         <div className="guesses-box-list">
           <div className="guesses-box-row">
             <div className="inner-box">
-              <h3 className="guess-word-text">{guess1 !== "" ? guess1 :""}</h3>
+              <label className="guess-word-text">{guess1 !== "" ? guess1 :""}</label>
               {guess1 !== ""?
               <div className={guess1Res? "img-box correct" : "img-box wrong"}></div>
               : 
               <Fragment />}
             </div>
             <div className="inner-box">
-              <h3 className="guess-word-text">{guess2 !== "" ? guess2 :""}</h3>
+              <label className="guess-word-text">{guess2 !== "" ? guess2 :""}</label>
               {guess2 !== ""?
               <div className={guess2Res? "img-box correct" : "img-box wrong"}></div>
               : 
@@ -192,14 +205,14 @@ export default function Home() {
           </div>
           <div className="guesses-box-row">
             <div className="inner-box">
-              <h3 className="guess-word-text">{guess3 !== "" ? guess3 :""}</h3>
+              <label className="guess-word-text">{guess3 !== "" ? guess3 :""}</label>
               {guess3 !== ""?
               <div className={guess3Res? "img-box correct" : "img-box wrong"}></div>
               : 
               <Fragment />}
             </div>
             <div className="inner-box">
-              <h3 className="guess-word-text">{guess4 !== "" ? guess4 :""}</h3>
+              <label className="guess-word-text">{guess4 !== "" ? guess4 :""}</label>
               {guess4 !== ""?
               <div className={guess4Res? "img-box correct" : "img-box wrong"}></div>
               : 
@@ -208,7 +221,7 @@ export default function Home() {
           </div>
           <div className="guesses-box-row">
             <div className="inner-box">
-              <h3 className="guess-word-text">{guess5 !== "" ? guess5 :""}</h3>
+              <label className="guess-word-text">{guess5 !== "" ? guess5 :""}</label>
               {guess5 !== ""?
               <div className={guess5Res? "img-box correct" : "img-box wrong"}></div>
               : 
@@ -218,14 +231,20 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="textbox-container">
+      <div className="textbox-container inner-container">
         <div className="textbox">
           <input type="text" value={isGuess} placeholder="Enter your guess here"  onChange={handleChange} onKeyDown={handleKeypress}/>
         </div>
       </div>
-      <div className="button-raw">
-        <button className="button" type="submit" onClick={handleSubmit}>Submit</button>
-        <button className="button" value={"SKIPPED"} onClick={handleSkip}>Skip</button>
+      <div className="button-raw inner-container">
+        <button className="button primary-btn" type="submit" onClick={handleSubmit}>Submit</button>
+        <button className="button skip" value={"SKIPPED"} onClick={handleSkip}>Skip</button>
+      </div>
+
+      </div>
+
+      <div className="right-container side-col">
+      <SideImage showModal={false}/>             
       </div>
     </div>
   );

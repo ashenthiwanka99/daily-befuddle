@@ -1,9 +1,8 @@
-import "./Navigation.css";
+import "./Navigation.scss";
 import { useContext } from "react";
-import Logo from "../../Assets/Images/logo-temp.png";
-import Info from "../../Assets/Images/info-icon.png";
-import Stats from "../../Assets/Images/stats-icon.png";
-import SnapFinger from "../../Assets/Images/snap-fingerclick-icon.png";
+import Info from "../../Assets/Images/information.png";
+import Stats from "../../Assets/Images/stats.png";
+import SnapFinger from "../../Assets/Images/snap-link.png";
 import { InfoStore, StatsStore } from "../../Store/Store";
 
 export default function Navigation() {
@@ -17,28 +16,32 @@ export default function Navigation() {
   const StatsStsChange = () => {
     setStatsStatus(!stastStatus);
   };
-  return (
-    <div className="header">
-      <div className="div-left">
-        <img className="logo" src={Logo} alt="Logo"></img>
-      </div>
 
-      <div className="div-right">
-        <div className="div-info" onClick={InfoStsChange}>
-          <img className="logo" src={Info} alt="Logo"></img>
-        </div>
-        <div className="div-stats" onClick={StatsStsChange}>
-          <img className="logo" src={Stats} alt="Logo"></img>
-        </div>
-        <div className="div-snapfingerclick">
-          <a
-            href="https://snapfingerclick.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img className="logo" src={SnapFinger} alt="Logo" />
-          </a>
-        </div>
+  const handleSnapFinger = () => {
+    window.open("https://snapfingerclick.com/", "_blank");
+  };
+
+  const handleClickInfo = () => {
+   console.log("info click");
+   
+  };
+
+  const handleClickStats = () => {
+    console.log("stats click");
+  };
+  return (
+    <div className="btn-area">
+      <div className="div-info div-btn Info" onClick={handleClickInfo}>
+        <div className="lable">Info</div>
+        <img className="icon info" src={Info} alt="Logo"></img>
+      </div>
+      <div className="div-stats div-btn stats" onClick={handleClickStats}>
+        <div className="lable">Stats</div>
+        <img className="icon stats" src={Stats} alt="Logo"></img>
+      </div>
+      <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
+        <div className="lable">Snap Finger Click</div>
+        <img className="icon snap" src={SnapFinger} alt="Logo" />
       </div>
     </div>
   );

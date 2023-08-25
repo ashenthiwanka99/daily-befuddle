@@ -1,23 +1,51 @@
 .container {
-  .orginal-word {
+  .header-text {
     display: flex;
-    margin: 20px;
     flex-direction: column;
     align-items: center;
-
-    .box {
-      width: 250px;
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      background-color: orange;
-      border: 3px solid black;
-      border-radius: 5px;
-      justify-content: center;
-      align-items: center;
+    .h2 {
+      color: #fff;
+      font-family: "Work Sans", sans-serif;
     }
   }
 
+  .guess-word {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+
+    .box {
+      padding: 15px 50px;
+      border-radius: 20px;
+      background: #101010;
+      //width: 400px;
+      text-align: center;
+
+      .guess-word-text {
+        color: #fff;
+        font-family: "Alumni Sans", sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .box-list-text {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10px 10px 20px;
+    align-items: center;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    color: #fff;
+  }
   .guesses-box-row {
     display: flex;
     justify-content: space-around;
@@ -25,13 +53,9 @@
 
     .inner-box {
       display: flex;
-      margin: 8px;
-      padding: 10px;
       width: 250px;
       height: 35px;
-      border-radius: 5px;
-      background: gray;
-      border: 1px solid black;
+      border-bottom: 1px solid #dbd8d8;
       align-items: center;
       justify-content: space-between;
 
@@ -41,40 +65,41 @@
         background-size: cover;
 
         &.correct {
-          background-image: url("../../Assets/Images/correct.png");
+          background-image: url("../../Assets/Images/correct.svg");
         }
 
         &.wrong {
-          background-image: url("../../Assets/Images/wrong.png");
+          background-image: url("../../Assets/Images/wrong.svg");
         }
       }
     }
   }
 
-  .color-box{
+  .color-box {
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
     flex-direction: row;
-    .box{
-        width: 25px;
-        height: 25px;
-        border-radius: 5px;
-        background: white;
-        margin-right: 5px;
-        border: 1px solid black;
+    margin-bottom: 16px;
+    .box {
+      width: 25px;
+      height: 25px;
+      border-radius: 5px;
+      background: white;
+      margin-right: 5px;
+      border: 1px solid black;
 
-        &.correct{
-            background: lightgreen !important;
-        }
+      &.correct {
+        background: lightgreen !important;
+      }
 
-        &.wrong{
-            background: lightcoral !important;
-        }
+      &.wrong {
+        background: lightcoral !important;
+      }
 
-        &.skip{
-            background: gray !important;
-        }
+      &.skip {
+        background: gray !important;
+      }
     }
   }
 }
