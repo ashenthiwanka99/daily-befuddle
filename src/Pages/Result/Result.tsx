@@ -37,8 +37,6 @@ export default function Result() {
     {
       navigate("/");
     }
-    console.log(cookiesGuessArray );
-
     if (cookiesOT.OriginalTitle !== undefined && cookiesGuessArray !== undefined)
      {
       setDecryptOT(DecryptOT(cookiesOT.OriginalTitle));
@@ -57,10 +55,10 @@ export default function Result() {
       {
       while (cookiesGuessArray.GuessArray.length < 5)
        {
-        console.log(
-          cookiesGuessArray.GuessArray,
-          "cookiesGuessArray.GuessArray"
-        );
+        // console.log(
+        //   cookiesGuessArray.GuessArray,
+        //   "cookiesGuessArray.GuessArray"
+        // );
         let _array = cookiesGuessArray.GuessArray;
         _array.push(null);
         setCookieGuessArray("GuessArray", _array, {

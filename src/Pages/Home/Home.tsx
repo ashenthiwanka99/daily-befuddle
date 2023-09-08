@@ -126,7 +126,7 @@ export default function Home() {
       let obj = {Guess : guess5.Guess5 , Result : guess5Res["Guess5-Res"]};
       guessArray.push(obj)
     }
-    console.log(guessArray);
+    //console.log(guessArray);
     }
   }, [])
 
@@ -222,7 +222,7 @@ export default function Home() {
     setCookieGuess5Win("Guess5Win" , guessArray[4].Result ? (cookiesGuess5Win.Guess5Win + 1) : cookiesGuess5Win.Guess5Win , { path: '/',  expires : UTCNoExpireTime()});  
   }
 
-  console.log(guessArray);
+  //console.log(guessArray);
 }
 
   return (
