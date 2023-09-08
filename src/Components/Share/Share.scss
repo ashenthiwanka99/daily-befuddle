@@ -32,7 +32,7 @@
 
     .h1 {
       color: #fff;
-      font-family: "Work Sans", sans-serif;
+      font-family: "Luckiest Guy", "cursive";//header
     }
 
     .div-center {
@@ -47,10 +47,10 @@
 
         .text-switch {
           color: #fff;
-          font-family: "Work Sans";
+          font-family:  "Lilita One", "cursive";//regular
           font-size: 16px;
           font-style: normal;
-          font-weight: 600;
+          font-weight: 400;
           line-height: normal;
           text-transform: capitalize;
           margin-right: 16px;
@@ -76,7 +76,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          background-color:rgba(255, 255, 255, 0.288);
+          background-color: rgba(255, 255, 255, 0.288);
           transition: 0.4s;
           border-radius: 34px;
         }
@@ -124,12 +124,11 @@
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.1);
         color: #fff;
-        font-family: "Work Sans";
-        font-size: 20px;
+        font-family:  "Lilita One", "cursive";//regular
+        font-size: 15px;
         font-style: normal;
-        font-weight: 600;
+        font-weight: 400;
         line-height: normal;
-        text-transform: capitalize;
       }
     }
   }
@@ -148,10 +147,10 @@
   .button {
     padding: 10px 20px;
     color: #fff;
-    font-family: "Work Sans";
+    font-family: "Luckiest Guy", "cursive";//header
     font-size: 20px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: normal;
     font-variant: small-caps;
     cursor: pointer;
@@ -161,5 +160,14 @@
     border: none;
     border-radius: 12px;
     background: linear-gradient(238deg, #7f30ff 0%, #ff4880 100%);
+  }
+
+  .button.primary-btn:hover {
+    background: linear-gradient(238deg, #7f30ff87 0%, #ff488094 100%);
+  }
+
+  .button.primary-btn:active {
+    background: linear-gradient(238deg, #7f30ff87 0%, #ff488094 100%);
+    margin-top: 5px;
   }
 }

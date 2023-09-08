@@ -4,10 +4,94 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: #000000;
-  background-image: url("../src/Assets/Images/bg-gradiant.svg");
+  // background-image: url("../src/Assets/Images/bg-gradiant.svg");
+  background-image: url("../src/Assets/Images/BFD_background.png");
   background-position: center;
   background-size: cover;
   overflow: hidden;
+}
+
+.confettis {
+  overflow: hidden;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.confetti {
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  transform-origin: left top;
+  animation: confetti 5s ease-in-out -2s infinite;
+}
+@keyframes confetti {
+  0% {
+    transform: rotateZ(15deg) rotateY(0deg) translate(0, 0);
+  }
+  25% {
+    transform: rotateZ(5deg) rotateY(360deg) translate(-5vw, 20vh);
+  }
+  50% {
+    transform: rotateZ(15deg) rotateY(720deg) translate(5vw, 60vh);
+  }
+  75% {
+    transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw, 80vh);
+  }
+  100% {
+    transform: rotateZ(15deg) rotateY(1440deg) translate(10vw, 110vh);
+  }
+}
+
+.confetti:nth-child(1) {
+  left: 10%;
+  animation-delay: 0;
+  background-color: #fc0120;
+}
+.confetti:nth-child(2) {
+  left: 20%;
+  animation-delay: -5s;
+  background-color: #8257e6;
+}
+.confetti:nth-child(3) {
+  left: 30%;
+  animation-delay: -3s;
+  background-color: #ffbf4d;
+}
+.confetti:nth-child(4) {
+  left: 40%;
+  animation-delay: -2.5s;
+  background-color: #fe5d7a;
+}
+.confetti:nth-child(5) {
+  left: 50%;
+  animation-delay: -4s;
+  background-color: #45ec9c;
+}
+.confetti:nth-child(6) {
+  left: 60%;
+  animation-delay: -6s;
+  background-color: #f6e327;
+}
+.confetti:nth-child(7) {
+  left: 70%;
+  animation-delay: -1.5s;
+  background-color: #f769ce;
+}
+.confetti:nth-child(8) {
+  left: 80%;
+  animation-delay: -2s;
+  background-color: #007de7;
+}
+.confetti:nth-child(9) {
+  left: 90%;
+  animation-delay: -3.5s;
+  background-color: #63b4fc;
+}
+.confetti:nth-child(10) {
+  left: 100%;
+  animation-delay: -2.5s;
+  background-color: #f9c4ea;
 }
 
 .main {
@@ -34,22 +118,72 @@
   height: 4vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
+
+  .cookie {
+    background-color: #000000;
+    position: fixed;
+    bottom: 70px;
+    border-radius: 20px;
+    left: 1%;
+    z-index: 10;
+    width: 25%;
+  }
+
+  .cookie .txt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;   
+    align-items: center;
+    float: left;
+    width: 100%;
+  }
+  .txt p {
+    color: #fff;
+    font-family: "Lilita One", "cursive"; //regular
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-variant: small-caps;
+  }
+
+  .button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    font-family: "Lilita One", "cursive"; //regular
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-variant: small-caps;
+    cursor: pointer;
+  }
+
+  .primary-btn {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(238deg, #7f30ff 0%, #ff4880 100%);
+  }
 
   .wishlist-text {
     display: flex;
+    background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
-    width: 30vw;
+    width: 100%;
+    height: 100%;
+    background-image: url("../src/Assets/Images/upsellBanner.gif");
 
     .label {
       color: #ffffff;
-      font-family: "Work Sans", sans-serif;
+      font-family: "Lilita One", "cursive"; //regular
       font-size: 14px;
       font-style: normal;
-      font-weight: 200;
+      font-weight: 400;
       line-height: normal;
       text-transform: capitalize;
     }
@@ -77,5 +211,17 @@
       font-size: 22px;
       transition: 0.1s;
     }
+
+    .SnapLogo {
+      margin-left: 10px;
+      height: 100%;
+    }
+  
+    .SnapLogo :hover {
+      height: 120%;
+      transition: 0.1s;
+    }
   }
+
+  
 }

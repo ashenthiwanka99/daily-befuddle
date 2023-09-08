@@ -5,7 +5,7 @@
     align-items: center;
     .h2 {
       color: #fff;
-      font-family: "Work Sans", sans-serif;
+      font-family: "Luckiest Guy", "cursive";//header
     }
   }
 
@@ -23,10 +23,10 @@
 
       .guess-word-text {
         color: #fff;
-        font-family: "Alumni Sans", sans-serif;
+        font-family: "Luckiest Guy", "cursive";//header
         font-size: 28px;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 400;
         line-height: normal;
         text-transform: capitalize;
       }
@@ -38,10 +38,10 @@
     justify-content: space-between;
     margin: 10px 10px 10px 20px;
     align-items: center;
-    font-family: "Work Sans", sans-serif;
+    font-family:  "Lilita One", "cursive";//regular
     font-size: 16px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal;
     text-transform: capitalize;
     color: #fff;
@@ -90,11 +90,11 @@
       border: 1px solid black;
 
       &.correct {
-        background: lightgreen !important;
+        background: #90ee90 !important;
       }
 
       &.wrong {
-        background: lightcoral !important;
+        background: #F08080 !important;
       }
 
       &.skip {

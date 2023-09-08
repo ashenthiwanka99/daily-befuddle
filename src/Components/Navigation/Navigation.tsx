@@ -22,12 +22,11 @@ export default function Navigation() {
   };
 
   const handleClickInfo = () => {
-   console.log("info click");
-   
+    InfoStsChange()   
   };
-
+  
   const handleClickStats = () => {
-    console.log("stats click");
+    StatsStsChange()
   };
   return (
     <div className="btn-area">
@@ -39,10 +38,10 @@ export default function Navigation() {
         <div className="lable">Stats</div>
         <img className="icon stats" src={Stats} alt="Logo"></img>
       </div>
-      <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
+      {/* <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
         <div className="lable">Snap Finger Click</div>
         <img className="icon snap" src={SnapFinger} alt="Logo" />
-      </div>
+      </div> */}
     </div>
   );
 }

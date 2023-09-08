@@ -27,12 +27,12 @@
 .center-container {
   width: 100%;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 10%);
+  background: rgba(255, 255, 255, 12%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0px;
-  margin: 20px 0px;
+  padding: 20px;
+  // margin: 20px 0px;
   z-index: 1;
 }
 .inner-container {
@@ -50,10 +50,10 @@
     width: 350px;
     margin-bottom: 20px;
     color: #ffffff;
-    font-family: "Work Sans", sans-serif;
-    font-size: 16px;
+    font-family: "Luckiest Guy", "cursive";//header
+    font-size: 24px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal;
     text-transform: capitalize;
   }
@@ -71,10 +71,10 @@
 
     .guess-word-text {
       color: #fff;
-      font-family: "Alumni Sans", sans-serif;
+      font-family: "Luckiest Guy", "cursive";//header
       font-size: 28px;
       font-style: normal;
-      font-weight: 700;
+      font-weight: 400;
       line-height: normal;
       text-transform: capitalize;
     }
@@ -98,10 +98,10 @@
 
     .guess-word-text {
       color: #fff;
-      font-family: "Alumni Sans", sans-serif;
+      font-family: "Lilita One", "cursive";//regular
       font-size: 20px;
       font-style: normal;
-      font-weight: 700;
+      font-weight: 400;
       line-height: normal;
       text-transform: capitalize;
     }
@@ -131,16 +131,16 @@
     padding: 15px 20px;
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: 18px;
     width: 44vw;
     padding: 10px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.6);
     color: #101010;
-    font-family: "Work Sans";
+    font-family:   "Lilita One", "cursive";//regular
     font-size: 20px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: normal;
     text-transform: capitalize;
   }
@@ -149,13 +149,14 @@
 .button-raw {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 15px;
   .button {
     padding: 10px 20px;
     color: #fff;
-    font-family: "Work Sans";
+    font-family: "Luckiest Guy", "cursive";
     font-size: 20px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: normal;
     font-variant: small-caps;
     cursor: pointer;

@@ -10,8 +10,8 @@ export async function xlsxDataHandle(setValue) {
       download: true,
       header: true,
       complete: (results) => {
-        //setValue(results.data[datePosition - 1]);
-        setValue(results.data[20]);
+        setValue(results.data[datePosition - 1]);
+        //setValue(results.data[78]);
       },
     }
   );
@@ -31,6 +31,12 @@ export function UTCExpireTime() {
   );
 
   return utcMidnight;
+}
+
+export function UTCNoExpireTime() {
+  const expirationDate = new Date();
+  expirationDate.setFullYear(expirationDate.getFullYear() + 10);
+  return expirationDate;
 }
 
 export function HintGenarator(data) {
@@ -221,40 +227,192 @@ export function DecryptOT(value) {
   return originalText;
   }
 
-export function AccuracyCheck(OriginalTitle , submitedTitle) {
+  export function AccuracyCheck(OriginalTitle , submitedTitle) {
+  const cleanAnswer = submitedTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const cleanCorrectAnswer = OriginalTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
 
-  const cleanActualTitle = OriginalTitle.replace(/[^\w\s]/g, '').toLowerCase();
-  const cleanSubmittedTitle = submitedTitle.replace(/[^\w\s]/g, '').toLowerCase();
+  const similarity = calculateSimilarity(cleanAnswer, cleanCorrectAnswer);
+  console.log(similarity);
 
-  const actualWithoutThe = cleanActualTitle.startsWith('the ') ? cleanActualTitle.substring(4) : cleanActualTitle;
-  const submittedWithoutThe = cleanSubmittedTitle.startsWith('the ') ? cleanSubmittedTitle.substring(4) : cleanSubmittedTitle;
+  if (
+    similarity >= 90 || 
+    (cleanAnswer.startsWith('the') && cleanCorrectAnswer.includes(cleanAnswer))
+  ) {
+    return true;
+  }
 
-  const similarity = calculateSimilarity(actualWithoutThe, submittedWithoutThe);
-
-  return similarity >= 0.9;
-} 
-
-function calculateSimilarity(str1, str2) {
-  const len1 = str1.length;
-  const len2 = str2.length;
-  const matrix = Array.from({ length: len1 + 1 }, () => Array(len2 + 1).fill(0));
-
-  for (let i = 0; i <= len1; i++) {
-    for (let j = 0; j <= len2; j++) {
-      if (i === 0) {
-        matrix[i][j] = j;
-      } else if (j === 0) {
-        matrix[i][j] = i;
-      } else if (str1[i - 1] === str2[j - 1]) {
-        matrix[i][j] = matrix[i - 1][j - 1];
-      } else {
-        matrix[i][j] = 1 + Math.min(matrix[i - 1][j], matrix[i][j - 1], matrix[i - 1][j - 1]);
+  if (cleanAnswer.length === cleanCorrectAnswer.length - 1) {
+    for (let i = 0; i < cleanCorrectAnswer.length; i++) {
+      const partialAnswer = cleanCorrectAnswer.slice(0, i) + cleanCorrectAnswer.slice(i + 1);
+      if (cleanAnswer === partialAnswer) {
+        return true;
       }
     }
   }
 
-  const maxLen = Math.max(len1, len2);
-  const similarity = 1 - matrix[len1][len2] / maxLen;
+  return false;
+  } 
 
-  return similarity;
+  function levenshteinDistance(str1, str2) {
+    const m = str1.length;
+    const n = str2.length;
+    const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
+  
+    for (let i = 1; i <= m; i++) {
+      dp[i][0] = i;
+    }
+  
+    for (let j = 1; j <= n; j++) {
+      dp[0][j] = j;
+    }
+  
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
+        dp[i][j] = Math.min(
+          dp[i - 1][j] + 1,
+          dp[i][j - 1] + 1,
+          dp[i - 1][j - 1] + cost
+        );
+      }
+    }
+  
+    return dp[m][n];
+  }
+  
+  function calculateSimilarity(str1, str2) {
+    const distance = levenshteinDistance(str1.toLowerCase(), str2.toLowerCase());
+    const maxLength = Math.max(str1.length, str2.length);
+    const similarity = 1 - distance / maxLength;
+    return similarity * 100; // Convert to percentage
+  }
+
+
+//old logic to check accuracy
+// export function AccuracyCheck(OriginalTitle , submitedTitle) {
+
+//   const cleanActualTitle = OriginalTitle.replace(/[^\w\s]/g, '').toLowerCase();
+//   const cleanSubmittedTitle = submitedTitle.replace(/[^\w\s]/g, '').toLowerCase();
+
+//   const actualWithoutThe = cleanActualTitle.startsWith('the ') ? cleanActualTitle.substring(4) : cleanActualTitle;
+//   const submittedWithoutThe = cleanSubmittedTitle.startsWith('the ') ? cleanSubmittedTitle.substring(4) : cleanSubmittedTitle;
+
+//   const similarity = calculateSimilarity(actualWithoutThe, submittedWithoutThe);
+
+//   return similarity >= 0.9;
+// } 
+
+// function calculateSimilarity(str1, str2) {
+//   const len1 = str1.length;
+//   const len2 = str2.length;
+//   const matrix = Array.from({ length: len1 + 1 }, () => Array(len2 + 1).fill(0));
+
+//   for (let i = 0; i <= len1; i++) {
+//     for (let j = 0; j <= len2; j++) {
+//       if (i === 0) {
+//         matrix[i][j] = j;
+//       } else if (j === 0) {
+//         matrix[i][j] = i;
+//       } else if (str1[i - 1] === str2[j - 1]) {
+//         matrix[i][j] = matrix[i - 1][j - 1];
+//       } else {
+//         matrix[i][j] = 1 + Math.min(matrix[i - 1][j], matrix[i][j - 1], matrix[i - 1][j - 1]);
+//       }
+//     }
+//   }
+
+//   const maxLen = Math.max(len1, len2);
+//   const similarity = 1 - matrix[len1][len2] / maxLen;
+
+//   return similarity;
+// }
+
+export function GenarateCopyText(isWin , guessArray)
+{ 
+  var datePosition = moment().utc().local().dayOfYear();
+  var attempt = 0;
+  var incorrectGuesses = 0;
+  var skips = 0;
+
+  guessArray.filter(element => element !== null && element !== undefined)
+  .forEach(element => {
+    if(element.Guess !== null)
+    {
+      attempt++;
+    }
+    if(element.Guess === "SKIPPED" )
+    {
+      skips++;
+    }   
+    if(element.Result === false && element.Guess !== "SKIPPED")
+    {
+      incorrectGuesses++;
+    } 
+  });
+
+  const pluralize = (count, singular, plural) => {
+    return count === 1 ? `${count} ${singular}` : `${count} ${plural}`;
+  };
+
+  const Emojitext = guessArray.map((index) => {
+    return (
+      index === null
+        ? "⬜"
+        : index.Guess === "SKIPPED"
+        ? "⬛"
+        : index.Result
+        ? "🟩"
+        : "🟥"
+    );
+  }).join('');
+
+  
+
+  if(isWin)
+  {
+    return ({ 
+      textAccessible :
+      
+      `Daily Befuddle #${datePosition}
+      
+Guessed correctly on the ${attempt === 1 ? '1st' : attempt === 2 ? '2nd': attempt === 3 ? '3rd' : `${attempt}th`} attempt with ` +
+      `${pluralize(incorrectGuesses, 'incorrect guess', 'incorrect guesses')} and ` +
+      `${pluralize(skips, 'skip', 'skips')}
+      
+https://befuddle.gg`,
+
+  textEmoji : 
+  `Daily Befuddle #${datePosition}
+      
+ `+(isWin ? "✔️" : "❌") + Emojitext +`
+        
+https://befuddle.gg`,
+
+ 
+
+});
+
+  }
+  else 
+  {
+    return ({
+      textAccessible :
+      `Daily Befuddle #${datePosition}
+      
+Failed to guess after 5 attempts with `  +
+      `${pluralize(incorrectGuesses, 'incorrect guess', 'incorrect guesses')} and ` +
+      `${pluralize(skips, 'skip', 'skips')}
+      
+https://befuddle.gg`,
+
+  textEmoji : 
+  `Daily Befuddle #${datePosition}
+      
+ `+(isWin ? "✔️" : "❌") + Emojitext +`
+        
+https://befuddle.gg`,
+    });
+  }
+
+  
 }

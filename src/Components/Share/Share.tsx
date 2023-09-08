@@ -1,8 +1,10 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
+import { GenarateCopyText, UTCExpireTime, UTCNoExpireTime } from "../../HelperMethods/HelperMethods";
 import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import "./Share.scss"
+import { useCookies } from 'react-cookie';
 
 const CloseModalButton = styled(MdClose)`
   cursor: pointer;
@@ -19,12 +21,30 @@ const CloseModalButton = styled(MdClose)`
 
 export const ModalShare = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
-  const [isToggled, setIsToggled] = useState(false);
+  const [copyTextResult, setCopyTextresult] = useState(null as any);
+  const [copyText, setCopyText] = useState("");
+  const [buttonText, setButtonText] = useState("Copy to Clipbord.");
+  const [cookiesDailyWin, setCookieDailyWin ,removeCookieDailyWin] = useCookies(["DailyWin"]);
+  const [cookiesIsAccessible, setCookieIsAccessible ,removeIsAccessible] = useCookies(["IsAccessible"]);
+  const [cookiesGuessArray, setCookieGuessArray, removeCookieGuessArray] = useCookies(["GuessArray"]);
+  const [isToggled, setIsToggled] = useState(cookiesIsAccessible.IsAccessible);
+
+
+  const handleCopy =()=>{
+    navigator.clipboard.writeText(copyText);
+    setButtonText("Copied!")
+  }
+
+  const handleClose =()=>{
+    setShowModal(prev => !prev);
+    setButtonText("Copy to Clipbord.")
+  }
 
   const toggleSwitch = () => {
-    setIsToggled(!isToggled);
+    setIsToggled(!isToggled); 
+    setButtonText("Copy to Clipbord.")
   };
-
+  
   const animation = useSpring({
     config: {
       duration: 250
@@ -43,19 +63,29 @@ export const ModalShare = ({ showModal, setShowModal }) => {
     e => {
       if (e.key === 'Escape' && showModal) {
         setShowModal(false);
-        console.log('I pressed');
       }
     },
     [setShowModal, showModal]
   );
 
-  useEffect(
-    () => {
-      document.addEventListener('keydown', keyPress);
-      return () => document.removeEventListener('keydown', keyPress);
-    },
-    [keyPress]
-  );
+  function handleCopyText()
+  {
+    let result = GenarateCopyText(cookiesDailyWin.DailyWin,cookiesGuessArray.GuessArray)    
+    setCopyTextresult(result)
+  }
+
+  useEffect(() => {
+    handleCopyText();
+    setCopyText(isToggled ? copyTextResult?.textAccessible : copyTextResult?.textEmoji )
+    document.addEventListener('keydown', keyPress);
+    return () => document.removeEventListener('keydown', keyPress);
+    },[keyPress]);  
+
+    useEffect(() => {
+
+      setCopyText(isToggled ? copyTextResult?.textAccessible : copyTextResult?.textEmoji )
+      setCookieIsAccessible("IsAccessible" , isToggled , { path: '/',  expires : UTCNoExpireTime()});  
+    }, [isToggled])
 
   return (
     <>
@@ -73,15 +103,14 @@ export const ModalShare = ({ showModal, setShowModal }) => {
                  <span className="slider round"></span>
                  </label>
                 </div>           
-                <textarea  className="textarea" placeholder="Enter your guess here" />             
-                
+                <textarea  className="textarea" defaultValue={copyText}/>                         
                 </div>  
-                <button className="button primary-btn">
-                    Copy to Clipbord
+                <button className="button primary-btn"  onClick={handleCopy}> 
+                   {buttonText}
                     <i className="fa-solid fa-copy" style={{marginLeft:"16px"}}></i>
                 </button>                    
             </div>
-                 <CloseModalButton aria-label='Close modal' onClick={() => setShowModal(prev => !prev)}/>
+                 <CloseModalButton aria-label='Close modal' onClick={handleClose}/>
             </div>
         </animated.div>
         </div>
@@ -89,3 +118,5 @@ export const ModalShare = ({ showModal, setShowModal }) => {
     </>
   );
 };
+
+

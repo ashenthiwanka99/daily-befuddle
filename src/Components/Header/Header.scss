@@ -1,5 +1,17 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
 
-.logo {
-    width: 115px;
+  .logo {
+    width: 15%;
     margin: 10px 0 0 10px;
   }
+
+  .banner {
+    background-repeat: no-repeat;
+    height: 100%;
+    background-image: url("../../Assets/Images/upsellBanner.gif");
+    cursor: pointer;
+  }
+}
