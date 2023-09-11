@@ -1,5 +1,5 @@
 import "./Header.scss";
-import Logo from "../../Assets/Images/logo-1.png";
+import Logo from "../../Assets/Images/logo-2.png";
 import Banner from "../../Assets/Images/upsellBanner.gif";
 
 export default function Header() {
