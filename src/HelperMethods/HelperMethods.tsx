@@ -40,8 +40,6 @@ export function UTCNoExpireTime() {
 }
 
 export function HintGenarator(data) {
-    console.log(data);
-
     //genarate hint 1
     var Hint1Array = [];
     var Hint2to4Array = [];
