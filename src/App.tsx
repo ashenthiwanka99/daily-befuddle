@@ -42,9 +42,9 @@ function App() {
         :  
         <Fragment />}
      
-      <div>
+      <>
         <Header />
-      </div>
+      </>
       <div className="main">
         <BrowserRouter>
           <Routes>

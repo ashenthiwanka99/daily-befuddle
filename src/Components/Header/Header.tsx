@@ -13,12 +13,11 @@ export default function Header() {
 
   return (
     <div className="header">
-      <div className="div-left">
         <img className="logo" src={Logo} alt="Logo"></img>
-      </div>
-      <div className="div-right" onClick={handelSteamPage}>
+
+      {/* <div className="div-right" onClick={handelSteamPage}>
         <img className="banner" src={Banner} alt="Banner"></img>
+      </div> */}
       </div>
-    </div>
   );
 }

@@ -1,10 +1,12 @@
 .container {
+  align-items: center;
   .header-text {
     display: flex;
     flex-direction: column;
     align-items: center;
     .h2 {
       color: #fff;
+      font-weight: 200;
       font-family: "Luckiest Guy", "cursive";//header
     }
   }
@@ -39,7 +41,7 @@
     margin: 10px 10px 10px 20px;
     align-items: center;
     font-family:  "Lilita One", "cursive";//regular
-    font-size: 16px;
+    font-size: 26px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -65,11 +67,11 @@
         background-size: cover;
 
         &.correct {
-          background-image: url("../../Assets/Images/correct.svg");
+          background-image: url("../../Assets/Images/correct.png");
         }
 
         &.wrong {
-          background-image: url("../../Assets/Images/wrong.svg");
+          background-image: url("../../Assets/Images/wrong.png");
         }
       }
     }

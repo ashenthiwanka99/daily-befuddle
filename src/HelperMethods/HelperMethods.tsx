@@ -230,8 +230,7 @@ export function DecryptOT(value) {
   const cleanCorrectAnswer = OriginalTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
 
   const similarity = calculateSimilarity(cleanAnswer, cleanCorrectAnswer);
-  console.log(similarity);
-
+  
   if (
     similarity >= 90 || 
     (cleanAnswer.startsWith('the') && cleanCorrectAnswer.includes(cleanAnswer))

@@ -6,7 +6,15 @@
   justify-content: space-between;
 }
 .side-col {
-  width: 15vw;
+  width: 25vw;
+  height: 100%;
+}
+.side-col-nav {
+  width: 10vw;
+  height: 100%;
+}
+.side-col-girl {
+  width: 12vw;
   height: 100%;
 }
 .left-container {
@@ -22,7 +30,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+}
+.center-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: 30px;
+
+  .banner {
+    background-repeat: no-repeat;
+    height: 4vw;
+    cursor: pointer;
+    margin: 10px;
+  }
 }
 .center-container {
   width: 100%;
@@ -36,21 +58,19 @@
   z-index: 1;
 }
 .inner-container {
-  width: calc(100% - 300px);
+  width: calc(100% - 70px);
 }
 .hint-list {
-  display: block;
-  width: 700px;
-  height: 117px;
-  margin-left: 150px;
+  display: flex;
+  flex-direction: column;
+
 
   .hint-text {
     display: inline-block;
     text-align: left;
-    width: 350px;
     margin-bottom: 20px;
     color: #ffffff;
-    font-family: "Luckiest Guy", "cursive";//header
+    font-family: "Luckiest Guy", "cursive"; //header
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -71,7 +91,7 @@
 
     .guess-word-text {
       color: #fff;
-      font-family: "Luckiest Guy", "cursive";//header
+      font-family: "Luckiest Guy", "cursive"; //header
       font-size: 28px;
       font-style: normal;
       font-weight: 400;
@@ -98,7 +118,7 @@
 
     .guess-word-text {
       color: #fff;
-      font-family: "Lilita One", "cursive";//regular
+      font-family: "Lilita One", "cursive"; //regular
       font-size: 20px;
       font-style: normal;
       font-weight: 400;
@@ -112,11 +132,11 @@
       background-size: cover;
 
       &.correct {
-        background-image: url("../../Assets/Images/correct.svg");
+        background-image: url("../../Assets/Images/correct.png");
       }
 
       &.wrong {
-        background-image: url("../../Assets/Images/wrong.svg");
+        background-image: url("../../Assets/Images/wrong.png");
       }
     }
   }
@@ -132,12 +152,12 @@
     border: none;
     outline: none;
     font-size: 18px;
-    width: 44vw;
+    width: 25vw;
     padding: 10px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.6);
     color: #101010;
-    font-family:   "Lilita One", "cursive";//regular
+    font-family: "Lilita One", "cursive"; //regular
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -172,5 +192,50 @@
     border-radius: 12px;
     border: 2px solid #b59494;
     background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+//mobile 
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: column-reverse;
+    align-items: center;
+    height: auto;
+  }
+  .center-container {
+    background: transparent;
+  }
+  .inner-container {
+    width: calc(100% - 150px);
+  }
+
+  .side-col,
+  .side-col-nav,
+  .side-col-girl {
+    width: 100%;
+  }
+
+  .left-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-container {
+    align-items: center;
+  }
+
+  .center-box {
+    top: 10px;
+    .banner {
+      height: 10vw;
+    }
+  }
+
+  .guess-word .box {
+    width: 90%;
+  }
+
+  .textbox-container .textbox input[type="text"] {
+    width: 90%;
   }
 }

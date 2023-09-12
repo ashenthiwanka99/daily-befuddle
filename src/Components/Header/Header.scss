@@ -1,11 +1,14 @@
 .header {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   height: 3rem;
+  margin-bottom: 17px;
+  z-index: 1;
 
   .logo {
-    width: 40%;
-    margin: 10px 0 0 10px;
+    height: 7vw;
+    margin-top: 5px;
   }
 
   .banner {
@@ -13,5 +16,21 @@
     height: 100%;
     background-image: url("../../Assets/Images/upsellBanner.gif");
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 3rem;
+    margin-bottom: 50px;
+    z-index: 1;
+
+    .logo {
+      height: 20vw;
+      margin-top: 5px;
+    }
   }
 }

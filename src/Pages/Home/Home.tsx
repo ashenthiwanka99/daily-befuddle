@@ -8,6 +8,9 @@ import Navigation from "../../Components/Navigation/Navigation";
 import SideImage from "../../Components/GirlImage/Image";
 import { ModalInfo } from "../../Components/Info/Info";
 import { ModalStats } from "../../Components/Stats/Stats";
+import Banner from "../../Assets/Images/upsellBanner.gif";
+import WaviyText from "../../Components/Animatios/WaviyText";
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -50,6 +53,13 @@ export default function Home() {
   const [cookiesGuess3Win, setCookieGuess3Win ,removeGuess3Win] = useCookies(["Guess3Win"]);
   const [cookiesGuess4Win, setCookieGuess4Win ,removeGuess4Win] = useCookies(["Guess4Win"]);
   const [cookiesGuess5Win, setCookieGuess5Win ,removeGuess5Win] = useCookies(["Guess5Win"]);
+
+  const handelSteamPage = () => {
+    window.open(
+      "https://store.steampowered.com/app/1756140/Befuddle_The_Bewitching_Puzzle_Party_Game/",
+      "_blank"
+    );
+  };
 
   useEffect(() => {  
     if(cookiesGameStatus.GameStatus === "Ended")
@@ -229,12 +239,18 @@ export default function Home() {
     <div className="container">
       <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus}/>
       <ModalStats showModal={statsStatus} setShowModal={setStatsStatus}/>
-      <div className="left-container side-col">
+
+      <div className="left-container side-col-nav">
        <Navigation />
       </div>
 
+      <div className="left-container side-col-girl">
+      <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+      </div>
+
+      <div className="center-box">
       <div className="center-container inner-container">
-      <div className="hint-list">
+      {/* <div className="hint-list">
           <label className="hint-text">{cookiesHint1["Hint-1"] === undefined ? "" : "01. " + cookiesHint1["Hint-1"]}</label>
           <label className="hint-text">{guess1.Guess1 !== undefined ? "02. " + cookiesHint2["Hint-2"] : ""}</label>
 
@@ -242,7 +258,7 @@ export default function Home() {
           <label className="hint-text">{guess3.Guess3!== undefined ? "04. " + cookiesHint4["Hint-4"] : ""}</label>
 
           <label className="hint-text">{guess4.Guess4 !== undefined ? "05. " + cookiesHint5["Hint-5"] : ""}</label>
-      </div>
+      </div> */}
 
       <div className="guess-word inner-container">
         <div className="box">
@@ -307,11 +323,23 @@ export default function Home() {
       </div>
 
       </div>
+      <div className="div-banner" onClick={handelSteamPage}>
+        <img className="banner" src={Banner} alt="Banner"></img>
+      </div>
+      </div>
+     
 
       <div className="right-container side-col">
-      <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+      <WaviyText word={"Hints:"}/>  
+      <div className="hint-list">
+          <label className="hint-text">{cookiesHint1["Hint-1"] === undefined ? "" : "01. " + cookiesHint1["Hint-1"]}</label>
+          <label className="hint-text">{guess1.Guess1 !== undefined ? "02. " + cookiesHint2["Hint-2"] : ""}</label>
+          <label className="hint-text">{guess2.Guess2 !== undefined ? "03. " + cookiesHint3["Hint-3"] : ""}</label>
+          <label className="hint-text">{guess3.Guess3!== undefined ? "04. " + cookiesHint4["Hint-4"] : ""}</label>
+          <label className="hint-text">{guess4.Guess4 !== undefined ? "05. " + cookiesHint5["Hint-5"] : ""}</label>
       </div>
     </div>
+   </div>
   );
 }
 

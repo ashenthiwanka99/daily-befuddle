@@ -9,6 +9,8 @@ import {ModalShare} from "../../Components/Share/Share";
 import { ModalInfo } from "../../Components/Info/Info";
 import { ModalStats } from "../../Components/Stats/Stats";
 import { useNavigate } from "react-router-dom";
+import Banner from "../../Assets/Images/upsellBanner.gif";
+
 
 export default function Result() {
   let dataIndex = 0;
@@ -25,13 +27,16 @@ export default function Result() {
   const [cookiesMaxStreak, setCookieMaxStreak ,removeCookieMaxStreak] = useCookies(["MaxStreak"]);
   const [cookiesCurrentStreak, setCookieCurrentStreak ,removeCookieCurrentStreak] = useCookies(["CurrentStreak"]);
 
-
-
+  const handelSteamPage = () => {
+    window.open(
+      "https://store.steampowered.com/app/1756140/Befuddle_The_Bewitching_Puzzle_Party_Game/",
+      "_blank"
+    );
+  };
   const openModal = () => {
     setShowModal(!showModal);
   };
  
-  
   useEffect(() => {
     if(cookiesGuessArray.GuessArray === undefined)
     {
@@ -78,9 +83,15 @@ export default function Result() {
       <ModalShare showModal={showModal} setShowModal={setShowModal}/>
       <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus}/>
       <ModalStats showModal={statsStatus} setShowModal={setStatsStatus}/>
-      <div className="left-container side-col">
-        <Navigation />
+      <div className="left-container side-col-nav">
+       <Navigation />
       </div>
+
+      <div className="left-container side-col-girl">
+      <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+      </div>
+      
+      <div className="center-box">
       <div className="center-container inner-container">
         <div className="header-text">
           <h2 className="h2">{cookiesDailyWin.DailyWin !== undefined ? "Congratulations! You guessed today's Befuddle." : "Bad luck! Today's Befuddle is:"}</h2>
@@ -117,7 +128,7 @@ export default function Result() {
           <i className='fa fa-share-alt' style={{ color: "white" , marginLeft: "10px",fontSize: "24px"}}></i>       
         </button>
         </div>
-        
+{/*         
         <div className="guesses-box">
           <div className="guesses-box-list">
             <label className="box-list-text">Your Guesses: </label>
@@ -151,10 +162,47 @@ export default function Result() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
+      </div>
+      <div className="div-banner" style={{margin:"10px"}} onClick={handelSteamPage}>
+        <img className="banner" style={{height:"6vw"}} src={Banner} alt="Banner"></img>
+      </div>
       </div>
       <div className="right-container side-col">
-      <SideImage showModal={showModal ? true : infoStatus ? true : statsStatus ? true : false}/>         
+      
+      <div className="guesses-box">
+          <div className="guesses-box-list">
+            <label className="box-list-text">Your Guesses: </label>
+              <div key={Math.random()} className="guesses-box-row" style={{display:"flex", flexDirection:"column"}}>
+                {cookiesGuessArray.GuessArray.map((_, colIndex) => {
+                  const element = cookiesGuessArray.GuessArray[dataIndex];
+                  dataIndex++;
+                  return element === null ? (
+                    <div className="inner-box" key={Math.random()}></div>
+                  ) : (
+                    <div className="inner-box" key={Math.random()}>
+                      <h3 className="guess-word-text" key={Math.random()}>
+                        {element?.Guess !== "" ? element?.Guess : ""}
+                      </h3>
+                      {element?.Guess !== "" ? (
+                        <div
+                          key={Math.random()}
+                          className={
+                            element?.Result
+                              ? "img-box correct"
+                              : "img-box wrong"
+                          }
+                        ></div>
+                      ) : (
+                        <Fragment />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+          </div>
+        </div>
       </div>
     </div>
   );

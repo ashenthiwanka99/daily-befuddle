@@ -36,3 +36,22 @@
   margin-right: 16px;
   width: 32px;
 }
+@media screen and (max-width: 480px) {
+  .div-btn {
+    width: 100%; /* Full width for mobile */
+    left: 0;
+    justify-content: center;
+  }
+
+  .div-btn.snap {
+    left: -100px; /* Adjust this as needed for the snap effect */
+  }
+
+  .lable {
+    margin-right: 0; /* Remove margin for mobile */
+  }
+
+  .icon {
+    margin-right: 0; /* Remove margin for mobile */
+  }
+}
