@@ -49,26 +49,27 @@
 .center-container {
   width: 100%;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 12%);
+  background: rgba(255, 255, 255, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  // margin: 20px 0px;
+ // padding: 20px;
+  margin: 5px 0px;
   z-index: 1;
 }
 .inner-container {
   width: calc(100% - 70px);
 }
+
+//old
 .hint-list {
   display: flex;
   flex-direction: column;
 
-
   .hint-text {
     display: inline-block;
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #ffffff;
     font-family: "Luckiest Guy", "cursive"; //header
     font-size: 24px;
@@ -78,19 +79,65 @@
     text-transform: capitalize;
   }
 }
+
+//new-hint
+.containerHint {
+  background-color: #bfa38b;
+  border: 3px solid #436a4a;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .rowStyle {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin: 1px;
+    .coloredDivStyle {
+      width: 25vw;
+      min-height: 15px;
+      background-color: #af9279;
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      border-radius: 10px;
+      color: #ffffff;
+      font-family: "Luckiest Guy", "cursive"; //header
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: capitalize;
+    }
+  }
+
+  .text {
+    text-align: left;
+    color: #101010;
+    font-family: "Luckiest Guy", "cursive"; //header
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+}
 .guess-word {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
   .box {
     padding: 15px 50px;
     border-radius: 20px;
-    background: #101010;
+    background: #fff;
     //width: 400px;
     text-align: center;
 
     .guess-word-text {
-      color: #fff;
+      color: #101010;
       font-family: "Luckiest Guy", "cursive"; //header
       font-size: 28px;
       font-style: normal;
@@ -101,53 +148,71 @@
   }
 }
 
-.guesses-box-row {
+.guess-header-text {
   display: flex;
-  justify-content: space-around;
+  text-align: center;
+  color: #ffffff;
+  font-family: "Luckiest Guy", "cursive"; //header
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.guess-word-text {
+  color: #fff;
+  font-family: "Lilita One", "cursive"; //regular
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.inner-box {
+  display: flex;
+  width: 300px;
+  height: 35px;
   margin: 10px;
+  padding: 0 16px 0 16px;
+  border-bottom: 1px solid #dbd8d8;
+  align-items: center;
+  justify-content: space-between;
 
-  .inner-box {
-    display: flex;
-    width: 300px;
-    height: 35px;
-    margin: 10px;
-    padding: 0 16px 0 16px;
-    border-bottom: 1px solid #dbd8d8;
-    align-items: center;
-    justify-content: space-between;
+  .guess-word-text {
+    color: #fff;
+    font-family: "Lilita One", "cursive"; //regular
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+  }
 
-    .guess-word-text {
-      color: #fff;
-      font-family: "Lilita One", "cursive"; //regular
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      text-transform: capitalize;
+  .img-box {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+
+    &.correct {
+      background-image: url("../../Assets/Images/correct.png");
     }
 
-    .img-box {
-      width: 20px;
-      height: 20px;
-      background-size: cover;
-
-      &.correct {
-        background-image: url("../../Assets/Images/correct.png");
-      }
-
-      &.wrong {
-        background-image: url("../../Assets/Images/wrong.png");
-      }
+    &.wrong {
+      background-image: url("../../Assets/Images/wrong.png");
     }
   }
 }
+
 .textbox-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 10px;
 
   .textbox input[type="text"] {
+    text-align: center;
     padding: 15px 20px;
     border: none;
     outline: none;
@@ -169,7 +234,7 @@
 .button-raw {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 15px;
+
   .button {
     padding: 10px 20px;
     color: #fff;
@@ -195,7 +260,7 @@
   }
 }
 
-//mobile 
+//mobile
 @media screen and (max-width: 480px) {
   .container {
     flex-direction: column-reverse;

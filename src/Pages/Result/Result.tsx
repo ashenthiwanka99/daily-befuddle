@@ -26,6 +26,8 @@ export default function Result() {
   const [cookiesTotalGames, setCookieTotalGames ,removeCookieTotalGames] = useCookies(["TotalGames"]);
   const [cookiesMaxStreak, setCookieMaxStreak ,removeCookieMaxStreak] = useCookies(["MaxStreak"]);
   const [cookiesCurrentStreak, setCookieCurrentStreak ,removeCookieCurrentStreak] = useCookies(["CurrentStreak"]);
+  const [cookiesGameStatus, setCookieGameStatus, removeCookieGameStatus] = useCookies(["GameStatus"]);
+
 
   const handelSteamPage = () => {
     window.open(
@@ -37,6 +39,13 @@ export default function Result() {
     setShowModal(!showModal);
   };
  
+  useEffect(() => {
+    if(cookiesGameStatus.GameStatus === undefined && cookiesDailyWin.DailyWin === undefined)
+    {
+      navigate("/");
+    }
+  }, [])
+  
   useEffect(() => {
     if(cookiesGuessArray.GuessArray === undefined)
     {
@@ -92,12 +101,12 @@ export default function Result() {
       </div>
       
       <div className="center-box">
-      <div className="center-container inner-container">
+      <div className="center-container-result inner-container">
         <div className="header-text">
-          <h2 className="h2">{cookiesDailyWin.DailyWin !== undefined ? "Congratulations! You guessed today's Befuddle." : "Bad luck! Today's Befuddle is:"}</h2>
+          <h2 className="h2">{cookiesDailyWin.DailyWin ? "Congratulations! You guessed today's Befuddle." : "Bad luck! Today's Befuddle is:"}</h2>
         </div>
 
-        <div className="guess-word inner-container">
+        <div className="guess-word-result inner-container">
           <div className="box">
             <label className="guess-word-text">{decryptOT}</label>
           </div>
