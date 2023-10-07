@@ -10,8 +10,10 @@ export async function xlsxDataHandle(setValue) {
       download: true,
       header: true,
       complete: (results) => {
-        setValue(results.data[datePosition - 1]);
+       setValue(results.data[datePosition - 1]);
         //setValue(results.data[78]);
+        console.log(results.data[datePosition - 1]);
+        
       },
     }
   );

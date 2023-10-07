@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: calc(98vh - 100px);
+  height: 70vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,19 +9,14 @@
   width: 25vw;
   height: 100%;
 }
-.side-col-nav {
-  width: 10vw;
-  height: 100%;
-}
-.side-col-girl {
-  width: 12vw;
-  height: 100%;
-}
 .left-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  .inner-side-col {
+    height: 100%;
+  }
 }
 .left-container .btn-area .div-btn + .div-btn {
   margin-top: 20px;
@@ -30,6 +25,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 1;
 }
 .center-box {
   display: flex;
@@ -53,12 +49,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
- // padding: 20px;
+  // padding: 20px;
   margin: 5px 0px;
   z-index: 1;
 }
 .inner-container {
-  width: calc(100% - 70px);
+  width: 45vw;
 }
 
 //old
@@ -81,7 +77,7 @@
 }
 
 //new-hint
-.containerHint {
+.hint-container {
   background-color: #bfa38b;
   border: 3px solid #436a4a;
   border-radius: 10px;
@@ -93,11 +89,14 @@
   .rowStyle {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     margin: 1px;
+    width: 100%;
+
     .coloredDivStyle {
-      width: 25vw;
-      min-height: 15px;
+      width: 100%;
+      min-height: 20px;
+      margin-left: 5px;
       background-color: #af9279;
       display: flex;
       align-items: center;
@@ -133,7 +132,6 @@
     padding: 15px 50px;
     border-radius: 20px;
     background: #fff;
-    //width: 400px;
     text-align: center;
 
     .guess-word-text {
@@ -211,19 +209,17 @@
   align-items: center;
   margin: 10px;
 
-  .textbox input[type="text"] {
+  input[type="text"] {
+    padding: 15px 10px;
+    width: 97%;
     text-align: center;
-    padding: 15px 20px;
     border: none;
     outline: none;
-    font-size: 18px;
-    width: 25vw;
-    padding: 10px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.6);
     color: #101010;
     font-family: "Lilita One", "cursive"; //regular
-    font-size: 20px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -233,9 +229,15 @@
 
 .button-raw {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+
+  .result
+  {
+    justify-content: center;
+  }
 
   .button {
+    margin-right: 8px;
     padding: 10px 20px;
     color: #fff;
     font-family: "Luckiest Guy", "cursive";

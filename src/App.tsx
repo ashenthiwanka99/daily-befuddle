@@ -8,6 +8,8 @@ import { useCookies } from "react-cookie";
 import { Fragment, useEffect } from "react";
 import { UTCNoExpireTime } from "./HelperMethods/HelperMethods";
 import SnapLogo from "../src/Assets/Images/snapfinger-logo.png";
+import Banner from "../src/Assets/Images/upsellBanner.gif";
+
 
 
 function App() {
@@ -27,6 +29,13 @@ function App() {
     setCookieAgreed("CookiesAgreed" , false , { path: '/',  expires : UTCNoExpireTime()});  
   }
 
+    const handelSteamPage = () => {
+    window.open(
+      "https://store.steampowered.com/app/1756140/Befuddle_The_Bewitching_Puzzle_Party_Game/",
+      "_blank"
+    );
+  };
+  
   return (
     <div className="body">
       {cookiesDailyWin.DailyWin?
@@ -68,14 +77,10 @@ function App() {
           :
           <Fragment />}
      
-        {/* <div className="wishlist-text" onClick={handelSteamPage}>
-          <div className="label">Wish list our Befuddle game on Steam</div>
-          <i
-            className="fab fa-steam"
-            style={{ color: "white", marginLeft: "10px", fontSize: "20px" }}
-          ></i>
-        </div> */}
-        <div className="div-social">
+     <div className="div-banner" onClick={handelSteamPage}>
+        <img src={Banner} alt="Banner"></img>
+      </div>
+        {/* <div className="div-social">
               <a className="link-social twitch" href="https://www.twitch.tv/snapfingerclick" target="_blank" rel="noreferrer">
                 <i className="fab fa-twitch"></i>
               </a>
@@ -103,7 +108,7 @@ function App() {
               <img className="SnapLogo" src={SnapLogo} alt="SnapLogo"></img>
 
               </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

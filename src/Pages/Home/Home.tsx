@@ -9,7 +9,6 @@ import SideImage from "../../Components/GirlImage/Image";
 import { ModalInfo } from "../../Components/Info/Info";
 import { ModalStats } from "../../Components/Stats/Stats";
 import Banner from "../../Assets/Images/upsellBanner.gif";
-import WaviyText from "../../Components/Animatios/WaviyText";
 
 
 export default function Home() {
@@ -137,7 +136,7 @@ export default function Home() {
       let obj = {Guess : guess5.Guess5 , Result : guess5Res["Guess5-Res"]};
       guessArray.push(obj)
     }
-    //console.log(guessArray);
+    console.log(guessArray);
     }
   }, [])
 
@@ -154,7 +153,8 @@ export default function Home() {
 
   
   const handleChange = e => {
-    setIsGuess(e.target.value);
+    var cleanText = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "")
+    setIsGuess(cleanText.toUpperCase());
   };
  
   const handleKeypress = e => {
@@ -244,12 +244,14 @@ export default function Home() {
       <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus}/>
       <ModalStats showModal={statsStatus} setShowModal={setStatsStatus}/>
 
-      <div className="left-container side-col-nav">
-       <Navigation />
-      </div>
+      <div className="left-container side-col">
+        <div>
+          <Navigation />
+        </div>
 
-      <div className="left-container side-col-girl">
-      <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+        <div className="inner-side-col">
+         <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+        </div>
       </div>
 
       <div className="center-box">
@@ -271,8 +273,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="guesses-box inner-container">
-        {/* <div className="guesses-box-list">
+      {/* <div className="guesses-box inner-container">
+         <div className="guesses-box-list">
           <div className="guesses-box-row">
             <div className="inner-box">
               <label className="guess-word-text">{guess1.Guess1 !== undefined ? guess1.Guess1 : ""}</label>
@@ -314,17 +316,16 @@ export default function Home() {
               <Fragment />}
             </div>
           </div>
-        </div> */}
-      </div>
+        </div> 
+      </div> */}
 
       <div className="textbox-container inner-container">
-        <div className="textbox">
-          <input type="text" maxLength={100} value={isGuess} placeholder="Enter your guess here"  onChange={handleChange} onKeyDown={handleKeypress} />
-        </div>
+          <input type="text" pattern="[a-zA-Z0-9]+" maxLength={100} value={isGuess.toUpperCase()} placeholder="ENTER YOUR GUESS HERE"  onChange={handleChange} onKeyDown={handleKeypress} />
       </div>
+
       <div className="button-raw inner-container">
-        <button className="button primary-btn" type="submit" onClick={handleSubmit}>Submit</button>
-        <button className="button skip" value={"SKIPPED"} onClick={handleSkip}>Skip</button>
+        <button className="button primary-btn" type="submit" onClick={handleSubmit}>SUBMIT</button>
+        <button className="button skip" value={"SKIPPED"} onClick={handleSkip}>SKIP</button>
       </div>
 
       </div>
@@ -337,7 +338,7 @@ export default function Home() {
 
           <label className="hint-text">{guess4.Guess4 !== undefined ? "05. " + cookiesHint5["Hint-5"] : ""}</label>
       </div>  */}
-      <div className="containerHint">
+      <div className="hint-container inner-container">
       <div className="text">HINTS</div>
       <div className="rowStyle">
         <div className="text">01.</div>
@@ -370,9 +371,9 @@ export default function Home() {
         </div>
       </div>
     </div>
-      <div className="div-banner" onClick={handelSteamPage}>
+      {/* <div className="div-banner" onClick={handelSteamPage}>
         <img className="banner" src={Banner} alt="Banner"></img>
-      </div>
+      </div> */}
       </div>
      
 

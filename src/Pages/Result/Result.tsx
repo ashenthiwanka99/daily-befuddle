@@ -40,11 +40,11 @@ export default function Result() {
   };
  
   useEffect(() => {
-    if(cookiesGameStatus.GameStatus === undefined && cookiesDailyWin.DailyWin === undefined)
+    if(cookiesGameStatus.GameStatus === undefined || cookiesDailyWin.DailyWin === undefined)
     {
       navigate("/");
     }
-  }, [])
+  })
   
   useEffect(() => {
     if(cookiesGuessArray.GuessArray === undefined)
@@ -88,18 +88,22 @@ export default function Result() {
   }, [cookiesGuessArray]);
 
   return (
+
     <div className="container">
       <ModalShare showModal={showModal} setShowModal={setShowModal}/>
       <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus}/>
       <ModalStats showModal={statsStatus} setShowModal={setStatsStatus}/>
-      <div className="left-container side-col-nav">
-       <Navigation />
+
+      <div className="left-container side-col">
+        <div>
+          <Navigation />
+        </div>
+
+        <div className="inner-side-col">
+         <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+        </div>
       </div>
 
-      <div className="left-container side-col-girl">
-      <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
-      </div>
-      
       <div className="center-box">
       <div className="center-container-result inner-container">
         <div className="header-text">
@@ -131,9 +135,9 @@ export default function Result() {
           })}
         </div>
 
-        <div className="button-raw inner-container">
+        <div className="button-raw inner-container" style={{display:"flex", justifyContent:"center"}}>
         <button className="button skip" value={"Share"} onClick={openModal}>
-          Share
+          SHARE
           <i className='fa fa-share-alt' style={{ color: "white" , marginLeft: "10px",fontSize: "24px"}}></i>       
         </button>
         </div>
@@ -173,9 +177,9 @@ export default function Result() {
           </div>
         </div> */}
       </div>
-      <div className="div-banner" style={{margin:"10px"}} onClick={handelSteamPage}>
+      {/* <div className="div-banner" style={{margin:"10px"}} onClick={handelSteamPage}>
         <img className="banner" style={{height:"6vw"}} src={Banner} alt="Banner"></img>
-      </div>
+      </div> */}
       </div>
       <div className="right-container side-col">
       

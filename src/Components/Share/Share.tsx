@@ -106,7 +106,7 @@ export const ModalShare = ({ showModal, setShowModal }) => {
                 <textarea  className="textarea" defaultValue={copyText}/>                         
                 </div>  
                 <button className="button primary-btn"  onClick={handleCopy}> 
-                   {buttonText}
+                   {buttonText.toUpperCase()}
                     <i className="fa-solid fa-copy" style={{marginLeft:"16px"}}></i>
                 </button>                    
             </div>
