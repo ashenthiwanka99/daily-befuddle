@@ -5,11 +5,65 @@
   min-height: 100vh;
   background-color: #000000;
   // background-image: url("../src/Assets/Images/bg-gradiant.svg");
-  background-image: url("../src/Assets/Images/BFD_background.png");
+  //background-image: url("../src/Assets/Images/BFD_background.png");
   background-position: center;
   background-size: cover;
   overflow: hidden;
 }
+
+.body::before {
+  content: "";
+  position: fixed;
+  left: -355px;
+  bottom: -725px;
+  width: 3000px;
+  height: 2800px;
+  background-image: url("../src/Assets/Images/BFD_background.png");
+  background-position: center;
+  background-size: cover;
+  animation: rotation  120s linear infinite;
+}
+
+@media screen and (min-width: 2560px){
+  .body::before {
+    content: "";
+    position: fixed;
+    left: -230px;
+    bottom: -860px;
+    width: 3000px;
+    height: 2800px;
+    background-image: url("../src/Assets/Images/BFD_background.png");
+    background-position: center;
+    background-size: cover;
+    animation: rotation  120s linear infinite;
+  }
+}
+
+@media screen and (max-width: 425px){
+  .body::before {
+    content: "";
+    position: fixed;
+    right: -260px;
+    bottom: -80px;
+    width: 1110px;
+    height: 1110px;
+    background-image: url("../src/Assets/Images/BFD_background.png");
+    background-position: center;
+    background-size: cover;
+    animation: rotation  120s linear infinite;
+  }
+}
+
+@keyframes rotation {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+
 
 .confettis {
   overflow: hidden;
@@ -113,21 +167,30 @@
 }
 
 .footer {
-  background-color: #000000;
-  padding: 10px 0;
-  height: 4vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
+  // background-color: #000000;
+  // padding: 10px 0;
+   height: 10vh;
+   z-index: 1;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: nowrap;
+  // align-items: center;
+  // justify-content: center;
+
+  .div-banner {
+    display: flex;
+    height:100%;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+  }
 
   .cookie {
     background-color: #000000;
     position: fixed;
-    bottom: 70px;
+    bottom: 1%;
     border-radius: 20px;
-    left: 1%;
+    right: 1%;
     z-index: 10;
     width: 25%;
   }
@@ -135,7 +198,7 @@
   .cookie .txt {
     display: flex;
     flex-direction: row;
-    justify-content: center;   
+    justify-content: center;
     align-items: center;
     float: left;
     width: 100%;
@@ -216,12 +279,23 @@
       margin-left: 10px;
       height: 100%;
     }
-  
+
     .SnapLogo :hover {
       height: 120%;
       transition: 0.1s;
     }
   }
+}
 
-  
+@media screen and (max-width: 480px) {
+  .footer .cookie {
+    background-color: #000000;
+    position: fixed;
+    bottom: 70px;
+    border-radius: 20px;
+    right: 1%;
+    left: 1%;
+    z-index: 10;
+    width: 98%;
+  }
 }

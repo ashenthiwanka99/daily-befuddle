@@ -1,0 +1,34 @@
+.wavy-text {
+    text-align: center;
+    color: #ffffff;
+    font-family: "Luckiest Guy", "cursive"; //header
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+  }
+  
+  .wave {
+    font-size: 36px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .letter {
+    display: inline-block;
+    text-transform: uppercase;
+    animation: wave 1s infinite;
+    animation-delay: calc(.1s * var(--i));
+
+  }
+  
+  @keyframes wave {
+    0%,40%,100% {
+        transform: translateY(0)
+      }
+      20% {
+        transform: translateY(-20px)
+      }
+  }
+  

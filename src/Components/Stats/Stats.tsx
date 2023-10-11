@@ -20,7 +20,7 @@ const CloseModalButton = styled(MdClose)`
 
 export const ModalStats = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
-  const [timmer , setTimmer] = useState("")
+  const [countdown, setCountdown] = useState({hours: '00',minutes: '00',seconds: '00',message: '',});
   const [timeDifference, setTimeDifference] = useState(calculateTimeDifference());
   const [cookiesTotalGames, setCookieTotalGames ,removeCookieTotalGames] = useCookies(["TotalGames"]);
   const [cookiesTotalWonGames, setCookieTotalWonGames ,removeCookieTotalWonGames] = useCookies(["TotalWonGames"]);
@@ -43,13 +43,24 @@ export const ModalStats = ({ showModal, setShowModal }) => {
     const newTimeDifference = calculateTimeDifference();
 
       if (newTimeDifference <= 0) {
-        setTimmer('Time has already passed');
+        setCountdown({
+          hours:"00",
+          minutes: "00",
+          seconds: "00",
+          message: "Time has already passed",
+        });
       } else {
         const hours = Math.floor(newTimeDifference / (1000 * 60 * 60));
         const minutes = Math.floor((newTimeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((newTimeDifference % (1000 * 60)) / 1000);
 
-        setTimmer(`${hours}:${minutes}:${seconds}`);
+     
+        setCountdown({
+          hours: String(hours).padStart(2, '0'),
+          minutes: String(minutes).padStart(2, '0'),
+          seconds: String(seconds).padStart(2, '0'),
+          message: '',
+        });
       }
 
       setTimeDifference(newTimeDifference);
@@ -104,6 +115,12 @@ export const ModalStats = ({ showModal, setShowModal }) => {
         stacked: true,
         width: 700, 
         height: 300, 
+        toolbar: {
+          show: true,
+          tools:{
+            download:false
+          }
+        }
       },
       plotOptions: {
         bar: {
@@ -230,7 +247,7 @@ export const ModalStats = ({ showModal, setShowModal }) => {
                </div>  
                <div className="next-game-time">
                   <label className="text">Next Befuddle in: </label>
-                  <label className="text">{timmer}</label>
+                  <label className="text">{countdown.hours}h {countdown.minutes}m {countdown.seconds}s</label>
                   </div>               
               </div>
               <CloseModalButton

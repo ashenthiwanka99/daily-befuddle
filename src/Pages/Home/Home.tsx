@@ -8,6 +8,8 @@ import Navigation from "../../Components/Navigation/Navigation";
 import SideImage from "../../Components/GirlImage/Image";
 import { ModalInfo } from "../../Components/Info/Info";
 import { ModalStats } from "../../Components/Stats/Stats";
+import Banner from "../../Assets/Images/upsellBanner.gif";
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -51,6 +53,13 @@ export default function Home() {
   const [cookiesGuess4Win, setCookieGuess4Win ,removeGuess4Win] = useCookies(["Guess4Win"]);
   const [cookiesGuess5Win, setCookieGuess5Win ,removeGuess5Win] = useCookies(["Guess5Win"]);
 
+  const handelSteamPage = () => {
+    window.open(
+      "https://store.steampowered.com/app/1756140/Befuddle_The_Bewitching_Puzzle_Party_Game/",
+      "_blank"
+    );
+  };
+
   useEffect(() => {  
     if(cookiesGameStatus.GameStatus === "Ended")
     {
@@ -59,6 +68,7 @@ export default function Home() {
     else
     {
       xlsxDataHandle(setXlsxData)
+      console.log(data);    
     }
   },[]);
   
@@ -126,7 +136,7 @@ export default function Home() {
       let obj = {Guess : guess5.Guess5 , Result : guess5Res["Guess5-Res"]};
       guessArray.push(obj)
     }
-    //console.log(guessArray);
+    console.log(guessArray);
     }
   }, [])
 
@@ -143,7 +153,8 @@ export default function Home() {
 
   
   const handleChange = e => {
-    setIsGuess(e.target.value);
+    var cleanText = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "")
+    setIsGuess(cleanText.toUpperCase());
   };
  
   const handleKeypress = e => {
@@ -172,6 +183,8 @@ export default function Home() {
       if(guessArray[4] !== undefined)
       {
         setGameStatus(true)
+        setCookieDailyWin("DailyWin" , false , { path: '/',  expires : UTCExpireTime()});
+
       }
      
       setIsGuess("")    
@@ -189,6 +202,7 @@ export default function Home() {
       if(guessArray[4] !== undefined)
       {
         setGameStatus(true)
+        setCookieDailyWin("DailyWin" , false , { path: '/',  expires : UTCExpireTime()});
       }
 
       setIsGuess("") 
@@ -229,12 +243,20 @@ export default function Home() {
     <div className="container">
       <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus}/>
       <ModalStats showModal={statsStatus} setShowModal={setStatsStatus}/>
+
       <div className="left-container side-col">
-       <Navigation />
+        <div>
+          <Navigation />
+        </div>
+
+        <div className="inner-side-col">
+         <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+        </div>
       </div>
 
+      <div className="center-box">
       <div className="center-container inner-container">
-      <div className="hint-list">
+      {/* <div className="hint-list">
           <label className="hint-text">{cookiesHint1["Hint-1"] === undefined ? "" : "01. " + cookiesHint1["Hint-1"]}</label>
           <label className="hint-text">{guess1.Guess1 !== undefined ? "02. " + cookiesHint2["Hint-2"] : ""}</label>
 
@@ -242,16 +264,17 @@ export default function Home() {
           <label className="hint-text">{guess3.Guess3!== undefined ? "04. " + cookiesHint4["Hint-4"] : ""}</label>
 
           <label className="hint-text">{guess4.Guess4 !== undefined ? "05. " + cookiesHint5["Hint-5"] : ""}</label>
-      </div>
+      </div> */}
 
       <div className="guess-word inner-container">
+      <div className="guess-header-text">TODAYS'S BEFUDDLE:</div>
         <div className="box">
           <label className="guess-word-text">{cookiesTranslation.Translation}</label>
         </div>
       </div>
 
-      <div className="guesses-box inner-container">
-        <div className="guesses-box-list">
+      {/* <div className="guesses-box inner-container">
+         <div className="guesses-box-list">
           <div className="guesses-box-row">
             <div className="inner-box">
               <label className="guess-word-text">{guess1.Guess1 !== undefined ? guess1.Guess1 : ""}</label>
@@ -293,25 +316,113 @@ export default function Home() {
               <Fragment />}
             </div>
           </div>
-        </div>
-      </div>
+        </div> 
+      </div> */}
 
       <div className="textbox-container inner-container">
-        <div className="textbox">
-          <input type="text" maxLength={100} value={isGuess} placeholder="Enter your guess here"  onChange={handleChange} onKeyDown={handleKeypress} />
+          <input type="text" pattern="[a-zA-Z0-9]+" maxLength={100} value={isGuess.toUpperCase()} placeholder="ENTER YOUR GUESS HERE"  onChange={handleChange} onKeyDown={handleKeypress} />
+      </div>
+
+      <div className="button-raw inner-container">
+        <button className="button primary-btn" type="submit" onClick={handleSubmit}>SUBMIT</button>
+        <button className="button skip" value={"SKIPPED"} onClick={handleSkip}>SKIP</button>
+      </div>
+
+      </div>
+      {/* <div className="hint-list">
+          <label className="hint-text">{cookiesHint1["Hint-1"] === undefined ? "" : "01. " + cookiesHint1["Hint-1"]}</label>
+          <label className="hint-text">{guess1.Guess1 !== undefined ? "02. " + cookiesHint2["Hint-2"] : ""}</label>
+
+          <label className="hint-text">{guess2.Guess2 !== undefined ? "03. " + cookiesHint3["Hint-3"] : ""}</label>
+          <label className="hint-text">{guess3.Guess3!== undefined ? "04. " + cookiesHint4["Hint-4"] : ""}</label>
+
+          <label className="hint-text">{guess4.Guess4 !== undefined ? "05. " + cookiesHint5["Hint-5"] : ""}</label>
+      </div>  */}
+      <div className="hint-container inner-container">
+      <div className="text">HINTS</div>
+      <div className="rowStyle">
+        <div className="text">01.</div>
+        <div className="coloredDivStyle"> 
+        <label className="hint-text">{cookiesHint1["Hint-1"] === undefined ? "" : cookiesHint1["Hint-1"]}</label>
         </div>
       </div>
-      <div className="button-raw inner-container">
-        <button className="button primary-btn" type="submit" onClick={handleSubmit}>Submit</button>
-        <button className="button skip" value={"SKIPPED"} onClick={handleSkip}>Skip</button>
+      <div className="rowStyle">
+        <div className="text">02.</div>
+        <div className="coloredDivStyle">
+        <label className="hint-text">{guess1.Guess1 !== undefined ? cookiesHint2["Hint-2"] : ""}</label>
+        </div>
       </div>
-
+      <div className="rowStyle">
+        <div className="text">03.</div>
+        <div className="coloredDivStyle">
+        <label className="hint-text">{guess2.Guess2 !== undefined ? cookiesHint3["Hint-3"] : ""}</label>
+        </div>
       </div>
-
-      <div className="right-container side-col">
-      <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+      <div className="rowStyle">
+        <div className="text">04.</div>
+        <div className="coloredDivStyle">
+        <label className="hint-text">{guess3.Guess3!== undefined ? cookiesHint4["Hint-4"] : ""}</label>
+        </div>
+      </div>
+      <div className="rowStyle">
+        <div className="text">05.</div>
+        <div className="coloredDivStyle">
+        <label className="hint-text">{guess4.Guess4 !== undefined ? cookiesHint5["Hint-5"] : ""}</label>
+        </div>
       </div>
     </div>
+      {/* <div className="div-banner" onClick={handelSteamPage}>
+        <img className="banner" src={Banner} alt="Banner"></img>
+      </div> */}
+      </div>
+     
+
+      <div className="right-container side-col">
+      {/* <WaviyText word={"Hints:"}/>   */}
+      <div className="guess-header-text">YOUR GUESSES:</div>
+      <div className="guesses-box-list">
+
+            <div className="inner-box">
+              <label className="guess-word-text">{guess1.Guess1 !== undefined ? guess1.Guess1 : ""}</label>
+              {guess1.Guess1 !== undefined?
+              <div className={guess1Res["Guess1-Res"] !== undefined && guess1Res["Guess1-Res"] ? "img-box correct" : "img-box wrong"}></div>
+              : 
+              <Fragment />}
+            </div>
+            <div className="inner-box">
+              <label className="guess-word-text">{guess2.Guess2 !== undefined ? guess2.Guess2 :""}</label>
+              {guess2.Guess2 !== undefined?
+              <div className={guess2Res["Guess2-Res"] !== undefined && guess2Res["Guess2-Res"] ? "img-box correct" : "img-box wrong"}></div>
+              : 
+              <Fragment />}
+            </div>
+
+            <div className="inner-box">
+              <label className="guess-word-text">{guess3.Guess3 !== "" ? guess3.Guess3 :""}</label>
+              {guess3.Guess3 !== undefined?
+              <div className={guess3Res["Guess3-Res"] !== undefined && guess3Res["Guess3-Res"] ? "img-box correct" : "img-box wrong"}></div>
+              : 
+              <Fragment />}
+            </div>
+            <div className="inner-box">
+              <label className="guess-word-text">{guess4.Guess4 !== "" ? guess4.Guess4 :""}</label>
+              {guess4.Guess4 !== undefined?
+              <div className={guess4Res["Guess4-Res"] !== undefined && guess4Res["Guess4-Res"] ? "img-box correct" : "img-box wrong"}></div>
+              : 
+              <Fragment />}
+            </div>
+
+            <div className="inner-box">
+              <label className="guess-word-text">{guess5.Guess5 !== "" ? guess5.Guess5 :""}</label>
+              {guess5.Guess5 !== undefined?
+              <div className={guess5Res["Guess5-Res"] !== undefined && guess5Res["Guess5-Res"] ? "img-box correct" : "img-box wrong"}></div>
+              : 
+              <Fragment />}
+   
+          </div>
+        </div>
+    </div>
+   </div>
   );
 }
 

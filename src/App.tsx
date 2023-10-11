@@ -5,26 +5,37 @@ import Navigation from "./Components/Navigation/Navigation";
 import "./App.scss";
 import Header from "./Components/Header/Header";
 import { useCookies } from "react-cookie";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { UTCNoExpireTime } from "./HelperMethods/HelperMethods";
 import SnapLogo from "../src/Assets/Images/snapfinger-logo.png";
+import Banner from "../src/Assets/Images/upsellBanner.gif";
+
 
 
 function App() {
   const [cookiesDailyWin, setCookieDailyWin ,removeCookieDailyWin] = useCookies(["DailyWin"]);
   const [cookiesAgreed, setCookieAgreed ,removeCookieAgreed] = useCookies(["CookiesAgreed"]);
 
-  const handelSteamPage = () => {
-    window.open(
-      "https://store.steampowered.com/app/1756140/Befuddle_The_Bewitching_Puzzle_Party_Game/",
-      "_blank"
-    );
-  };
+  useEffect(() => {
+ const timer = setTimeout(() => {
+      setCookieAgreed("CookiesAgreed" , false , { path: '/',  expires : UTCNoExpireTime()});  
+
+    }, 10000); 
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCookieAgree = () =>{
     setCookieAgreed("CookiesAgreed" , false , { path: '/',  expires : UTCNoExpireTime()});  
   }
 
+    const handelSteamPage = () => {
+    window.open(
+      "https://store.steampowered.com/app/1756140/Befuddle_The_Bewitching_Puzzle_Party_Game/",
+      "_blank"
+    );
+  };
+  
   return (
     <div className="body">
       {cookiesDailyWin.DailyWin?
@@ -42,9 +53,9 @@ function App() {
         :  
         <Fragment />}
      
-      <div>
+      <>
         <Header />
-      </div>
+      </>
       <div className="main">
         <BrowserRouter>
           <Routes>
@@ -58,24 +69,18 @@ function App() {
         {cookiesAgreed.CookiesAgreed === undefined ?
           <section className="cookie">
           <div className="txt">
-            <p className="">
-              By using Daily Befuddle,<br />
-              you agree to our <a href="https://snapfingerclick.com/policies.html" target="_blank" rel="noreferrer">Cookie Policy</a>.
+            <p style={{padding:"10px"}}>
+            Your preference will be stored for this browser and device. If you clear your cookies, your preference will be forgotten.
             </p>
-            <button className="button primary-btn" onClick={handleCookieAgree}>Accept!</button>
           </div>
           </section>
           :
           <Fragment />}
      
-        {/* <div className="wishlist-text" onClick={handelSteamPage}>
-          <div className="label">Wish list our Befuddle game on Steam</div>
-          <i
-            className="fab fa-steam"
-            style={{ color: "white", marginLeft: "10px", fontSize: "20px" }}
-          ></i>
-        </div> */}
-        <div className="div-social">
+     <div className="div-banner" onClick={handelSteamPage}>
+        <img src={Banner} alt="Banner"></img>
+      </div>
+        {/* <div className="div-social">
               <a className="link-social twitch" href="https://www.twitch.tv/snapfingerclick" target="_blank" rel="noreferrer">
                 <i className="fab fa-twitch"></i>
               </a>
@@ -103,7 +108,7 @@ function App() {
               <img className="SnapLogo" src={SnapLogo} alt="SnapLogo"></img>
 
               </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

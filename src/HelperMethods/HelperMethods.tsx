@@ -10,8 +10,10 @@ export async function xlsxDataHandle(setValue) {
       download: true,
       header: true,
       complete: (results) => {
-        setValue(results.data[datePosition - 1]);
+       setValue(results.data[datePosition - 1]);
         //setValue(results.data[78]);
+        console.log(results.data[datePosition - 1]);
+        
       },
     }
   );
@@ -230,8 +232,7 @@ export function DecryptOT(value) {
   const cleanCorrectAnswer = OriginalTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
 
   const similarity = calculateSimilarity(cleanAnswer, cleanCorrectAnswer);
-  console.log(similarity);
-
+  
   if (
     similarity >= 90 || 
     (cleanAnswer.startsWith('the') && cleanCorrectAnswer.includes(cleanAnswer))
