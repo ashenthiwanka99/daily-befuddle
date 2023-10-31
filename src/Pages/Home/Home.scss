@@ -21,11 +21,13 @@
 .left-container .btn-area .div-btn + .div-btn {
   margin-top: 20px;
 }
-.right-container {
+.gusses-sec {
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 1;
+  position: relative;
+  right: 0px;
 }
 .center-box {
   display: flex;
@@ -272,9 +274,9 @@
   .center-container {
     background: transparent;
   }
-  .inner-container {
-    width: calc(100% - 150px);
-  }
+  // .inner-container {
+  //   width: calc(100% - 150px);
+  // }
 
   .side-col,
   .side-col-nav,
@@ -312,17 +314,171 @@
 
   // code by shasheesha - start -----
   
-  .center-box{
-    min-width: 500px;
-    width: 100%;
-    padding: 0 40px;  
-  }
+.global-cover{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+}
+.navigation-options{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  z-index: 2;
+  position: relative;
 
+  .btn-area{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+.container{
+  justify-content: center;
+
+  .center-box{
+    max-width: 40vw;
+    min-width: 300px;
+    width: 100%;
+    padding: 0 40px; 
+    z-index: 2;
+
+    .box{
+      width: 100%;
+      padding: 15px 0px
+    }
+  }
+}
+
+
+  // .inner-container{
+  //   width: 100%;
+  // }
+
+  // .right-container{
+  //   padding: 0px 30px 0px 0px;
+  // }
+
+  .anim-girl{
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    z-index: 2;
+    top: 0px;
+    margin-left: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    .div-girl{
+      height: 70%;
+      right: 0px;
+    }
+  }
+.gusses-sec{
+  z-index: 2;
+  right: 0px;
+  width: fit-content;
+  top: 0px;
+  position: absolute;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .guesses-box-list{
+    
+    .inner-box{
+      width: 20vw;
+    }
+  }
+}
+
+
+
+  @media screen and (max-width: 480px) {
+    .anim-girl{
+      display: none;
+    }
+    .navigation-options{
+      align-items: flex-start;
+      padding: 20px 0;
+
+      .btn-area{
+        
+        .div-btn{
+          padding: 5px;
+          height: 24px;
+        }
+
+        .lable{
+          font-size: 12px;
+        }
+        .icon{
+          width: 20px;
+          height: auto;
+          margin-left: 10px;
+        }
+      }
+    }
+    .gusses-sec{
+      z-index: 0;
+      position: absolute;
+      left: 100vw;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.5s;
+      border-radius: 20px;
+      /* From https://css.glass */
+      background: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .gusses-sec-active{
+      left: 0vw;
+      z-index: 3;
+      transition: 0.5s;
+    }
+    
+    .container{
+      height: 70vh;
+    }
   .inner-container{
     width: 100%;
   }
 
-  .right-container{
-    padding: 0px 30px 0px 0px;
+  .guess-header-text{
+    font-size: 20px;
+  }
+  .guess-word .box .guess-word-text{
+    font-size: 24px;
+  }
+  .textbox-container input[type=text]{
+    font-size: 24px;
+  }
+
+  .button-raw{
+    justify-content: center;
+    // flex-direction: column;
+
+    .button{
+      width: 100%;
+      margin: 0px;
+    }
+    .button+.button{
+      margin-left: 10px;
+    }
+  }
+
+
+  .body::before{
+    bottom: 330px;
+  }
   }
   // code by shasheesha - end -----
