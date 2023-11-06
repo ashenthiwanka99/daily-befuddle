@@ -4,6 +4,7 @@ import { useContext } from "react";
 import Info from "../../Assets/Images/information.png";
 import Stats from "../../Assets/Images/stats.png";
 import SnapFinger from "../../Assets/Images/snap-link.png";
+import Guesses from "../../Assets/Images/Guesses.svg";
 import { InfoStore, StatsStore, GuessStatusStroe } from "../../Store/Store";
 
 export default function Navigation() {
@@ -52,7 +53,7 @@ export default function Navigation() {
       </div>
       <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
         <div className="lable">Gueses</div>
-        <img className="icon stats" src={Stats} alt="Logo"></img>
+        <img className="icon stats" src={Guesses} alt="Logo"></img>
       </div>
       {/* <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
         <div className="lable">Snap Finger Click</div>
