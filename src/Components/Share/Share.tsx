@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import "./Share.scss"
 import { useCookies } from 'react-cookie';
+import React from 'react';
 
 const CloseModalButton = styled(MdClose)`
   cursor: pointer;

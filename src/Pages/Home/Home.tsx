@@ -1,5 +1,5 @@
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
-import { InfoStore, StatsStore } from "../../Store/Store";
+import { GuessStatusStroe, InfoStore, StatsStore } from "../../Store/Store";
 import {
   UTCExpireTime,
   xlsxDataHandle,
@@ -16,12 +16,15 @@ import Navigation from "../../Components/Navigation/Navigation";
 import SideImage from "../../Components/GirlImage/Image";
 import { ModalInfo } from "../../Components/Info/Info";
 import { ModalStats } from "../../Components/Stats/Stats";
-import Banner from "../../Assets/Images/upsellBanner.gif";
+import Guesses from "../../Assets/Images/stats.png";
+import Close from "../../Assets/Images/Close.svg";
+import React from "react";
 
 export default function Home() {
   const navigate = useNavigate();
   const [infoStatus, setInfoStatus] = useContext(InfoStore);
   const [statsStatus, setStatsStatus] = useContext(StatsStore);
+  const [guessStatus, setGuessStatus] = useContext(GuessStatusStroe);
   const initialized = useRef(false);
   const [guessArray] = useState([]);
   const [isGuess, setIsGuess] = useState("");
@@ -106,6 +109,11 @@ export default function Home() {
       "_blank"
     );
   };
+
+  const GuessStsChange = () => {
+    setGuessStatus(!guessStatus);
+  };
+
 
   useEffect(() => {
     if (cookiesGameStatus.GameStatus === "Ended") {
@@ -472,14 +480,17 @@ export default function Home() {
     <section className="global-cover">
       <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus} />
       <ModalStats showModal={statsStatus} setShowModal={setStatsStatus} />
-
       <div className="navigation-options">
         <Navigation />
       </div>
       <div className="anim-girl">
         <SideImage showModal={infoStatus ? true : statsStatus ? true : false} />
       </div>
-      <div className="gusses-sec">
+      <div className={`gusses-sec ${guessStatus ? 'gusses-sec-active' : ''}`}>
+        <div className="gusses-header">
+        <img src={Close} alt="CLose" className="img-close" onClick={GuessStsChange}></img>
+        </div>
+        <div className="gusses-contain">
         <div className="guess-header-text">YOUR GUESSES:</div>
         <div className="guesses-box-list">
           <div className="inner-box">
@@ -491,7 +502,7 @@ export default function Home() {
                 className={
                   guess1Res["Guess1-Res"] !== undefined &&
                   guess1Res["Guess1-Res"]
-                    ? "img-box correct"
+                  ? "img-box correct"
                     : "img-box wrong"
                 }
               ></div>
@@ -570,6 +581,7 @@ export default function Home() {
             )}
           </div>
         </div>
+        </div>     
       </div>
     </section>
 

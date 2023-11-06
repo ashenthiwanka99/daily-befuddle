@@ -442,6 +442,18 @@
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.3);
+
+      .gusses-header{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 50px;
+        position: absolute;
+        top: 150px;
+      }
+      .img-close{
+        cursor: pointer;
+      }
     }
     .gusses-sec-active{
       left: 0vw;

@@ -1,13 +1,15 @@
+import React from "react";
 import "./Navigation.scss";
 import { useContext } from "react";
 import Info from "../../Assets/Images/information.png";
 import Stats from "../../Assets/Images/stats.png";
 import SnapFinger from "../../Assets/Images/snap-link.png";
-import { InfoStore, StatsStore } from "../../Store/Store";
+import { InfoStore, StatsStore, GuessStatusStroe } from "../../Store/Store";
 
 export default function Navigation() {
   const [InfoStatus, setInfoStatus] = useContext(InfoStore);
   const [stastStatus, setStatsStatus] = useContext(StatsStore);
+  const [guessStatus, setGuessStatus] = useContext(GuessStatusStroe);
 
   const InfoStsChange = () => {
     setInfoStatus(!InfoStatus);
@@ -16,6 +18,11 @@ export default function Navigation() {
   const StatsStsChange = () => {
     setStatsStatus(!stastStatus);
   };
+
+  const GuessStsChange = () => {
+    setGuessStatus(!guessStatus);
+  };
+
 
   const handleSnapFinger = () => {
     window.open("https://snapfingerclick.com/", "_blank");
@@ -28,6 +35,11 @@ export default function Navigation() {
   const handleClickStats = () => {
     StatsStsChange()
   };
+
+  const handleClickGuesses = () => {
+    GuessStsChange()
+  };
+  
   return (
     <div className="btn-area">
       <div className="div-info div-btn Info" onClick={handleClickInfo}>
@@ -36,6 +48,10 @@ export default function Navigation() {
       </div>
       <div className="div-stats div-btn stats" onClick={handleClickStats}>
         <div className="lable">Stats</div>
+        <img className="icon stats" src={Stats} alt="Logo"></img>
+      </div>
+      <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
+        <div className="lable">Gueses</div>
         <img className="icon stats" src={Stats} alt="Logo"></img>
       </div>
       {/* <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
