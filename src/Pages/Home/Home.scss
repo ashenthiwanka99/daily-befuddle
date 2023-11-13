@@ -324,14 +324,19 @@
 .navigation-options{
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
   z-index: 2;
   position: relative;
+  padding: 40px 0 0 0;
+  height: 100%;
 
   .btn-area{
     display: flex;
     flex-direction: column;
     gap: 5px;
+  }
+  .right-area{
+    display: none;
   }
 }
 .container{
@@ -374,6 +379,8 @@
     .div-girl{
       height: 70%;
       right: 0px;
+      transform: translate3d(0, -50%, 0);
+      bottom: -50%;
     }
   }
 .gusses-sec{
@@ -385,37 +392,48 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 0 10px 0 0;
 
+  .gusses-header{
+    display: none;
+  }
   .guesses-box-list{
     
     .inner-box{
-      width: 20vw;
+      width: 200px;
     }
   }
+  
 }
 
 
-@media screen and (max-width: 992px) {
-
-
-}
-  @media screen and (max-width: 480px) {
+@media screen and (max-width: 992px){
+  .container .center-box {
+    max-width: 75vw;
+  }
+  .gusses-sec{
+    width: 100vw;
+  }
     .anim-girl{
       display: none;
     }
     .navigation-options{
-      align-items: flex-start;
-      padding: 20px 0;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 10px 0 10px ;
+      height: fit-content;
 
       .btn-area{
         
         .div-btn{
-          padding: 5px;
+          padding: 5px 10px;
           height: 24px;
+          left: inherit;
+          width: fit-content;
         }
 
         .lable{
-          font-size: 12px;
+          font-size: 14px;
         }
         .icon{
           width: 20px;
@@ -423,14 +441,17 @@
           margin-left: 10px;
         }
       }
+      .right-area{
+        display: flex;
+      }
     }
     .gusses-sec{
       z-index: 0;
       position: absolute;
       left: 100vw;
       top: 0px;
-      width: 100%;
-      height: 100%;
+      width: 99.6vw;
+      height: 99.6vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -442,6 +463,8 @@
       backdrop-filter: blur(5px);
       -webkit-backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.3);
+      visibility: hidden;
+      padding: 0px;
 
       .gusses-header{
         width: 100%;
@@ -449,7 +472,7 @@
         justify-content: flex-end;
         margin-right: 50px;
         position: absolute;
-        top: 150px;
+        top: 20px;
       }
       .img-close{
         cursor: pointer;
@@ -459,6 +482,7 @@
       left: 0vw;
       z-index: 3;
       transition: 0.5s;
+      visibility: visible;
     }
     
     .container{
@@ -472,10 +496,10 @@
     font-size: 20px;
   }
   .guess-word .box .guess-word-text{
-    font-size: 24px;
+    font-size: 20px;
   }
   .textbox-container input[type=text]{
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .button-raw{
@@ -485,6 +509,7 @@
     .button{
       width: 100%;
       margin: 0px;
+      padding: 10px 15px;
     }
     .button+.button{
       margin-left: 10px;
@@ -494,6 +519,16 @@
 
   .body::before{
     bottom: 330px;
+  }
+
+  .gusses-sec{
+    .guesses-box-list{
+      width: 80vw;
+
+      .inner-box{
+        width: auto;
+      }
+    }
   }
   }
   // code by shasheesha - end -----

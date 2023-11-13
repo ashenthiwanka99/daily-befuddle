@@ -15,7 +15,7 @@
 }
 .div-btn:hover {
   position: relative;
-  left: -190px;
+  // left: -190px;
   transition: 0.3s;
 }
 .div-btn.snap:hover {
@@ -38,7 +38,7 @@
 }
 @media screen and (max-width: 480px) {
   .div-btn {
-    width: 100%; /* Full width for mobile */
+    width: auto; /* Full width for mobile */
     left: 0;
     justify-content: center;
   }

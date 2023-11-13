@@ -110,7 +110,9 @@ function App() {
               </a>
         </div> */}
       </div>
+      <div className="background-animation"></div>
     </div>
+    
   );
 }
 export default App;

@@ -42,7 +42,8 @@ export default function Navigation() {
   };
   
   return (
-    <div className="btn-area">
+    <>
+    <div className="btn-area left-area">
       <div className="div-info div-btn Info" onClick={handleClickInfo}>
         <div className="lable">Info</div>
         <img className="icon info" src={Info} alt="Logo"></img>
@@ -51,14 +52,25 @@ export default function Navigation() {
         <div className="lable">Stats</div>
         <img className="icon stats" src={Stats} alt="Logo"></img>
       </div>
-      <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
+      {/* <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
         <div className="lable">Gueses</div>
         <img className="icon stats" src={Guesses} alt="Logo"></img>
-      </div>
+      </div> */}
       {/* <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
         <div className="lable">Snap Finger Click</div>
         <img className="icon snap" src={SnapFinger} alt="Logo" />
       </div> */}
     </div>
+    <div className="btn-area right-area">
+    <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
+      <div className="lable">Gueses</div>
+      <img className="icon stats" src={Guesses} alt="Logo"></img>
+    </div>
+    {/* <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
+      <div className="lable">Snap Finger Click</div>
+      <img className="icon snap" src={SnapFinger} alt="Logo" />
+    </div> */}
+  </div>
+  </>
   );
 }

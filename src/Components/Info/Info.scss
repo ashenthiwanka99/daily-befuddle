@@ -1,6 +1,6 @@
 .background {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: #ffffff70;
   position: fixed;
   display: flex;
@@ -34,7 +34,7 @@
     .background-heading {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
       position: relative;
       right: 80px;
       width: 40rem;
@@ -48,7 +48,7 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        margin-right: 149px;
+        // margin-right: 149px;
         font-size: 32px;
         font-weight: 400;
         color: #fff;
@@ -82,7 +82,7 @@
         margin-bottom: 10px;
       }
       .box {
-        padding: 15px 50px;
+        padding: 15px 30px;
         border-radius: 20px;
         background: #101010;
         text-align: center;
@@ -101,15 +101,17 @@
       .example-boxes {
         display: flex;
         flex-direction: column;
-        width: 43rem;
+        width: 100%;
         position: relative;
-        left: 25px;
+        // left: 25px;
         .example-box-row {
+          width: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;
           flex-direction: row;
           margin-bottom: 5px;
+
         }
       }
     }
@@ -124,5 +126,22 @@
     padding: 0;
     z-index: 10;
     cursor: pointer;
+  }
+}
+@media screen and (max-width: 480px) {
+  .modalContent-info{
+    .div-center-info{
+      .example-boxes{
+        width: 100% !important;
+        left: inherit !important;
+      }
+      .box{
+        padding: 10px 20px !important;
+        width: 70px !important;
+        .guess-word-text{
+          font-size: 18px !important;
+        }
+      }
+    }
   }
 }
