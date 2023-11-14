@@ -1,6 +1,6 @@
 import "./Header.scss";
 import Logo from "../../Assets/Images/logo-2.png";
-import Banner from "../../Assets/Images/upsellBanner.gif";
+import React from "react";
 
 export default function Header() {
 
@@ -14,10 +14,6 @@ export default function Header() {
   return (
     <div className="header">
         <img className="logo" src={Logo} alt="Logo"></img>
-
-      {/* <div className="div-right" onClick={handelSteamPage}>
-        <img className="banner" src={Banner} alt="Banner"></img>
-      </div> */}
       </div>
   );
 }

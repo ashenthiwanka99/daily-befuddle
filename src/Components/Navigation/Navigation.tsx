@@ -24,53 +24,44 @@ export default function Navigation() {
     setGuessStatus(!guessStatus);
   };
 
-
   const handleSnapFinger = () => {
     window.open("https://snapfingerclick.com/", "_blank");
   };
 
   const handleClickInfo = () => {
-    InfoStsChange()   
+    InfoStsChange();
   };
-  
+
   const handleClickStats = () => {
-    StatsStsChange()
+    StatsStsChange();
   };
 
   const handleClickGuesses = () => {
-    GuessStsChange()
+    GuessStsChange();
   };
-  
+
   return (
     <>
-    <div className="btn-area left-area">
-      <div className="div-info div-btn Info" onClick={handleClickInfo}>
-        <div className="lable">Info</div>
-        <img className="icon info" src={Info} alt="Logo"></img>
-      </div>
-      <div className="div-stats div-btn stats" onClick={handleClickStats}>
-        <div className="lable">Stats</div>
-        <img className="icon stats" src={Stats} alt="Logo"></img>
-      </div>
-      {/* <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
-        <div className="lable">Gueses</div>
-        <img className="icon stats" src={Guesses} alt="Logo"></img>
-      </div> */}
-      {/* <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
+      <div className="btn-area left-area">
+        <div className="div-info div-btn Info" onClick={handleClickInfo}>
+          <div className="lable">Info</div>
+          <img className="icon info" src={Info} alt="Logo"></img>
+        </div>
+        <div className="div-stats div-btn stats" onClick={handleClickStats}>
+          <div className="lable">Stats</div>
+          <img className="icon stats" src={Stats} alt="Logo"></img>
+        </div>
+        {/* <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
         <div className="lable">Snap Finger Click</div>
         <img className="icon snap" src={SnapFinger} alt="Logo" />
       </div> */}
-    </div>
-    <div className="btn-area right-area">
-    <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
-      <div className="lable">Gueses</div>
-      <img className="icon stats" src={Guesses} alt="Logo"></img>
-    </div>
-    {/* <div className="div-snapfingerclick div-btn snap" onClick={handleSnapFinger}>
-      <div className="lable">Snap Finger Click</div>
-      <img className="icon snap" src={SnapFinger} alt="Logo" />
-    </div> */}
-  </div>
-  </>
+      </div>
+      <div className="btn-area right-area">
+        <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
+          <div className="lable">Gueses</div>
+          <img className="icon stats" src={Guesses} alt="Logo"></img>
+        </div>
+      </div>
+    </>
   );
 }

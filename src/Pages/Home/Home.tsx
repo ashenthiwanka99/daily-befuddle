@@ -16,7 +16,6 @@ import Navigation from "../../Components/Navigation/Navigation";
 import SideImage from "../../Components/GirlImage/Image";
 import { ModalInfo } from "../../Components/Info/Info";
 import { ModalStats } from "../../Components/Stats/Stats";
-import Guesses from "../../Assets/Images/stats.png";
 import Close from "../../Assets/Images/Close.svg";
 import React from "react";
 
@@ -26,7 +25,7 @@ export default function Home() {
   const [statsStatus, setStatsStatus] = useContext(StatsStore);
   const [guessStatus, setGuessStatus] = useContext(GuessStatusStroe);
   const initialized = useRef(false);
-  const [guessArray] = useState([]);
+  const [guessArray] = useState<any[]>([]);
   const [isGuess, setIsGuess] = useState("");
   const [data, setXlsxData] = useState({} as any);
   const [decryptOT, setDecryptOT] = useState("");
@@ -113,7 +112,6 @@ export default function Home() {
   const GuessStsChange = () => {
     setGuessStatus(!guessStatus);
   };
-
 
   useEffect(() => {
     if (cookiesGameStatus.GameStatus === "Ended") {
@@ -472,209 +470,212 @@ export default function Home() {
         { path: "/", expires: UTCNoExpireTime() }
       );
     }
-
   }
 
   return (
     <>
-    <section className="global-cover">
-      <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus} />
-      <ModalStats showModal={statsStatus} setShowModal={setStatsStatus} />
-      <div className="navigation-options">
-        <Navigation />
-      </div>
-      <div className="anim-girl">
-        <SideImage showModal={infoStatus ? true : statsStatus ? true : false} />
-      </div>
-      <div className={`gusses-sec ${guessStatus ? 'gusses-sec-active' : ''}`}>
-        <div className="gusses-header">
-        <img src={Close} alt="CLose" className="img-close" onClick={GuessStsChange}></img>
+      <section className="global-cover">
+        <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus} />
+        <ModalStats showModal={statsStatus} setShowModal={setStatsStatus} />
+        <div className="navigation-options">
+          <Navigation />
         </div>
-        <div className="gusses-contain">
-        <div className="guess-header-text">YOUR GUESSES:</div>
-        <div className="guesses-box-list">
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess1.Guess1 !== undefined ? guess1.Guess1 : ""}
-            </label>
-            {guess1.Guess1 !== undefined ? (
-              <div
-                className={
-                  guess1Res["Guess1-Res"] !== undefined &&
-                  guess1Res["Guess1-Res"]
-                  ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess2.Guess2 !== undefined ? guess2.Guess2 : ""}
-            </label>
-            {guess2.Guess2 !== undefined ? (
-              <div
-                className={
-                  guess2Res["Guess2-Res"] !== undefined &&
-                  guess2Res["Guess2-Res"]
-                    ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess3.Guess3 !== "" ? guess3.Guess3 : ""}
-            </label>
-            {guess3.Guess3 !== undefined ? (
-              <div
-                className={
-                  guess3Res["Guess3-Res"] !== undefined &&
-                  guess3Res["Guess3-Res"]
-                    ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess4.Guess4 !== "" ? guess4.Guess4 : ""}
-            </label>
-            {guess4.Guess4 !== undefined ? (
-              <div
-                className={
-                  guess4Res["Guess4-Res"] !== undefined &&
-                  guess4Res["Guess4-Res"]
-                    ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess5.Guess5 !== "" ? guess5.Guess5 : ""}
-            </label>
-            {guess5.Guess5 !== undefined ? (
-              <div
-                className={
-                  guess5Res["Guess5-Res"] !== undefined &&
-                  guess5Res["Guess5-Res"]
-                    ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
+        <div className="anim-girl">
+          <SideImage
+            showModal={infoStatus ? true : statsStatus ? true : false}
+          />
         </div>
-        </div>     
-      </div>
-    </section>
+        <div className={`gusses-sec ${guessStatus ? "gusses-sec-active" : ""}`}>
+          <div className="gusses-header">
+            <img
+              src={Close}
+              alt="CLose"
+              className="img-close"
+              onClick={GuessStsChange}
+            ></img>
+          </div>
+          <div className="gusses-contain">
+            <div className="guess-header-text">YOUR GUESSES:</div>
+            <div className="guesses-box-list">
+              <div className="inner-box">
+                <label className="guess-word-text">
+                  {guess1.Guess1 !== undefined ? guess1.Guess1 : ""}
+                </label>
+                {guess1.Guess1 !== undefined ? (
+                  <div
+                    className={
+                      guess1Res["Guess1-Res"] !== undefined &&
+                      guess1Res["Guess1-Res"]
+                        ? "img-box correct"
+                        : "img-box wrong"
+                    }
+                  ></div>
+                ) : (
+                  <Fragment />
+                )}
+              </div>
+              <div className="inner-box">
+                <label className="guess-word-text">
+                  {guess2.Guess2 !== undefined ? guess2.Guess2 : ""}
+                </label>
+                {guess2.Guess2 !== undefined ? (
+                  <div
+                    className={
+                      guess2Res["Guess2-Res"] !== undefined &&
+                      guess2Res["Guess2-Res"]
+                        ? "img-box correct"
+                        : "img-box wrong"
+                    }
+                  ></div>
+                ) : (
+                  <Fragment />
+                )}
+              </div>
 
-    <div className="container">
-      
+              <div className="inner-box">
+                <label className="guess-word-text">
+                  {guess3.Guess3 !== "" ? guess3.Guess3 : ""}
+                </label>
+                {guess3.Guess3 !== undefined ? (
+                  <div
+                    className={
+                      guess3Res["Guess3-Res"] !== undefined &&
+                      guess3Res["Guess3-Res"]
+                        ? "img-box correct"
+                        : "img-box wrong"
+                    }
+                  ></div>
+                ) : (
+                  <Fragment />
+                )}
+              </div>
+              <div className="inner-box">
+                <label className="guess-word-text">
+                  {guess4.Guess4 !== "" ? guess4.Guess4 : ""}
+                </label>
+                {guess4.Guess4 !== undefined ? (
+                  <div
+                    className={
+                      guess4Res["Guess4-Res"] !== undefined &&
+                      guess4Res["Guess4-Res"]
+                        ? "img-box correct"
+                        : "img-box wrong"
+                    }
+                  ></div>
+                ) : (
+                  <Fragment />
+                )}
+              </div>
 
-      <div className="center-box">
-        <div className="center-container inner-container">
-          <div className="guess-word inner-container">
-            <div className="guess-header-text">TODAYS'S BEFUDDLE:</div>
-            <div className="box">
-              <label className="guess-word-text">
-                {cookiesTranslation.Translation}
-              </label>
-            </div>
-          </div>
-          <div className="textbox-container inner-container">
-            <input
-              type="text"
-              pattern="[a-zA-Z0-9]+"
-              maxLength={100}
-              value={isGuess.toUpperCase()}
-              placeholder="ENTER YOUR GUESS HERE"
-              onChange={handleChange}
-              onKeyDown={handleKeypress}
-            />
-          </div>
-
-          <div className="button-raw inner-container">
-            <button
-              className="button primary-btn"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              SUBMIT
-            </button>
-            <button
-              className="button skip"
-              value={"SKIPPED"}
-              onClick={handleSkip}
-            >
-              SKIP
-            </button>
-          </div>
-        </div>
-        <div className="hint-container inner-container">
-          <div className="text">HINTS</div>
-          <div className="rowStyle">
-            <div className="text">01.</div>
-            <div className="coloredDivStyle">
-              <label className="hint-text">
-                {cookiesHint1["Hint-1"] === undefined
-                  ? ""
-                  : cookiesHint1["Hint-1"]}
-              </label>
-            </div>
-          </div>
-          <div className="rowStyle">
-            <div className="text">02.</div>
-            <div className="coloredDivStyle">
-              <label className="hint-text">
-                {guess1.Guess1 !== undefined ? cookiesHint2["Hint-2"] : ""}
-              </label>
-            </div>
-          </div>
-          <div className="rowStyle">
-            <div className="text">03.</div>
-            <div className="coloredDivStyle">
-              <label className="hint-text">
-                {guess2.Guess2 !== undefined ? cookiesHint3["Hint-3"] : ""}
-              </label>
-            </div>
-          </div>
-          <div className="rowStyle">
-            <div className="text">04.</div>
-            <div className="coloredDivStyle">
-              <label className="hint-text">
-                {guess3.Guess3 !== undefined ? cookiesHint4["Hint-4"] : ""}
-              </label>
-            </div>
-          </div>
-          <div className="rowStyle">
-            <div className="text">05.</div>
-            <div className="coloredDivStyle">
-              <label className="hint-text">
-                {guess4.Guess4 !== undefined ? cookiesHint5["Hint-5"] : ""}
-              </label>
+              <div className="inner-box">
+                <label className="guess-word-text">
+                  {guess5.Guess5 !== "" ? guess5.Guess5 : ""}
+                </label>
+                {guess5.Guess5 !== undefined ? (
+                  <div
+                    className={
+                      guess5Res["Guess5-Res"] !== undefined &&
+                      guess5Res["Guess5-Res"]
+                        ? "img-box correct"
+                        : "img-box wrong"
+                    }
+                  ></div>
+                ) : (
+                  <Fragment />
+                )}
+              </div>
             </div>
           </div>
         </div>
+      </section>
+
+      <div className="container">
+        <div className="center-box">
+          <div className="center-container inner-container">
+            <div className="guess-word inner-container">
+              <div className="guess-header-text">TODAYS'S BEFUDDLE:</div>
+              <div className="box">
+                <label className="guess-word-text">
+                  {cookiesTranslation.Translation}
+                </label>
+              </div>
+            </div>
+            <div className="textbox-container inner-container">
+              <input
+                type="text"
+                pattern="[a-zA-Z0-9]+"
+                maxLength={100}
+                value={isGuess.toUpperCase()}
+                placeholder="ENTER YOUR GUESS HERE"
+                onChange={handleChange}
+                onKeyDown={handleKeypress}
+              />
+            </div>
+
+            <div className="button-raw inner-container">
+              <button
+                className="button primary-btn"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                SUBMIT
+              </button>
+              <button
+                className="button skip"
+                value={"SKIPPED"}
+                onClick={handleSkip}
+              >
+                SKIP
+              </button>
+            </div>
+          </div>
+          <div className="hint-container inner-container">
+            <div className="text">HINTS</div>
+            <div className="rowStyle">
+              <div className="text">01.</div>
+              <div className="coloredDivStyle">
+                <label className="hint-text">
+                  {cookiesHint1["Hint-1"] === undefined
+                    ? ""
+                    : cookiesHint1["Hint-1"]}
+                </label>
+              </div>
+            </div>
+            <div className="rowStyle">
+              <div className="text">02.</div>
+              <div className="coloredDivStyle">
+                <label className="hint-text">
+                  {guess1.Guess1 !== undefined ? cookiesHint2["Hint-2"] : ""}
+                </label>
+              </div>
+            </div>
+            <div className="rowStyle">
+              <div className="text">03.</div>
+              <div className="coloredDivStyle">
+                <label className="hint-text">
+                  {guess2.Guess2 !== undefined ? cookiesHint3["Hint-3"] : ""}
+                </label>
+              </div>
+            </div>
+            <div className="rowStyle">
+              <div className="text">04.</div>
+              <div className="coloredDivStyle">
+                <label className="hint-text">
+                  {guess3.Guess3 !== undefined ? cookiesHint4["Hint-4"] : ""}
+                </label>
+              </div>
+            </div>
+            <div className="rowStyle">
+              <div className="text">05.</div>
+              <div className="coloredDivStyle">
+                <label className="hint-text">
+                  {guess4.Guess4 !== undefined ? cookiesHint5["Hint-5"] : ""}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      
-    </div>
     </>
   );
 }

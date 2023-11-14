@@ -13,9 +13,14 @@
   justify-content: flex-end;
   cursor: pointer;
 }
-.div-btn:hover {
+.div-info:hover {
   position: relative;
-  // left: -190px;
+  left: -190px;
+  transition: 0.3s;
+}
+.div-stats:hover {
+  position: relative;
+  left: -190px;
   transition: 0.3s;
 }
 .div-btn.snap:hover {

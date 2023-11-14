@@ -13,7 +13,7 @@ import { ModalShare } from "../../Components/Share/Share";
 import { ModalInfo } from "../../Components/Info/Info";
 import { ModalStats } from "../../Components/Stats/Stats";
 import { useNavigate } from "react-router-dom";
-import Banner from "../../Assets/Images/upsellBanner.gif";
+import React from "react";
 
 export default function Result() {
   let dataIndex = 0;
@@ -42,13 +42,6 @@ export default function Result() {
   ] = useCookies(["CurrentStreak"]);
   const [cookiesGameStatus, setCookieGameStatus, removeCookieGameStatus] =
     useCookies(["GameStatus"]);
-
-  const handelSteamPage = () => {
-    window.open(
-      "https://store.steampowered.com/app/1756140/Befuddle_The_Bewitching_Puzzle_Party_Game/",
-      "_blank"
-    );
-  };
   const openModal = () => {
     setShowModal(!showModal);
   };
@@ -112,130 +105,21 @@ export default function Result() {
 
   return (
     <>
-       <section className="global-cover">
-      <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus} />
-      <ModalStats showModal={statsStatus} setShowModal={setStatsStatus} />
-      <div className="navigation-options">
-        <Navigation />
-      </div>
-      <div className="anim-girl">
-        <SideImage showModal={infoStatus ? true : statsStatus ? true : false} />
-      </div>
-      {/* <div className={`gusses-sec ${guessStatus ? 'gusses-sec-active' : ''}`}>
-        <div className="gusses-header">
-        <img src={Close} alt="CLose" className="img-close" onClick={GuessStsChange}></img>
-        </div>
-        <div className="gusses-contain">
-        <div className="guess-header-text">YOUR GUESSES:</div>
-        <div className="guesses-box-list">
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess1.Guess1 !== undefined ? guess1.Guess1 : ""}
-            </label>
-            {guess1.Guess1 !== undefined ? (
-              <div
-                className={
-                  guess1Res["Guess1-Res"] !== undefined &&
-                  guess1Res["Guess1-Res"]
-                  ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess2.Guess2 !== undefined ? guess2.Guess2 : ""}
-            </label>
-            {guess2.Guess2 !== undefined ? (
-              <div
-                className={
-                  guess2Res["Guess2-Res"] !== undefined &&
-                  guess2Res["Guess2-Res"]
-                    ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess3.Guess3 !== "" ? guess3.Guess3 : ""}
-            </label>
-            {guess3.Guess3 !== undefined ? (
-              <div
-                className={
-                  guess3Res["Guess3-Res"] !== undefined &&
-                  guess3Res["Guess3-Res"]
-                    ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess4.Guess4 !== "" ? guess4.Guess4 : ""}
-            </label>
-            {guess4.Guess4 !== undefined ? (
-              <div
-                className={
-                  guess4Res["Guess4-Res"] !== undefined &&
-                  guess4Res["Guess4-Res"]
-                    ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-
-          <div className="inner-box">
-            <label className="guess-word-text">
-              {guess5.Guess5 !== "" ? guess5.Guess5 : ""}
-            </label>
-            {guess5.Guess5 !== undefined ? (
-              <div
-                className={
-                  guess5Res["Guess5-Res"] !== undefined &&
-                  guess5Res["Guess5-Res"]
-                    ? "img-box correct"
-                    : "img-box wrong"
-                }
-              ></div>
-            ) : (
-              <Fragment />
-            )}
-          </div>
-        </div>
-        </div>     
-      </div> */}
-    </section>
-
-
-      <div className="container">
-        {/* <ModalShare showModal={showModal} setShowModal={setShowModal}/>
-      <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus}/>
-      <ModalStats showModal={statsStatus} setShowModal={setStatsStatus}/>
-
-      <div className="left-container side-col">
-        <div>
+      <section className="global-cover">
+        <ModalShare showModal={showModal} setShowModal={setShowModal} />
+        <ModalInfo showModal={infoStatus} setShowModal={setInfoStatus} />
+        <ModalStats showModal={statsStatus} setShowModal={setStatsStatus} />
+        <div className="navigation-options">
           <Navigation />
         </div>
-
-        <div className="inner-side-col">
-         <SideImage showModal={infoStatus ? true : statsStatus ? true : false}/>             
+        <div className="anim-girl">
+          <SideImage
+            showModal={infoStatus ? true : statsStatus ? true : false}
+          />
         </div>
-      </div> */}
+      </section>
 
+      <div className="container">
         <div className="center-box">
           <div className="center-container-result inner-container">
             <div className="header-text">
@@ -291,84 +175,8 @@ export default function Result() {
                 ></i>
               </button>
             </div>
-            {/*         
-        <div className="guesses-box">
-          <div className="guesses-box-list">
-            <label className="box-list-text">Your Guesses: </label>
-            {structure.map((rowSize, rowIndex) => (
-              <div key={Math.random()} className="guesses-box-row">
-                {Array.from({ length: rowSize }).map((_, colIndex) => {
-                  const element = cookiesGuessArray.GuessArray[dataIndex];
-                  dataIndex++;
-                  return element === null ? (
-                    <div className="inner-box" key={Math.random()}></div>
-                  ) : (
-                    <div className="inner-box" key={Math.random()}>
-                      <h3 className="guess-word-text" key={Math.random()}>
-                        {element?.Guess !== "" ? element?.Guess : ""}
-                      </h3>
-                      {element?.Guess !== "" ? (
-                        <div
-                          key={Math.random()}
-                          className={
-                            element?.Result
-                              ? "img-box correct"
-                              : "img-box wrong"
-                          }
-                        ></div>
-                      ) : (
-                        <Fragment />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
           </div>
-        </div> */}
-          </div>
-          {/* <div className="div-banner" style={{margin:"10px"}} onClick={handelSteamPage}>
-        <img className="banner" style={{height:"6vw"}} src={Banner} alt="Banner"></img>
-      </div> */}
         </div>
-        {/* <div className="right-container side-col">
-          <div className="guesses-box">
-            <div className="guesses-box-list">
-              <label className="box-list-text">Your Guesses: </label>
-              <div
-                key={Math.random()}
-                className="guesses-box-row"
-                style={{ display: "flex", flexDirection: "column" }}
-              >
-                {cookiesGuessArray.GuessArray.map((_, colIndex) => {
-                  const element = cookiesGuessArray.GuessArray[dataIndex];
-                  dataIndex++;
-                  return element === null ? (
-                    <div className="inner-box" key={Math.random()}></div>
-                  ) : (
-                    <div className="inner-box" key={Math.random()}>
-                      <h3 className="guess-word-text" key={Math.random()}>
-                        {element?.Guess !== "" ? element?.Guess : ""}
-                      </h3>
-                      {element?.Guess !== "" ? (
-                        <div
-                          key={Math.random()}
-                          className={
-                            element?.Result
-                              ? "img-box correct"
-                              : "img-box wrong"
-                          }
-                        ></div>
-                      ) : (
-                        <Fragment />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
     </>
   );

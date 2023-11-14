@@ -36,13 +36,6 @@
   align-items: center;
   position: relative;
   top: 30px;
-
-  .banner {
-    background-repeat: no-repeat;
-    height: 4vw;
-    cursor: pointer;
-    margin: 10px;
-  }
 }
 .center-container {
   width: 100%;
@@ -295,9 +288,6 @@
 
   .center-box {
     top: 10px;
-    .banner {
-      height: 10vw;
-    }
   }
 
   .guess-word .box {

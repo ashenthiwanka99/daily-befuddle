@@ -1,14 +1,13 @@
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Result from "./Pages/Result/Result";
-import Navigation from "./Components/Navigation/Navigation";
-import "./App.scss";
 import Header from "./Components/Header/Header";
 import { useCookies } from "react-cookie";
 import { Fragment, useEffect } from "react";
 import { UTCNoExpireTime } from "./HelperMethods/HelperMethods";
-import SnapLogo from "../src/Assets/Images/snapfinger-logo.png";
 import Banner from "../src/Assets/Images/upsellBanner.gif";
+import "./App.scss";
 
 
 
