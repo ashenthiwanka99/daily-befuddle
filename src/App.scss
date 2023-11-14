@@ -181,7 +181,7 @@
   .div-banner {
     display: flex;
     height:100%;
-    width: 100vw;
+    width: auto;
     justify-content: center;
     cursor: pointer;
 
@@ -290,6 +290,11 @@
       height: 120%;
       transition: 0.1s;
     }
+  }
+}
+@media screen and (max-width: 992px){
+  .footer .div-banner {
+    width: 100vw;
   }
 }
 
