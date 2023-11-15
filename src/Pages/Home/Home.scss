@@ -5,22 +5,27 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
 .side-col {
   width: 25vw;
   height: 100%;
 }
+
 .left-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+
   .inner-side-col {
     height: 100%;
   }
 }
-.left-container .btn-area .div-btn + .div-btn {
+
+.left-container .btn-area .div-btn+.div-btn {
   margin-top: 20px;
 }
+
 .gusses-sec {
   display: flex;
   flex-direction: column;
@@ -29,6 +34,7 @@
   position: relative;
   right: 0px;
 }
+
 .center-box {
   display: flex;
   flex-direction: column;
@@ -37,6 +43,7 @@
   position: relative;
   top: 30px;
 }
+
 .center-container {
   width: 100%;
   border-radius: 20px;
@@ -48,6 +55,7 @@
   margin: 5px 0px;
   z-index: 1;
 }
+
 .inner-container {
   width: 45vw;
 }
@@ -118,6 +126,7 @@
     text-transform: capitalize;
   }
 }
+
 .guess-word {
   display: flex;
   justify-content: center;
@@ -226,8 +235,7 @@
   display: flex;
   justify-content: flex-end;
 
-  .result
-  {
+  .result {
     justify-content: center;
   }
 
@@ -264,9 +272,11 @@
     align-items: center;
     height: auto;
   }
+
   .center-container {
     background: transparent;
   }
+
   // .inner-container {
   //   width: calc(100% - 150px);
   // }
@@ -302,44 +312,41 @@
 
 
 
-  // code by shasheesha - start -----
-  
-.global-cover{
+// code by shasheesha - start -----
+
+.global-cover {
   position: absolute;
   width: 100vw;
   height: 100vh;
   left: 0px;
   top: 0px;
 }
-.navigation-options{
+
+.navigation-options {
   display: flex;
   align-items: center;
   height: fit-content;
-  z-index: 2;
   position: relative;
   padding: 40px 0 0 0;
   height: calc(100% - 40px);
 
-  .btn-area{
+  .btn-area {
     display: flex;
-    flex-direction: column;
     gap: 5px;
   }
-  .right-area{
-    display: none;
-  }
 }
-.container{
+
+.container {
   justify-content: center;
 
-  .center-box{
+  .center-box {
     max-width: 40vw;
     min-width: 300px;
     width: 100%;
-    padding: 0 40px; 
+    padding: 0 40px;
     z-index: 2;
 
-    .box{
+    .box {
       width: 100%;
       padding: 15px 0px
     }
@@ -347,33 +354,34 @@
 }
 
 
-  // .inner-container{
-  //   width: 100%;
-  // }
+// .inner-container{
+//   width: 100%;
+// }
 
-  // .right-container{
-  //   padding: 0px 30px 0px 0px;
-  // }
+// .right-container{
+//   padding: 0px 30px 0px 0px;
+// }
 
-  .anim-girl{
-    position: absolute;
-    width: 20px;
-    height: 100%;
-    z-index: 2;
-    top: 0px;
-    margin-left: 10vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  
-    .div-girl{
-      height: 70%;
-      // right: 0px;
-      // transform: translate3d(0, -50%, 0);
-      // bottom: -50%;
-    }
+.anim-girl {
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  z-index: 2;
+  top: 0px;
+  margin-left: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .div-girl {
+    height: 70%;
+    // right: 0px;
+    // transform: translate3d(0, -50%, 0);
+    // bottom: -50%;
   }
-.gusses-sec{
+}
+
+.gusses-sec {
   z-index: 2;
   right: 0px;
   width: fit-content;
@@ -384,142 +392,156 @@
   flex-direction: column;
   padding: 0 10px 0 0;
 
-  .gusses-header{
+  .gusses-header {
     display: none;
   }
-  .guesses-box-list{
-    
-    .inner-box{
+
+  .guesses-box-list {
+
+    .inner-box {
       width: 200px;
     }
   }
-  
+
 }
 
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
   .container .center-box {
     max-width: 75vw;
   }
-  .gusses-sec{
+
+  .gusses-sec {
     width: 100vw;
   }
-    .anim-girl{
-      display: none;
-    }
-    .navigation-options{
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 10px 0 10px ;
-      height: fit-content;
 
-      .btn-area{
-        
-        .div-btn{
-          padding: 5px 10px;
-          height: 24px;
-          left: inherit;
-          width: fit-content;
-        }
+  .anim-girl {
+    display: none;
+  }
 
-        .lable{
-          font-size: 14px;
-        }
-        .icon{
-          width: 20px;
-          height: auto;
-          margin-left: 10px;
-        }
-      }
-      .right-area{
+  .navigation-options {
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px 0 10px;
+    height: fit-content;
+
+    .btn-area {
+
+      .div-btn {
+        padding: 5px 10px;
+        height: 24px;
+        left: inherit;
+        min-width: 80px;
+        width: 30%;
         display: flex;
+        justify-content: space-around;
       }
-    }
-    .gusses-sec{
-      z-index: 0;
-      position: absolute;
-      left: 100vw;
-      top: 0px;
-      width: 99.6vw;
-      height: 99.6vh;
-      display: contents;
-      justify-content: center;
-      align-items: center;
-      transition: 0.5s;
-      border-radius: 5px;
-      /* From https://css.glass */
-      background: rgba(0, 0, 0, 0.4);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      visibility: hidden;
-      padding: 0px;
 
-      .gusses-header{
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 50px;
-        position: absolute;
-        top: 20px;
+      .lable {
+        font-size: 14px;
       }
-      .img-close{
-        cursor: pointer;
+
+      .icon {
+        width: 20px;
+        height: auto;
+        margin-left: 10px;
+        margin-right: 0px;
       }
     }
-    .gusses-sec-active{
-      left: 0vw;
-      z-index: 3;
-      transition: 0.5s;
-      visibility: visible;
+  }
+
+  .gusses-sec {
+    z-index: 0;
+    position: absolute;
+    left: 100vw;
+    top: 0px;
+    width: 99.6vw;
+    height: 99.6vh;
+    display: contents;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 5px;
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    visibility: hidden;
+    padding: 0px;
+
+    .gusses-header {
+      width: 100%;
       display: flex;
+      justify-content: flex-end;
+      margin-right: 50px;
+      position: absolute;
+      top: 20px;
     }
-    
-    .container{
-      height: 70vh;
+
+    .img-close {
+      cursor: pointer;
     }
-  .inner-container{
+  }
+
+  .gusses-sec-active {
+    left: 0vw;
+    z-index: 3;
+    transition: 0.5s;
+    visibility: visible;
+    display: flex;
+  }
+
+  .container {
+    height: 70vh;
+  }
+
+  .inner-container {
     width: 100%;
   }
 
-  .guess-header-text{
-    font-size: 20px;
-  }
-  .guess-word .box .guess-word-text{
-    font-size: 20px;
-  }
-  .textbox-container input[type=text]{
+  .guess-header-text {
     font-size: 20px;
   }
 
-  .button-raw{
+  .guess-word .box .guess-word-text {
+    font-size: 20px;
+  }
+
+  .textbox-container input[type=text] {
+    font-size: 20px;
+  }
+
+  .button-raw {
     justify-content: center;
     // flex-direction: column;
 
-    .button{
+    .button {
       width: 100%;
       margin: 0px;
       padding: 10px 15px;
     }
-    .button+.button{
+
+    .button+.button {
       margin-left: 10px;
     }
   }
 
 
-  .body::before{
+  .body::before {
     bottom: 330px;
   }
 
-  .gusses-sec{
-    .guesses-box-list{
+  .gusses-sec {
+    .guesses-box-list {
       width: 80vw;
 
-      .inner-box{
+      .inner-box {
         width: auto;
       }
     }
   }
-  }
-  // code by shasheesha - end -----
+}
+
+// code by shasheesha - end -----

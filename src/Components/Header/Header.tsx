@@ -1,5 +1,6 @@
 import "./Header.scss";
 import Logo from "../../Assets/Images/logo-2.png";
+import NavIcon from "../../Assets/Images/Navicon.svg";
 import React from "react";
 
 export default function Header() {
@@ -13,7 +14,12 @@ export default function Header() {
 
   return (
     <div className="header">
+      <div className="navigation">
+       <img className="nav-icon" src={NavIcon} alt="NavIcon"></img>
+      </div>
+      <div>
         <img className="logo" src={Logo} alt="Logo"></img>
+      </div>
       </div>
   );
 }

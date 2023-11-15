@@ -41,6 +41,38 @@
   margin-right: 16px;
   width: 32px;
 }
+
+.mobile-btn{
+    z-index: 4;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    height: 99.6vh;
+    display: contents;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 30px rgb(0, 0, 0);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    visibility: hidden;
+    padding: 0px;
+
+    .btn-area .div-btn{
+      width: 80px !important;
+    }
+}
+
+.desktop-btn{
+  flex-direction: column;
+  z-index: 2;
+}
+
 @media screen and (max-width: 480px) {
   .div-btn {
     width: auto; /* Full width for mobile */
@@ -60,3 +92,13 @@
     margin-right: 0; /* Remove margin for mobile */
   }
 }
+@media screen and (max-width: 992px){
+ .desktop-btn{
+  display: none !important;
+ }
+}
+@media screen and (min-width: 992px){
+  .mobile-btn{
+   display: none !important;
+  }
+ }
