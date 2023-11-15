@@ -62,6 +62,7 @@ export default function Navigation() {
           <img className="icon stats" src={Guesses} alt="Logo"></img>
         </div>
       </div>
+      
     </>
   );
 }
