@@ -62,15 +62,25 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     visibility: hidden;
     padding: 0px;
-
     .btn-area .div-btn{
       width: 80px !important;
     }
 }
 
+.mobile-btn-active{
+  transition: 0.5s;
+  visibility: visible !important;
+}
+
 .desktop-btn{
   flex-direction: column;
   z-index: 2;
+}
+
+.img-close-nav{
+  position: absolute;
+  left: 170px;
+  top: 10px;
 }
 
 @media screen and (max-width: 480px) {
