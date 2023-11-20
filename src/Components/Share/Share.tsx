@@ -91,29 +91,76 @@ export const ModalShare = ({ showModal, setShowModal }) => {
   return (
     <>
       {showModal ? (
-        <div className='background' onClick={closeModal} ref={modalRef}>
-        <animated.div style={animation}>
-            <div className='modalWrapper'>
-              <div className='modalContent'>   
-                <h1 className='h1'>Share Your Result.</h1>  
-                <div className='div-center'>
-                <div className='div-switch'>
-                <label className='text-switch'>Accessible Mode</label>
-                <label className="toggle-switch">
-                 <input type="checkbox" checked={isToggled} onChange={toggleSwitch} />
-                 <span className="slider round"></span>
-                 </label>
-                </div>           
-                <textarea  className="textarea" defaultValue={copyText}/>                         
-                </div>  
-                <button className="button primary-btn"  onClick={handleCopy}> 
-                   {buttonText.toUpperCase()}
-                    <i className="fa-solid fa-copy" style={{marginLeft:"16px"}}></i>
-                </button>                    
+        <div className="background" onClick={closeModal} ref={modalRef}>
+          <animated.div style={animation}>
+            <div className="modal-wrapper">
+              <div className="modal-header">
+                <h1 className="h1">Share Your Result.</h1>
+                <CloseModalButton
+                  aria-label="Close modal"
+                  onClick={handleClose}
+                />
+              </div>
+              <div className="modal-container">
+                <div className="modal-top-content">
+                  <div className="div-switch">
+                    <label className="text-switch">Accessible Mode</label>
+                    <label className="toggle-switch">
+                      <input
+                        type="checkbox"
+                        checked={isToggled}
+                        onChange={toggleSwitch}
+                      />
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+                <div className="modal-mid-content">
+                <textarea className="textarea" defaultValue={copyText} />
+                </div>
+              </div>
+              <div className="modal-footer">
+              <button className="button primary-btn" onClick={handleCopy}>
+                  {buttonText.toUpperCase()}
+                  <i
+                    className="fa-solid fa-copy"
+                    style={{ marginLeft: "16px" }}
+                  ></i>
+                </button>
+              </div>
             </div>
-                 <CloseModalButton aria-label='Close modal' onClick={handleClose}/>
-            </div>
-        </animated.div>
+
+            {/* <div className="modalWrapper">
+              <div className="modalContent">
+                <h1 className="h1">Share Your Result.</h1>
+                <div className="div-center">
+                  <div className="div-switch">
+                    <label className="text-switch">Accessible Mode</label>
+                    <label className="toggle-switch">
+                      <input
+                        type="checkbox"
+                        checked={isToggled}
+                        onChange={toggleSwitch}
+                      />
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
+                  <textarea className="textarea" defaultValue={copyText} />
+                </div>
+                <button className="button primary-btn" onClick={handleCopy}>
+                  {buttonText.toUpperCase()}
+                  <i
+                    className="fa-solid fa-copy"
+                    style={{ marginLeft: "16px" }}
+                  ></i>
+                </button>
+              </div>
+              <CloseModalButton
+                aria-label="Close modal"
+                onClick={handleClose}
+              />
+            </div> */}
+          </animated.div>
         </div>
       ) : null}
     </>

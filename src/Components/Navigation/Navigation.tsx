@@ -66,20 +66,26 @@ export default function Navigation() {
           <img className="icon stats" src={Stats} alt="Logo"></img>
         </div>
       </div>
-      <div className={`btn-area mobile-btn ${navigationStatus ? "mobile-btn-active" : ""}`}>
-      <img src={Close} alt="CLose" className="img-close-nav" onClick={handleClickNavigation}></img>
-        <div className="div-info div-btn Info" onClick={handleClickInfo}>
-          <div className="lable">Info</div>
-          <img className="icon info" src={Info} alt="Logo"></img>
+      <div className={`side-canvas btn-area mobile-btn ${navigationStatus ? "mobile-btn-active" : ""}`}>
+        <div className="side-canvas-header">
+          <img src={Close} alt="CLose" className="img-close-nav" onClick={handleClickNavigation}></img>
         </div>
-        <div className="div-stats div-btn stats" onClick={handleClickStats}>
-          <div className="lable">Stats</div>
-          <img className="icon stats" src={Stats} alt="Logo"></img>
+        <div className="side-canvas-container">
+          <div className="opt-btns-area">
+            <div className="div-info div-btn Info" onClick={handleClickInfo}>
+              <div className="lable">Info</div>
+              <img className="icon info" src={Info} alt="Logo"></img>
+            </div>
+            <div className="div-stats div-btn stats" onClick={handleClickStats}>
+              <div className="lable">Stats</div>
+              <img className="icon stats" src={Stats} alt="Logo"></img>
+            </div>
+            <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
+              <div className="lable">Gueses</div>
+              <img className="icon stats" src={Guesses} alt="Logo"></img>
+            </div>
+          </div>
         </div>
-        <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
-          <div className="lable">Gueses</div>
-          <img className="icon stats" src={Guesses} alt="Logo"></img>
-      </div>
       </div> 
     </>
   );

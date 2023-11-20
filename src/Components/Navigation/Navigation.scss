@@ -47,7 +47,7 @@
     flex-direction: column;
     position: absolute;
     top: 0;
-    left: 0;
+    left: -55vh;
     width: 50vw;
     height: 99.6vh;
     display: contents;
@@ -70,6 +70,7 @@
 .mobile-btn-active{
   transition: 0.5s;
   visibility: visible !important;
+  left: 0;
 }
 
 .desktop-btn{
@@ -77,10 +78,37 @@
   z-index: 2;
 }
 
-.img-close-nav{
-  position: absolute;
-  left: 170px;
-  top: 10px;
+
+.side-canvas{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0px 20px;
+  visibility: hidden;
+  transition: 0.4s;
+  
+  .side-canvas-header{
+    padding: 10px 0px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+  }
+  .side-canvas-container{
+    height: 100%;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .opt-btns-area{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+  
 }
 
 @media screen and (max-width: 480px) {
@@ -110,5 +138,8 @@
 @media screen and (min-width: 992px){
   .mobile-btn{
    display: none !important;
+  }
+  body{
+    overflow: hidden;
   }
  }

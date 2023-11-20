@@ -8,8 +8,10 @@
   z-index: 1;
 
   .logo {
-    width: 100px;
-    margin-top: 5px;
+    width: 200px;
+    // margin-top: 5px;
+    position: relative;
+    top: 30px;
   }
 
   .navigation {
@@ -21,6 +23,8 @@
   
     .nav-icon {
       height: 20px;
+      cursor: pointer;
+      padding: 20px;
     }
   }
 }
@@ -34,10 +38,9 @@
     margin-bottom: 50px;
     z-index: 1;
 
-    .logo {
-      margin-top: 5px;
+    .logo{
+      top: 35px !important;
     }
-
     .navigation {
       display: flex;
       align-items: center;
@@ -54,5 +57,15 @@
 @media screen and (min-width: 992px){
   .navigation{
    display: none !important;
+   
   }
+}
+@media screen and (max-width: 992px){
+  .header .logo {
+    width: 26vw;
+    margin-top: 5px;
+    min-width: 160px;
+    position: relative;
+    top: 20px;
  }
+}
