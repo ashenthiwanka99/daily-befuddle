@@ -5,6 +5,7 @@ import { MdClose } from "react-icons/md";
 import ReactApexChart from "react-apexcharts";
 import "./Stats.scss";
 import { useCookies } from "react-cookie";
+import React from "react";
 
 const CloseModalButton = styled(MdClose)`
   cursor: pointer;
@@ -20,6 +21,7 @@ const CloseModalButton = styled(MdClose)`
 
 export const ModalStats = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
+  const [isMobile, setIsMobile] = useState(false);
   const [countdown, setCountdown] = useState({hours: '00',minutes: '00',seconds: '00',message: '',});
   const [timeDifference, setTimeDifference] = useState(calculateTimeDifference());
   const [cookiesTotalGames, setCookieTotalGames ,removeCookieTotalGames] = useCookies(["TotalGames"]);
@@ -37,6 +39,17 @@ export const ModalStats = ({ showModal, setShowModal }) => {
     const utcMidnight = new Date(Date.UTC(currentTime.getUTCFullYear(),currentTime.getUTCMonth(),currentTime.getUTCDate() + 1, 0, 0,0));
     return  utcMidnight.getTime() - currentTime.getTime();
   }
+
+  useEffect(() => {
+    const checkWindowSize = () => {
+      setIsMobile(window.innerWidth < 768); 
+    };
+    checkWindowSize();
+    window.addEventListener('resize', checkWindowSize);
+    return () => {
+      window.removeEventListener('resize', checkWindowSize);
+    };
+  }, []);
 
   useEffect(() => {
     const timerInterval = setTimeout(() => {
@@ -221,7 +234,7 @@ export const ModalStats = ({ showModal, setShowModal }) => {
                       options={data.options}
                       series={data.series}
                       type="bar"
-                      width={700}
+                      width={isMobile? 325 : 700}
                       height={300}
                     />
                   </div>

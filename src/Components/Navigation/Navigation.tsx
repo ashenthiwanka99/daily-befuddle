@@ -8,12 +8,14 @@ import Guesses from "../../Assets/Images/Guesses.svg";
 import Close from "../../Assets/Images/Close.svg";
 
 import { InfoStore, StatsStore, GuessStatusStroe, NavigationStatusStroe } from "../../Store/Store";
+import { useCookies } from "react-cookie";
 
 export default function Navigation() {
   const [InfoStatus, setInfoStatus] = useContext(InfoStore);
   const [stastStatus, setStatsStatus] = useContext(StatsStore);
   const [guessStatus, setGuessStatus] = useContext(GuessStatusStroe);
   const [navigationStatus, setNavigationStatus] = useContext(NavigationStatusStroe);
+  const [cookiesGameStatus, setCookieGameStatus, removeCookieGameStatus] = useCookies(["GameStatus"]);
 
   const InfoStsChange = () => {
     setInfoStatus(!InfoStatus);
@@ -80,10 +82,12 @@ export default function Navigation() {
               <div className="lable">Stats</div>
               <img className="icon stats" src={Stats} alt="Logo"></img>
             </div>
-            <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
-              <div className="lable">Gueses</div>
-              <img className="icon stats" src={Guesses} alt="Logo"></img>
-            </div>
+            {cookiesGameStatus.GameStatus === "Ended"? <></> : 
+              <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
+               <div className="lable">Gueses</div>
+               <img className="icon stats" src={Guesses} alt="Logo"></img>
+              </div>
+            }  
           </div>
         </div>
       </div> 
