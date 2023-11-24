@@ -42,6 +42,7 @@
   align-items: center;
   position: relative;
   top: 30px;
+  gap: 10px;
 }
 
 .center-container {
@@ -159,6 +160,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding-bottom: 10px;
   text-transform: capitalize;
 }
 
@@ -249,6 +251,7 @@
     font-weight: 400;
     line-height: normal;
     font-variant: small-caps;
+    text-align: center;
     cursor: pointer;
   }
 
