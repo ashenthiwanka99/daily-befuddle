@@ -58,11 +58,29 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
           <animated.div style={animation}>
             <div className="modalWrapper-info">
               <div className="modalContent-info">
-                <div className="background-heading">
-                <label className="h1">How to play.</label>
-                </div>                
+                <div className="background-heading-info">
+                  <label className="h1">How to play.</label>
+                </div>
                 <div className="div-center-info">
-                  <label className="text-heading">
+                  <div className="left-box-info">
+                    <div className="text-heading-info">
+                      DECIPHER THE BEFUDDLE IN FIVE ATTEMPTS!
+                    </div>
+                    <div>
+                      <ul>
+                        <li className="li-text">
+                          A popular title has had its name transformed into
+                          something else. <span className="pink-text"> Each word has been swapped for another
+                          word</span> (or words!) that has the same meaning.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-heading-info">EXAMPLES</div>
+                    <div></div>
+                  </div>
+                  {/* <label className="text-heading">
                     Guess the Befuddle in five attempts!
                   </label>
                   <ul>
@@ -119,7 +137,7 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
                         <label className="guess-word-text">Breakin Bad</label>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <CloseModalButton

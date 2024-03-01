@@ -228,7 +228,7 @@ export const ModalStats = ({ showModal, setShowModal }) => {
                 <div className="background-heading">
                   <label className="h1">Your Stats.</label>
                 </div>
-                <div className="div-center-info">
+                <div className="div-center-stats">
                   <div className="chart">
                     <ReactApexChart
                       options={data.options}

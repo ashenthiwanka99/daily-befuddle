@@ -36,15 +36,15 @@
     max-height: 85vh;
 
     .background-heading {
-      position: relative;
-      left: -10%;
-      width: 95%;
-      height: 40px;
-      background: linear-gradient(180deg, #622E9F 0%, #CB39FF 100%); 
-      margin-bottom: 20px;
-      margin-top: 20px;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
+      // position: relative;
+      // left: -10%;
+      // width: 95%;
+      // height: 40px;
+      // background: linear-gradient(180deg, #622E9F 0%, #CB39FF 100%); 
+      // margin-bottom: 20px;
+      // margin-top: 20px;
+      // border-top-right-radius: 20px;
+      // border-bottom-right-radius: 20px;
       .h1 {
         display: flex;
         align-items: center;
@@ -57,7 +57,7 @@
       }
     }
 
-    .div-center-info {
+    .div-center-stats {
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.1);
       display: flex;

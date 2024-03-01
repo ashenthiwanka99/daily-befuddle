@@ -19,7 +19,10 @@
     z-index: 10;
     flex-direction: column;
     border-radius: 20px;
-    background: linear-gradient(226deg, #000 0%, #101010 100%);
+    // background: linear-gradient(226deg, #000 0%, #101010 100%);
+    // background-image: -moz-linear-gradient( 90deg, rgba(141,50,242,0) 0%, rgb(141,50,242) 100%, rgb(141,50,242) 100%) !important;
+    // background-image: -webkit-linear-gradient( 90deg, rgba(141,50,242,0) 0%, rgb(141,50,242) 100%, rgb(141,50,242) 100%) !important;
+     background-image: -ms-linear-gradient( 90deg, rgba(141,50,242,0) 0%, rgb(141,50,242) 100%, rgb(141,50,242) 100%) !important;
   }
 
   .modalContent-info {
@@ -31,90 +34,147 @@
     line-height: 1.8;
     color: #141414;
 
-    .background-heading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      right: 80px;
-      width: 40rem;
-      background: linear-gradient(180deg, #622e9f 0%, #cb39ff 100%);
-      height: 40px;
-      margin-bottom: 20px;
-      margin-top: 20px;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
+    .background-heading-info {
       .h1 {
         display: flex;
         align-items: center;
         justify-content: center;
         // margin-right: 149px;
-        font-size: 32px;
+        font-size: 2.5rem;
         font-weight: 400;
-        color: #fff;
-        font-family: "Luckiest Guy", "cursive";//header
+        // color: #fff;
+        font-family: "Luckiest Guy", "cursive"; //header
+        background: -webkit-linear-gradient(#7f30ff 0%, #ff4880 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
       }
     }
 
     .div-center-info {
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.1);
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
       padding: 20px;
+      justify-content: space-between;
 
-      .text-heading {
-        color: #fff;
-        font-family: "Luckiest Guy", "cursive";//header
+      .pink-text {
+        color: #ff4880;
+      }
+
+      .text-heading-info {
+        color: #ff4880;
+        font-family: "Luckiest Guy", "cursive"; //header
         font-size: 18px;
         font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
-      .li-text {
-        color: #fff;
-        font-family:  "Lilita One", "cursive";//regular
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        margin-bottom: 10px;
-      }
-      .box {
-        padding: 15px 30px;
-        border-radius: 20px;
-        background: #101010;
         text-align: center;
-
-        .guess-word-text {
-          color: #fff;
-          font-family:  "Lilita One", "cursive";//regular
-          font-size: 28px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-          text-transform: capitalize;
-        }
+        font-weight: 400;
+        line-height: normal;
+        text-shadow: 2px 2px 6px #000000;
+        background: pink;
+        padding: 15px;
       }
 
-      .example-boxes {
+      .left-box-info {
         display: flex;
         flex-direction: column;
-        width: 100%;
-        position: relative;
-        // left: 25px;
-        .example-box-row {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-direction: row;
-          margin-bottom: 5px;
+        max-width: 50%;
 
+        .left-box-content {
+          background: blue;
+          padding: 10px;
+
+          .li-text {
+            color: #fff;
+            font-family: "Lilita One", "cursive"; //regular
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 10px;
+            text-align: justify;
+            list-style: url('../../Assets/Images/Close.svg');
+          }
+        }
+
+      }
+
+      .right-box-info {
+        display: flex;
+        flex-direction: column;
+        max-width: 50%;
+
+        .text-heading-box {
+          color: #ff4880;
+          font-family: "Luckiest Guy", "cursive"; //header
+          font-size: 18px;
+          font-style: normal;
+          text-align: center;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+
+        .right-box-content {
+          background: blue;
+          padding: 10px;
+
+          .box-befuddled {
+            padding: 10px 15px;
+            border-radius: 15px;
+            background: #101010;
+            border: solid 3px #ff4880;
+            text-align: center;
+
+            .guess-word-text {
+              color: #fff;
+              font-family: "Lilita One", "cursive"; //regular
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              text-transform: capitalize;
+            }
+          }
+
+          .box-correct {
+            padding: 10px 15px;
+            border-radius: 15px;
+            background: #101010;
+            text-align: center;
+            background: linear-gradient(238deg, #7f30ff 0%, #ff4880 100%);
+
+            .guess-word-text {
+              color: #000;
+              font-family: "Lilita One", "cursive"; //regular
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              text-transform: capitalize;
+            }
+          }
+
+          .example-boxes {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            position: relative;
+
+            // left: 25px;
+            .example-box-row {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              flex-direction: row;
+              margin-bottom: 5px;
+
+            }
+          }
         }
       }
     }
+
   }
 
   .modalClose {
@@ -128,17 +188,20 @@
     cursor: pointer;
   }
 }
+
 @media screen and (max-width: 480px) {
-  .modalContent-info{
-    .div-center-info{
-      .example-boxes{
+  .modalContent-info {
+    .div-center-info {
+      .example-boxes {
         width: 100% !important;
         left: inherit !important;
       }
-      .box{
+
+      .box {
         padding: 10px 20px !important;
         width: 70px !important;
-        .guess-word-text{
+
+        .guess-word-text {
           font-size: 18px !important;
         }
       }
