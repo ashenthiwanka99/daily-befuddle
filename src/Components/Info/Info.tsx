@@ -2,19 +2,8 @@ import { useRef, useEffect, useCallback } from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
+import test from "../../Assets/Images/modelCloseBtn.png";
 import "./Info.scss";
-
-const CloseModalButton = styled(MdClose)`
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  z-index: 10;
-  color: white;
-`;
 
 export const ModalInfo = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
@@ -66,19 +55,108 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
                     <div className="text-heading-info">
                       DECIPHER THE BEFUDDLE IN FIVE ATTEMPTS!
                     </div>
-                    <div>
+                    <div className="left-box-content">
                       <ul>
                         <li className="li-text">
                           A popular title has had its name transformed into
-                          something else. <span className="pink-text"> Each word has been swapped for another
-                          word</span> (or words!) that has the same meaning.
+                          something else.{" "}
+                          <span className="pink-text">
+                            {" "}
+                            Each word has been swapped for another word
+                          </span>{" "}
+                          (or words!) that has the same meaning.
+                        </li>
+                        <li className="li-text">
+                          Type in your guess and hit enter or the{" "}
+                          <span className="pink-text">Submit</span> button.
+                        </li>
+                        <li className="li-text">
+                          Wrong guesses or skips will reveal a new hint about
+                          the Befuddled title.
+                        </li>
+                        <li className="li-text">
+                          Answer in as few attempts as possible and Share your
+                          score!
                         </li>
                       </ul>
                     </div>
                   </div>
-                  <div>
+                  <div className="right-box-info">
                     <div className="text-heading-info">EXAMPLES</div>
-                    <div></div>
+                    <div className="right-box-content">
+                      <div className="example-boxes">
+                        <div className="example-box-row">
+                          <span
+                            className="pink-text"
+                            style={{ fontSize: "18px" }}
+                          >
+                            BEFUDDLED:
+                          </span>
+                          <div className="arrow"></div>
+                          <span
+                            className="pink-text"
+                            style={{ fontSize: "18px" }}
+                          >
+                            CORRECT:
+                          </span>
+                        </div>
+                        <div className="example-box-row">
+                          <div className="box-befuddled">
+                            <label className="guess-word-text">
+                              BEST PISTOL
+                            </label>
+                          </div>
+                          <div className="arrow">
+                            <i
+                              className="fa fa-arrow-right"
+                              aria-hidden="true"
+                              style={{ fontSize: "20px", color: "white" }}
+                            ></i>
+                          </div>
+                          <div className="box-correct">
+                            <label className="guess-word-text">TOP GUN</label>
+                          </div>
+                        </div>
+                        <div className="example-box-row">
+                          <div className="box-befuddled">
+                            <label className="guess-word-text">
+                              PELVIS &nbsp;IS HONEST
+                            </label>
+                          </div>
+                          <div className="arrow">
+                            <i
+                              className="fa fa-arrow-right"
+                              aria-hidden="true"
+                              style={{ fontSize: "20px", color: "white" }}
+                            ></i>
+                          </div>
+                          <div className="box-correct">
+                            <label className="guess-word-text">
+                              HIPS DON'T LIE
+                            </label>
+                          </div>
+                        </div>
+                        <div className="example-box-row">
+                          <div className="box-befuddled">
+                            <label className="guess-word-text">
+                              CRACKING CORRUPT
+                            </label>
+                          </div>
+                          <div className="arrow">
+                            <i
+                              className="fa fa-arrow-right"
+                              aria-hidden="true"
+                              style={{ fontSize: "20px", color: "white" }}
+                            ></i>
+                          </div>
+                          <div className="box-correct">
+                            <label className="guess-word-text">
+                              BREAKING BAD
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   {/* <label className="text-heading">
                     Guess the Befuddle in five attempts!
@@ -140,10 +218,7 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
                   </div> */}
                 </div>
               </div>
-              <CloseModalButton
-                aria-label="Close modal"
-                onClick={handleClose}
-              />
+              <div className="modalClose-info" onClick={handleClose}></div>
             </div>
           </animated.div>
         </div>

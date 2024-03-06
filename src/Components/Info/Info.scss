@@ -7,22 +7,24 @@
   justify-content: center;
   align-items: center;
   z-index: 3;
-  top: -10px;
 
   .modalWrapper-info {
-    width: 800px;
-    height: 600px;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+    max-width: 60vw;
+    width: auto;
+    height: 100%;
+    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.8);
     display: flex;
     grid-template-columns: 1fr 1fr;
     position: relative;
     z-index: 10;
     flex-direction: column;
-    border-radius: 20px;
-    // background: linear-gradient(226deg, #000 0%, #101010 100%);
-    // background-image: -moz-linear-gradient( 90deg, rgba(141,50,242,0) 0%, rgb(141,50,242) 100%, rgb(141,50,242) 100%) !important;
-    // background-image: -webkit-linear-gradient( 90deg, rgba(141,50,242,0) 0%, rgb(141,50,242) 100%, rgb(141,50,242) 100%) !important;
-     background-image: -ms-linear-gradient( 90deg, rgba(141,50,242,0) 0%, rgb(141,50,242) 100%, rgb(141,50,242) 100%) !important;
+    border-radius: 8px !important;
+    background: -webkit-radial-gradient(38% -25%, rgba(252, 73, 126, 1) 0, rgba(252, 73, 126, 0.6) 0, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 100%), -webkit-radial-gradient(62% -25%, rgba(127, 48, 255, 0.6) 0, rgba(141, 50, 242, 0) 40%, rgba(141, 50, 242, 0) 100%), -webkit-linear-gradient(-90deg, rgba(237, 56, 56, 1) 0, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 100%) !important;
+    background: -moz-radial-gradient(38% -25%, rgba(252, 73, 126, 1) 0, rgba(252, 73, 126, 0.6) 0, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 100%), -moz-radial-gradient(62% -25%, rgba(127, 48, 255, 0.6) 0, rgba(141, 50, 242, 0) 40%, rgba(141, 50, 242, 0) 100%), -moz-linear-gradient(180deg, rgba(237, 56, 56, 1) 0, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 100%) !important;
+    background: radial-gradient(at 38% -25%, rgba(252, 73, 126, 1) 0, rgba(252, 73, 126, 0.6) 0, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 100%), radial-gradient(at 62% -25%, rgba(127, 48, 255, 0.6) 0, rgba(141, 50, 242, 0) 40%, rgba(141, 50, 242, 0) 100%), linear-gradient(180deg, rgba(237, 56, 56, 1) 0, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 100%) !important;
+    border: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #7f30ff, #ff4880);
   }
 
   .modalContent-info {
@@ -33,16 +35,16 @@
     padding: 20px;
     line-height: 1.8;
     color: #141414;
+    overflow: hidden;
+    max-height: 90vh;
 
     .background-heading-info {
       .h1 {
         display: flex;
         align-items: center;
         justify-content: center;
-        // margin-right: 149px;
-        font-size: 2.5rem;
+        font-size: 4.5rem;
         font-weight: 400;
-        // color: #fff;
         font-family: "Luckiest Guy", "cursive"; //header
         background: -webkit-linear-gradient(#7f30ff 0%, #ff4880 100%);
         -webkit-background-clip: text;
@@ -59,6 +61,12 @@
 
       .pink-text {
         color: #ff4880;
+        font-family: "Luckiest Guy", "cursive"; //header
+        font-style: normal;
+        text-align: center;
+        font-weight: 400;
+        line-height: normal;
+        text-shadow: 2px 2px 6px #000000;
       }
 
       .text-heading-info {
@@ -70,7 +78,9 @@
         font-weight: 400;
         line-height: normal;
         text-shadow: 2px 2px 6px #000000;
-        background: pink;
+        background: -webkit-linear-gradient(0deg, rgba(252, 73, 126, 0.2) 0, rgba(127, 48, 255, 0.2) 100%);
+        background: -moz-linear-gradient(90deg, rgba(252, 73, 126, 0.2) 0, rgba(127, 48, 255, 0.2) 100%);
+        background: linear-gradient(90deg, rgba(252, 73, 126, 0.2) 0, rgba(127, 48, 255, 0.2) 100%);
         padding: 15px;
       }
 
@@ -80,7 +90,9 @@
         max-width: 50%;
 
         .left-box-content {
-          background: blue;
+          background: -webkit-linear-gradient(0deg, rgba(252, 73, 126, 0.15) 0, rgba(127, 48, 255, 0.15) 100%);
+          background: -moz-linear-gradient(90deg, rgba(252, 73, 126, 0.15) 0, rgba(127, 48, 255, 0.15) 100%);
+          background: linear-gradient(90deg, rgba(252, 73, 126, 0.15) 0, rgba(127, 48, 255, 0.15) 100%);
           padding: 10px;
 
           .li-text {
@@ -92,7 +104,7 @@
             line-height: normal;
             margin-bottom: 10px;
             text-align: justify;
-            list-style: url('../../Assets/Images/Close.svg');
+            list-style: url('../../Assets/Images/bulletPoint.svg');
           }
         }
 
@@ -103,56 +115,11 @@
         flex-direction: column;
         max-width: 50%;
 
-        .text-heading-box {
-          color: #ff4880;
-          font-family: "Luckiest Guy", "cursive"; //header
-          font-size: 18px;
-          font-style: normal;
-          text-align: center;
-          font-weight: 400;
-          line-height: normal;
-        }
-
-
         .right-box-content {
-          background: blue;
+          background: -webkit-linear-gradient(0deg, rgba(252, 73, 126, 0.15) 0, rgba(127, 48, 255, 0.15) 100%);
+          background: -moz-linear-gradient(90deg, rgba(252, 73, 126, 0.15) 0, rgba(127, 48, 255, 0.15) 100%);
+          background: linear-gradient(90deg, rgba(252, 73, 126, 0.15) 0, rgba(127, 48, 255, 0.15) 100%);
           padding: 10px;
-
-          .box-befuddled {
-            padding: 10px 15px;
-            border-radius: 15px;
-            background: #101010;
-            border: solid 3px #ff4880;
-            text-align: center;
-
-            .guess-word-text {
-              color: #fff;
-              font-family: "Lilita One", "cursive"; //regular
-              font-size: 18px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: normal;
-              text-transform: capitalize;
-            }
-          }
-
-          .box-correct {
-            padding: 10px 15px;
-            border-radius: 15px;
-            background: #101010;
-            text-align: center;
-            background: linear-gradient(238deg, #7f30ff 0%, #ff4880 100%);
-
-            .guess-word-text {
-              color: #000;
-              font-family: "Lilita One", "cursive"; //regular
-              font-size: 15px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: normal;
-              text-transform: capitalize;
-            }
-          }
 
           .example-boxes {
             display: flex;
@@ -160,49 +127,141 @@
             width: 100%;
             position: relative;
 
-            // left: 25px;
             .example-box-row {
               width: 100%;
               display: flex;
-              justify-content: space-between;
+              justify-content: space-around;
               align-items: center;
               flex-direction: row;
-              margin-bottom: 5px;
+
+              .text-h2 {
+                color: #ff4880;
+                font-family: "Lilita One", "cursive"; //regular
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                line-height: normal;
+              }
+
+              .box-befuddled {
+                padding: 5px;
+                border-radius: 15px;
+                background: #101010;
+                border: solid 3px #ff4880;
+                text-align: center;
+                width: 50%;
+                margin: 5px;
+
+                .guess-word-text {
+                  color: #fff;
+                  font-family: "Lilita One", "cursive"; //regular
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  text-transform: capitalize;
+                  margin: 0;
+                }
+              }
+
+              .box-correct {
+                padding: 10px;
+                border-radius: 15px;
+                width: 50%;
+                margin: 5px;
+                text-align: center;
+                background: linear-gradient(238deg, #7f30ff 0%, #ff4880 100%);
+
+                .guess-word-text {
+                  color: #000;
+                  font-family: "Lilita One", "cursive"; //regular
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  text-transform: capitalize;
+                  margin: 0;
+                }
+              }
 
             }
           }
+
+
+
         }
       }
     }
 
   }
 
-  .modalClose {
+  .modalClose-info {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 32px;
-    height: 32px;
+    top: 10px;
+    right: 10px;
+    width: 61px;
+    height: 60px;
     padding: 0;
     z-index: 10;
     cursor: pointer;
+    border: 0;
+    background-image: url("../../Assets/Images/modelCloseBtn.svg");
+    background-repeat: no-repeat;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .modalContent-info {
-    .div-center-info {
-      .example-boxes {
-        width: 100% !important;
-        left: inherit !important;
+  .background {
+    .modalClose-info {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+
+    .modalWrapper-info {
+      max-width: 90vw;
+    }
+
+    .modalContent-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 10px;
+
+      .background-heading-info {
+        .h1 {
+          font-size: 2.5rem;
+        }
       }
 
-      .box {
-        padding: 10px 20px !important;
-        width: 70px !important;
+      .div-center-info {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        padding: 0px;
 
-        .guess-word-text {
-          font-size: 18px !important;
+        .left-box-info {
+          max-width: 100%;
+          margin-bottom: 10px;
+        }
+
+        .right-box-info {
+          max-width: 100%;
+        }
+
+        .example-boxes {
+          width: 100% !important;
+          left: inherit !important;
+        }
+
+        .box {
+          padding: 10px 20px !important;
+          width: 70px !important;
+
+          .guess-word-text {
+            font-size: 18px !important;
+          }
         }
       }
     }

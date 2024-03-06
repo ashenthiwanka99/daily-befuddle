@@ -1,23 +1,8 @@
 import { useRef, useEffect, useCallback, useState } from "react";
 import { useSpring, animated, to } from "react-spring";
-import styled from "styled-components";
-import { MdClose } from "react-icons/md";
 import ReactApexChart from "react-apexcharts";
 import "./Stats.scss";
 import { useCookies } from "react-cookie";
-import React from "react";
-
-const CloseModalButton = styled(MdClose)`
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  z-index: 10;
-  color: white;
-`;
 
 export const ModalStats = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
@@ -223,9 +208,9 @@ export const ModalStats = ({ showModal, setShowModal }) => {
       {showModal ? (
         <div className="background" onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
-            <div className="modalWrapper-info">
-              <div className="modalContent-info">
-                <div className="background-heading">
+            <div className="modalWrapper-stats">
+              <div className="modalContent-stats">
+                <div className="background-heading-stats">
                   <label className="h1">Your Stats.</label>
                 </div>
                 <div className="div-center-stats">
@@ -263,10 +248,7 @@ export const ModalStats = ({ showModal, setShowModal }) => {
                   <label className="text">{countdown.hours}h {countdown.minutes}m {countdown.seconds}s</label>
                   </div>               
               </div>
-              <CloseModalButton
-                aria-label="Close modal"
-                onClick={handleClose}
-              />
+              <div className="modalClose-info" onClick={handleClose}></div>
             </div>
           </animated.div>
         </div>
