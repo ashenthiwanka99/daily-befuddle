@@ -412,6 +412,9 @@
 @media screen and (max-width: 992px) {
   .container .center-box {
     max-width: 75vw;
+    .box{
+      width: auto;
+    }
   }
 
   .gusses-sec {

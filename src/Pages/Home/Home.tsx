@@ -313,7 +313,8 @@ export default function Home() {
   }, [gameStatus]);
 
   const handleChange = (e) => {
-    var cleanText = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "");
+    // var cleanText = e.target.value.replace(/[^a-zA-Z0-9 ]/g, "");
+    var cleanText = e.target.value;
     setIsGuess(cleanText.toUpperCase());
   };
 
@@ -354,7 +355,7 @@ export default function Home() {
       }
     }
 
-    if (guessArray[4] !== undefined) {
+    if (guessArray[4] !== undefined && guessArray[4].Result === false) {  
       setGameStatus(true);
       setCookieDailyWin("DailyWin", false, {
         path: "/",
@@ -373,7 +374,8 @@ export default function Home() {
       setGuess();
     }
 
-    if (guessArray[4] !== undefined) {
+    if (guessArray[4] !== undefined && guessArray[4].Result === false) {
+      console.log(guessArray);    
       setGameStatus(true);
       setCookieDailyWin("DailyWin", false, {
         path: "/",
@@ -603,7 +605,6 @@ export default function Home() {
             <div className="textbox-container inner-container">
               <input
                 type="text"
-                pattern="[a-zA-Z0-9]+"
                 maxLength={100}
                 value={isGuess.toUpperCase()}
                 placeholder="ENTER YOUR GUESS HERE"

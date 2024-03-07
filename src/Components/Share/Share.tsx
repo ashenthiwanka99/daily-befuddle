@@ -71,6 +71,17 @@ export const ModalShare = ({ showModal, setShowModal }) => {
 
   function handleCopyText()
   {
+    if (cookiesGuessArray.GuessArray.length < 5 && cookiesGuessArray.GuessArray.length !== 0) {
+      while (cookiesGuessArray.GuessArray.length < 5) {
+        let _array = cookiesGuessArray.GuessArray;
+        _array.push(null);
+        setCookieGuessArray("GuessArray", _array, {
+          path: "/",
+          expires: UTCExpireTime(),
+        });
+      }
+    }
+    
     let result = GenarateCopyText(cookiesDailyWin.DailyWin,cookiesGuessArray.GuessArray)    
     setCopyTextresult(result)
   }
@@ -83,7 +94,6 @@ export const ModalShare = ({ showModal, setShowModal }) => {
     },[keyPress]);  
 
     useEffect(() => {
-
       setCopyText(isToggled ? copyTextResult?.textAccessible : copyTextResult?.textEmoji )
       setCookieIsAccessible("IsAccessible" , isToggled , { path: '/',  expires : UTCNoExpireTime()});  
     }, [isToggled])
@@ -96,10 +106,11 @@ export const ModalShare = ({ showModal, setShowModal }) => {
             <div className="modal-wrapper">
               <div className="modal-header">
                 <h1 className="h1">Share Your Result.</h1>
-                <CloseModalButton
+                {/* <CloseModalButton
                   aria-label="Close modal"
                   onClick={handleClose}
-                />
+                /> */}
+              <div className="modalClose-share" onClick={handleClose}></div>
               </div>
               <div className="modal-container">
                 <div className="modal-top-content">
