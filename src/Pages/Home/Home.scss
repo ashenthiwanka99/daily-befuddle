@@ -185,6 +185,7 @@
   justify-content: space-between;
 
   .guess-word-text {
+    width: 100%;
     color: #fff;
     font-family: "Lilita One", "cursive"; //regular
     font-size: 20px;
@@ -403,6 +404,7 @@
 
     .inner-box {
       width: 200px;
+      height: auto;
     }
   }
 
@@ -412,7 +414,8 @@
 @media screen and (max-width: 992px) {
   .container .center-box {
     max-width: 75vw;
-    .box{
+
+    .box {
       width: auto;
     }
   }
@@ -500,7 +503,7 @@
   }
 
   .container {
-    height: 70vh;
+    // height: 70vh;
   }
 
   .inner-container {
@@ -544,7 +547,11 @@
       width: 80vw;
 
       .inner-box {
+        height: auto;
         width: auto;
+        .guess-word-text {
+          width: 100%;
+        }
       }
     }
   }

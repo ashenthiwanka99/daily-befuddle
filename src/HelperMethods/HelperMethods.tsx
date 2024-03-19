@@ -51,7 +51,6 @@ export function HintGenarator(data) {
 
     if (data["Type A"] !== "") {
       Hint1ArrayTemp.push(data["Type A"])  
-      Hint1Array.push(Hint1ArrayTemp[0]);
     } 
     if (data["Type B"] !== "") {
       Hint1ArrayTemp.push(data["Type B"])
@@ -105,17 +104,33 @@ export function HintGenarator(data) {
     //     Hint2to4Array.push("It's also a " + Hint1Array[2]);      
     // }
 
-    if (Hint1ArrayTemp.length === 2) {
-      Hint2to4Array.push(`'${Hint1ArrayTemp[0]}' and It’s also a '${Hint1ArrayTemp[1]}'`);
-    } else if (Hint1ArrayTemp.length === 3) {
+    if (Hint1ArrayTemp.length === 1) {
+      Hint1Array.push(Hint1ArrayTemp[0]);
+    }
+    else if(Hint1ArrayTemp.length === 2) {
+      Hint1Array.push(`${Hint1ArrayTemp[0]} and It’s also a ${Hint1ArrayTemp[1]}`);    
+    }
+    else if (Hint1ArrayTemp.length === 3) {
       const randomIndex1 = Math.floor(Math.random() * 3);
       let randomIndex2 = Math.floor(Math.random() * 3);
       while (randomIndex2 === randomIndex1) {
         randomIndex2 = Math.floor(Math.random() * 3);
       }
       
-      Hint2to4Array.push(`'${Hint1ArrayTemp[randomIndex1]}' and It’s also a '${Hint1ArrayTemp[randomIndex2]}'`);
+      Hint1Array.push(`${Hint1ArrayTemp[randomIndex1]} and It’s also a ${Hint1ArrayTemp[randomIndex2]}`);
     }
+
+    // if (Hint1ArrayTemp.length === 2) {
+    //   Hint2to4Array.push(`${Hint1ArrayTemp[0]} and It’s also a ${Hint1ArrayTemp[1]}`);
+    // } else if (Hint1ArrayTemp.length === 3) {
+    //   const randomIndex1 = Math.floor(Math.random() * 3);
+    //   let randomIndex2 = Math.floor(Math.random() * 3);
+    //   while (randomIndex2 === randomIndex1) {
+    //     randomIndex2 = Math.floor(Math.random() * 3);
+    //   }
+      
+    //   Hint2to4Array.push(`${Hint1ArrayTemp[randomIndex1]} and It’s also a ${Hint1ArrayTemp[randomIndex2]}`);
+    // }
 
     //get era 
     if (data["Era"] !== "") {  

@@ -500,7 +500,7 @@ export default function Home() {
             <div className="guess-header-text">YOUR GUESSES:</div>
             <div className="guesses-box-list">
               <div className="inner-box">
-                <label className="guess-word-text">
+                <label className="guess-word-text" style={{height: guess1.Guess1 === undefined  ? '35px' : 'auto'}}>
                   {guess1.Guess1 !== undefined ? guess1.Guess1 : ""}
                 </label>
                 {guess1.Guess1 !== undefined ? (
@@ -517,7 +517,7 @@ export default function Home() {
                 )}
               </div>
               <div className="inner-box">
-                <label className="guess-word-text">
+                <label className="guess-word-text" style={{height: guess2.Guess2 === undefined  ? '35px' : 'auto'}}>
                   {guess2.Guess2 !== undefined ? guess2.Guess2 : ""}
                 </label>
                 {guess2.Guess2 !== undefined ? (
@@ -535,7 +535,7 @@ export default function Home() {
               </div>
 
               <div className="inner-box">
-                <label className="guess-word-text">
+                <label className="guess-word-text" style={{height: guess3.Guess3 === undefined  ? '35px' : 'auto'}}>
                   {guess3.Guess3 !== "" ? guess3.Guess3 : ""}
                 </label>
                 {guess3.Guess3 !== undefined ? (
@@ -552,7 +552,7 @@ export default function Home() {
                 )}
               </div>
               <div className="inner-box">
-                <label className="guess-word-text">
+                <label className="guess-word-text" style={{height: guess4.Guess4 === undefined  ? '35px' : 'auto'}}>
                   {guess4.Guess4 !== "" ? guess4.Guess4 : ""}
                 </label>
                 {guess4.Guess4 !== undefined ? (
@@ -570,7 +570,7 @@ export default function Home() {
               </div>
 
               <div className="inner-box">
-                <label className="guess-word-text">
+                <label className="guess-word-text" style={{height: guess5.Guess5 === undefined  ? '35px' : 'auto'}}>
                   {guess5.Guess5 !== "" ? guess5.Guess5 : ""}
                 </label>
                 {guess5.Guess5 !== undefined ? (
@@ -605,7 +605,7 @@ export default function Home() {
             <div className="textbox-container inner-container">
               <input
                 type="text"
-                maxLength={100}
+                maxLength={60}
                 value={isGuess.toUpperCase()}
                 placeholder="ENTER YOUR GUESS HERE"
                 onChange={handleChange}
@@ -633,7 +633,7 @@ export default function Home() {
           <div className="hint-container inner-container">
             <div className="text">HINTS</div>
             <div className="rowStyle">
-              <div className="text">01.</div>
+              <div className="text" style={{marginRight : "3px"}}>01.</div>
               <div className="coloredDivStyle">
                 <label className="hint-text">
                   {cookiesHint1["Hint-1"] === undefined

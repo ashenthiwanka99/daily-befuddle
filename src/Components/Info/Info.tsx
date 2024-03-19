@@ -59,15 +59,14 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
                       <ul>
                         <li className="li-text">
                           A popular title has had its name transformed into
-                          something else.{" "}
+                          something else.
                           <span className="pink-text">
-                            {" "}
                             Each word has been swapped for another word
-                          </span>{" "}
+                          </span>
                           (or words!) that has the same meaning.
                         </li>
                         <li className="li-text">
-                          Type in your guess and hit enter or the{" "}
+                          Type in your guess and hit enter or the
                           <span className="pink-text">Submit</span> button.
                         </li>
                         <li className="li-text">

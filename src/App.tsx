@@ -10,7 +10,6 @@ import Banner from "../src/Assets/Images/upsellBanner.gif";
 import "./App.scss";
 
 
-
 function App() {
   const [cookiesDailyWin, setCookieDailyWin ,removeCookieDailyWin] = useCookies(["DailyWin"]);
   const [cookiesAgreed, setCookieAgreed ,removeCookieAgreed] = useCookies(["CookiesAgreed"]);
@@ -57,6 +56,7 @@ function App() {
       </>
       <div className="main">
         <BrowserRouter>
+       
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/result" element={<Result />} />

@@ -84,7 +84,7 @@ export default function Navigation() {
             </div>
             {cookiesGameStatus.GameStatus === "Ended"? <></> : 
               <div className="div-stats div-btn stats" onClick={handleClickGuesses}>
-               <div className="lable">Gueses</div>
+               <div className="lable">Guesses</div>
                <img className="icon stats" src={Guesses} alt="Logo"></img>
               </div>
             }  

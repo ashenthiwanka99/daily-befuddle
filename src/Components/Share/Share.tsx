@@ -24,7 +24,7 @@ export const ModalShare = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
   const [copyTextResult, setCopyTextresult] = useState(null as any);
   const [copyText, setCopyText] = useState("");
-  const [buttonText, setButtonText] = useState("Copy to Clipbord.");
+  const [buttonText, setButtonText] = useState("Copy to Clipboard.");
   const [cookiesDailyWin, setCookieDailyWin ,removeCookieDailyWin] = useCookies(["DailyWin"]);
   const [cookiesIsAccessible, setCookieIsAccessible ,removeIsAccessible] = useCookies(["IsAccessible"]);
   const [cookiesGuessArray, setCookieGuessArray, removeCookieGuessArray] = useCookies(["GuessArray"]);
@@ -38,12 +38,12 @@ export const ModalShare = ({ showModal, setShowModal }) => {
 
   const handleClose =()=>{
     setShowModal(prev => !prev);
-    setButtonText("Copy to Clipbord.")
+    setButtonText("Copy to Clipboard.")
   }
 
   const toggleSwitch = () => {
     setIsToggled(!isToggled); 
-    setButtonText("Copy to Clipbord.")
+    setButtonText("Copy to Clipboard.")
   };
   
   const animation = useSpring({
