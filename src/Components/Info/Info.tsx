@@ -2,7 +2,7 @@ import { useRef, useEffect, useCallback } from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
-import test from "../../Assets/Images/modelCloseBtn.png";
+import RightArrow from "../../Assets/Images/right-arrow.png";
 import "./Info.scss";
 
 export const ModalInfo = ({ showModal, setShowModal }) => {
@@ -105,12 +105,14 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
                               BEST PISTOL
                             </label>
                           </div>
-                          <div className="arrow">
-                            <i
+                          <div>
+                            {/* <i
                               className="fa fa-arrow-right"
                               aria-hidden="true"
                               style={{ fontSize: "20px", color: "white" }}
-                            ></i>
+                              
+                            ></i> */}
+                            <img src={RightArrow} className="img-arrow" alt="an arrow, pointing to the right"></img>
                           </div>
                           <div className="box-correct">
                             <label className="guess-word-text">TOP GUN</label>
@@ -122,12 +124,14 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
                               PELVIS &nbsp;IS HONEST
                             </label>
                           </div>
-                          <div className="arrow">
-                            <i
+                          <div>
+                            {/* <i
                               className="fa fa-arrow-right"
                               aria-hidden="true"
                               style={{ fontSize: "20px", color: "white" }}
-                            ></i>
+                              
+                            ></i> */}
+                            <img src={RightArrow} className="img-arrow" alt="an arrow, pointing to the right"></img>
                           </div>
                           <div className="box-correct">
                             <label className="guess-word-text">
@@ -141,12 +145,14 @@ export const ModalInfo = ({ showModal, setShowModal }) => {
                               CRACKING CORRUPT
                             </label>
                           </div>
-                          <div className="arrow">
-                            <i
+                          <div>
+                            {/* <i
                               className="fa fa-arrow-right"
                               aria-hidden="true"
                               style={{ fontSize: "20px", color: "white" }}
-                            ></i>
+                              
+                            ></i> */}
+                            <img src={RightArrow} className="img-arrow" alt="an arrow, pointing to the right"></img>
                           </div>
                           <div className="box-correct">
                             <label className="guess-word-text">

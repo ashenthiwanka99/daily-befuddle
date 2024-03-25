@@ -89,7 +89,6 @@
         flex-direction: column;
         max-width: 50%;
         margin-right: 10px;
-
         .left-box-content {
           background: -webkit-linear-gradient(0deg, rgba(252, 73, 126, 0.15) 0, rgba(127, 48, 255, 0.15) 100%);
           background: -moz-linear-gradient(90deg, rgba(252, 73, 126, 0.15) 0, rgba(127, 48, 255, 0.15) 100%);
@@ -166,7 +165,9 @@
                   margin: 0;
                 }
               }
-
+              .img-arrow{
+                height: 20px;
+              }
               .box-correct {
                 padding: 10px;
                 border-radius: 15px;
