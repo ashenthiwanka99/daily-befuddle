@@ -1,3 +1,7 @@
+.landscape-block {
+  display: none;
+}
+
 .body {
   font-family: Arial, sans-serif;
   display: flex;
@@ -273,5 +277,28 @@
     left: 1%;
     z-index: 10;
     width: 98%;
+  }
+}
+
+@media screen and (max-width: 992px) and (orientation: landscape){
+  .body{
+    display: none;
+  }
+  .landscape-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: #fff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .landscape-block p {
+    font-size: 20px;
+    text-align: center;
   }
 }

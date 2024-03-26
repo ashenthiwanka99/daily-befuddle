@@ -118,30 +118,62 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 100px;
-        .text-number{
-          color: #fff;
-          font-family: "Lilita One", "cursive";
-          font-size: 24px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-          margin-bottom: 10px;
+        max-width : 125px;
+
+        .box-pink-border {
+          padding: 5px;
+          border-radius: 15px;
+          background: #101010;
+          border: solid 3px #ff4880;
+          text-align: center;
+          width: 100%;
+          margin: 5px;
+
+          .text-number {
+            color: #fff;
+            font-family: "Lilita One", "cursive"; //regular
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-transform: capitalize;
+            margin: 0;
+          }
         }
+        // .text-number{
+        //   color: #fff;
+        //   font-family: "Lilita One", "cursive";
+        //   font-size: 24px;
+        //   font-style: normal;
+        //   font-weight: 400;
+        //   line-height: normal;
+        //   margin-bottom: 10px;
+        // }
         .text-lable{
-          color: #fff;
+          color: #ff4880;
           font-family: "Lilita One", "cursive";
-          font-size: 16px;
+          font-size: 20px;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
           margin-bottom: 10px;
+          text-transform: uppercase;
         }
       }
     }
 
     .next-game-time{
-      margin-top: 30px;
+      .pink-text {
+        color: #ff4880;
+        font-family:  "Lilita One", "cursive";//regular
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 6px #000000;
+        text-align: center;
+      }
       .text {
         color: #fff;
         font-family:  "Lilita One", "cursive";//regular
@@ -150,6 +182,7 @@
         font-weight: 400;
         line-height: normal;
         margin-bottom: 10px;
+        text-shadow: 2px 2px 6px #000000;
       }
     }
   }
@@ -163,6 +196,12 @@
     padding: 0;
     z-index: 10;
     cursor: pointer;
+  }
+  .apexcharts-yaxis-labels text {
+    fill: #ff4880;
+  }
+  .apexcharts-yaxis-labels text:contains('Guess') {
+    fill: white;
   }
 }
 

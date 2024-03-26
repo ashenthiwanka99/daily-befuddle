@@ -133,7 +133,7 @@ export const ModalStats = ({ showModal, setShowModal }) => {
         },
       },
       xaxis: {
-        categories: ["1", "2", "3", "4", "5","X"],
+        categories: ["1 Guess", "2 Guess", "3 Guess", "4 Guess", "5 Guess","X FAIL"],
         labels: {
           show: false,
         },
@@ -142,8 +142,13 @@ export const ModalStats = ({ showModal, setShowModal }) => {
         labels: {
           show: true,
           style: {
-            colors: '#ffffff',
-            fontSize: '14px', 
+            colors: 'white',
+            fontSize: '16px', 
+            fontFamily: '"Lilita One", cursive',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            lineHeight: 'normal'
+
           },
         },
         fill: {
@@ -160,12 +165,12 @@ export const ModalStats = ({ showModal, setShowModal }) => {
     series: [
       {
         data: [
-          { x: "1", y: Guess1Percentage() , fillColor: '#90ee90' },
-          { x: "2", y: Guess2Percentage(), fillColor: '#90ee90' },
-          { x: "3", y: Guess3Percentage(), fillColor: '#90ee90' },
-          { x: "4", y: Guess4Percentage(), fillColor: '#90ee90' },
-          { x: "5", y: Guess5Percentage(), fillColor: '#90ee90' },
-          { x: "X", y: LostPercentage(), fillColor: '#F08080' },
+          { x: "1", y: Guess1Percentage() , fillColor: '#487e1e' },
+          { x: "2", y: Guess2Percentage(), fillColor: '#487e1e' },
+          { x: "3", y: Guess3Percentage(), fillColor: '#487e1e' },
+          { x: "4", y: Guess4Percentage(), fillColor: '#487e1e' },
+          { x: "5", y: Guess5Percentage(), fillColor: '#487e1e' },
+          { x: "X", y: LostPercentage(), fillColor: '#cc2f42' },
         ],
       },
     ],
@@ -213,6 +218,10 @@ export const ModalStats = ({ showModal, setShowModal }) => {
                 <div className="background-heading-stats">
                   <label className="h1">Your Stats.</label>
                 </div>
+                <div className="next-game-time">
+                  <label className="text">Next Befuddle in: </label>
+                  <span className="pink-text">{countdown.hours}h {countdown.minutes}m {countdown.seconds}s</span> 
+               </div> 
                 <div className="div-center-stats">
                   <div className="chart">
                     <ReactApexChart
@@ -226,27 +235,39 @@ export const ModalStats = ({ showModal, setShowModal }) => {
 
                   <div className="game-info">
                     <div className="box-played">
-                      <div className="text-number">{cookiesTotalGames.TotalGames === undefined ? 0 : cookiesTotalGames.TotalGames}</div>
+                      <div className="box-pink-border">
+                       <label className="text-number">
+                         {cookiesTotalGames.TotalGames === undefined ? 0 : cookiesTotalGames.TotalGames}
+                        </label>
+                      </div>
                       <div className="text-lable">Played</div>
                     </div>
                     <div className="box-played">
-                      <div className="text-number">{calculateWinPercentage(cookiesTotalGames.TotalGames, cookiesTotalWonGames.TotalWonGames) === "NaN" ? 0+"%" : calculateWinPercentage(cookiesTotalGames.TotalGames, cookiesTotalWonGames.TotalWonGames)+"%"}</div>
+                      <div className="box-pink-border">
+                       <label className="text-number">
+                       {calculateWinPercentage(cookiesTotalGames.TotalGames, cookiesTotalWonGames.TotalWonGames) === "NaN" ? 0+"%" : calculateWinPercentage(cookiesTotalGames.TotalGames, cookiesTotalWonGames.TotalWonGames)+"%"}
+                        </label>
+                      </div>
                       <div className="text-lable">Won</div>
                     </div>
                     <div className="box-played">
-                      <div className="text-number">{cookiesCurrentStreak.CurrentStreak === undefined ? 0 : cookiesCurrentStreak.CurrentStreak}</div>
+                      <div className="box-pink-border">
+                       <label className="text-number">
+                       {cookiesCurrentStreak.CurrentStreak === undefined ? 0 : cookiesCurrentStreak.CurrentStreak}
+                        </label>
+                      </div>
                       <div className="text-lable">Current Streak</div>
                     </div>
                     <div className="box-played">
-                      <div className="text-number">{cookiesMaxStreak.MaxStreak === undefined ? 0 : cookiesMaxStreak.MaxStreak}</div>
+                      <div className="box-pink-border">
+                       <label className="text-number">
+                       {cookiesMaxStreak.MaxStreak === undefined ? 0 : cookiesMaxStreak.MaxStreak}
+                        </label>
+                      </div>
                       <div className="text-lable">Max Streak</div>
                     </div>
                   </div>              
-               </div>  
-               <div className="next-game-time">
-                  <label className="text">Next Befuddle in: </label>
-                  <label className="text">{countdown.hours}h {countdown.minutes}m {countdown.seconds}s</label>
-                  </div>               
+               </div>                            
               </div>
               <div className="modalClose-info" onClick={handleClose}></div>
             </div>

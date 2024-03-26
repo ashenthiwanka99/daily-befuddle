@@ -33,9 +33,13 @@ function App() {
       "_blank"
     );
   };
-  
   return (
-    <div className="body">
+  
+   <>
+    <div className="landscape-block">
+      <p>Please rotate your device to portrait mode</p>
+    </div>
+   <div className="body">
       {cookiesDailyWin.DailyWin?
         <div className="confettis">
           <div className="confetti"></div>
@@ -113,6 +117,7 @@ function App() {
         <div className="background-animation"></div>
       </div>
     </div>
+   </> 
     
   );
 }
