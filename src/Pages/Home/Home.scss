@@ -287,7 +287,8 @@
   .container {
     flex-direction: column-reverse;
     align-items: center;
-    height: auto;
+    // height: auto;
+    height: 80vh;
   }
 
   .center-container {
