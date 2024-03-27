@@ -11,9 +11,9 @@ export async function xlsxDataHandle(setValue) {
       header: true,
       complete: (results) => {
        setValue(results.data[datePosition - 1]);
-       console.log(results.data[datePosition - 1]);
-      //setValue(results.data[52]);
-      // console.log(results.data[52]);
+      //  console.log(results.data[datePosition - 1]);
+      // setValue(results.data[114]);
+      // console.log(results.data[114]);
         
       },
     }
@@ -76,8 +76,8 @@ export function HintGenarator(data) {
    var lastLetterOT = splitOT[splitOT.length-1].charAt(splitOT[splitOT.length-1].length-1).toLowerCase();
    var lastLetterBF = splitBF[splitBF.length-1].charAt(splitBF[splitBF.length-1].length-1).toLowerCase();
 
-   if(lastLetterOT !== lastLetterBF && splitOT[0].toLowerCase() !== splitBF[0].toLowerCase() && splitOT[splitOT.length-1].toLowerCase() !== splitBF[splitBF.length-1].toLowerCase())
-    {
+   if(lastLetterOT !== lastLetterBF && splitOT[splitOT.length-1].toLowerCase() !== splitBF[splitBF.length-1].toLowerCase())
+    {   
         Hint2to4Array.push("The last letter is '" + lastLetterOT.toUpperCase() + "'");        
     }
   
@@ -204,11 +204,11 @@ export function HintGenarator(data) {
    var finalHint5 = removeValuesFromArray(Hint5Array,[0])
    const randomIndex5 = getRandomIndex(finalHint5);
    
-  //  console.log(Hint1Array,"Hint 1");
-  //  console.log(Hint2to4Array,"Hint 2 to 4");
-  //  console.log(Hint5Array,"Hint 5 ");
-  //  console.log(finalHints2to4,"Hint 2 to 4 Filtered"); 
-  //  console.log(finalHint5[randomIndex5],"Hint 5 Filtered");
+   console.log(Hint1Array,"Hint 1");
+   console.log(Hint2to4Array,"Hint 2 to 4");
+   console.log(Hint5Array,"Hint 5 ");
+   console.log(finalHints2to4,"Hint 2 to 4 Filtered"); 
+   console.log(finalHint5[randomIndex5],"Hint 5 Filtered");
    
  
    return {Hint1: Hint1Array[0], Hint2: finalHints2to4[0] , Hint3: finalHints2to4[1] , Hint4: finalHints2to4[2] , Hint5: finalHint5[randomIndex5]}  
