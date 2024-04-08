@@ -272,3 +272,10 @@
     }
   }
 }
+
+@media screen and (min-width: 2560px) {
+  //For 4K Displays (Ultra HD)
+  .background .modalWrapper-info {
+    max-width: 35vw;
+  }
+}
