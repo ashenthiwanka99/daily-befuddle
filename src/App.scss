@@ -11,16 +11,17 @@
   background-position: center;
   background-size: cover;
   overflow: hidden;
+  background-image: url("../src/Assets/Images/DBFD_background_art.png");  
 }
 
 .background-animation {
   content: "";
   position: fixed;
-  left: -355px;
-  bottom: -725px;
-  width: 3000px;
-  height: 2800px;
-  background-image: url("../src/Assets/Images/BFD_background.png");
+  left: -360px;
+  bottom: -651px;
+  width: 3321px;
+  height: 3060px;
+  background-image: url("../src/Assets/Images/BG_Swirl.png");
   background-position: center;
   background-size: cover;
   animation: rotation  120s linear infinite;
@@ -277,6 +278,20 @@
     left: 1%;
     z-index: 10;
     width: 98%;
+  }
+
+  .background-animation {
+    content: "";
+    position: fixed;
+    left: -230px;
+    bottom: -300px;
+    width: 1000px;
+    height: 1500px;
+    background-image: url("../src/Assets/Images/BG_Swirl.png");
+    background-position: center;
+    background-size: cover;
+    animation: rotation  120s linear infinite;
+    z-index: 0;
   }
 }
 
