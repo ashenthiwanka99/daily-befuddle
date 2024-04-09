@@ -133,7 +133,7 @@ export const ModalStats = ({ showModal, setShowModal }) => {
         },
       },
       xaxis: {
-        categories: ["1 Guess", "2 Guess", "3 Guess", "4 Guess", "5 Guess","X FAIL"],
+        categories: ["1st Guess", "2nd Guess", "3rd Guess", "4th Guess", "5th Guess","FAIL"],
         labels: {
           show: false,
         },
