@@ -118,7 +118,7 @@ export default function Home() {
       navigate("/result/");
     } else {
       xlsxDataHandle(setXlsxData);
-      console.log(data);
+      // console.log(data);
     }
   }, []);
 
@@ -283,7 +283,7 @@ export default function Home() {
         let obj = { Guess: guess5.Guess5, Result: guess5Res["Guess5-Res"] };
         guessArray.push(obj);
       }
-      console.log(guessArray);
+      // console.log(guessArray);
     }
   }, []);
 
@@ -375,7 +375,7 @@ export default function Home() {
     }
 
     if (guessArray[4] !== undefined && guessArray[4].Result === false) {
-      console.log(guessArray);    
+      // console.log(guessArray);    
       setGameStatus(true);
       setCookieDailyWin("DailyWin", false, {
         path: "/",

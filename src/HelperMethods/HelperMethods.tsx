@@ -204,11 +204,11 @@ export function HintGenarator(data) {
    var finalHint5 = removeValuesFromArray(Hint5Array,[0])
    const randomIndex5 = getRandomIndex(finalHint5);
    
-   console.log(Hint1Array,"Hint 1");
-   console.log(Hint2to4Array,"Hint 2 to 4");
-   console.log(Hint5Array,"Hint 5 ");
-   console.log(finalHints2to4,"Hint 2 to 4 Filtered"); 
-   console.log(finalHint5[randomIndex5],"Hint 5 Filtered");
+  //  console.log(Hint1Array,"Hint 1");
+  //  console.log(Hint2to4Array,"Hint 2 to 4");
+  //  console.log(Hint5Array,"Hint 5 ");
+  //  console.log(finalHints2to4,"Hint 2 to 4 Filtered"); 
+  //  console.log(finalHint5[randomIndex5],"Hint 5 Filtered");
    
  
    return {Hint1: Hint1Array[0], Hint2: finalHints2to4[0] , Hint3: finalHints2to4[1] , Hint4: finalHints2to4[2] , Hint5: finalHint5[randomIndex5]}  
