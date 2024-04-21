@@ -106,8 +106,9 @@
       align-items: center;
       padding: 8px;
       border-radius: 10px;
-      color: #ffffff;
-      font-family: "Luckiest Guy", "cursive"; //header
+      color: #000;
+      // font-family: "Luckiest Guy", "cursive"; //header
+      font-family: "Lilita One", "cursive"; //regular
       font-size: 20px;
       font-style: normal;
       font-weight: 400;
@@ -150,6 +151,7 @@
       font-weight: 400;
       line-height: normal;
       text-transform: capitalize;
+      margin-bottom: 0px;
     }
   }
 }
@@ -262,7 +264,8 @@
     margin-right: 8px;
     padding: 10px 20px;
     color: #fff;
-    font-family: "Luckiest Guy", "cursive";
+    // font-family: "Luckiest Guy", "cursive";
+    font-family: "Lilita One", "cursive"; //regular
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
