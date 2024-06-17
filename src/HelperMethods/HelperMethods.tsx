@@ -4,14 +4,14 @@ import CryptoJS from "crypto-js";
 
 export async function xlsxDataHandle(setValue) {
   var datePosition = moment().utc().local().dayOfYear();
-  await Papa.parse(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcjHvJtHQqpUVd0FhYmrsZoLXSJUl6zQvh3_UkAuxLOJIQHWIKIJ1U-ZyIAap9z3XoQD3MWqfaIT31/pub?output=csv",
+  var googleSheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vREAa0uyNg1f43n5iiFofXfqR-IhIP0-VFifZoxDhp5DiCLpQK9MO3AaeqMqDQ6ag/pub?output=csv"
+  await Papa.parse(googleSheetURL,
     {
       download: true,
       header: true,
       complete: (results) => {
-       setValue(results.data[datePosition - 1]);
-      //  console.log(results.data[datePosition - 1]);
+      setValue(results.data[datePosition - 1]);
+      console.log(results.data[datePosition - 1]);
       // setValue(results.data[114]);
       // console.log(results.data[114]);
         
