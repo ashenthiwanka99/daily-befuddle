@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import "./Share.scss"
 import { useCookies } from 'react-cookie';
+import React from 'react';
 
 const CloseModalButton = styled(MdClose)`
   cursor: pointer;
@@ -23,7 +24,7 @@ export const ModalShare = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
   const [copyTextResult, setCopyTextresult] = useState(null as any);
   const [copyText, setCopyText] = useState("");
-  const [buttonText, setButtonText] = useState("Copy to Clipbord.");
+  const [buttonText, setButtonText] = useState("Copy to Clipboard.");
   const [cookiesDailyWin, setCookieDailyWin ,removeCookieDailyWin] = useCookies(["DailyWin"]);
   const [cookiesIsAccessible, setCookieIsAccessible ,removeIsAccessible] = useCookies(["IsAccessible"]);
   const [cookiesGuessArray, setCookieGuessArray, removeCookieGuessArray] = useCookies(["GuessArray"]);
@@ -37,12 +38,12 @@ export const ModalShare = ({ showModal, setShowModal }) => {
 
   const handleClose =()=>{
     setShowModal(prev => !prev);
-    setButtonText("Copy to Clipbord.")
+    setButtonText("Copy to Clipboard.")
   }
 
   const toggleSwitch = () => {
     setIsToggled(!isToggled); 
-    setButtonText("Copy to Clipbord.")
+    setButtonText("Copy to Clipboard.")
   };
   
   const animation = useSpring({
@@ -70,6 +71,17 @@ export const ModalShare = ({ showModal, setShowModal }) => {
 
   function handleCopyText()
   {
+    if (cookiesGuessArray.GuessArray.length < 5 && cookiesGuessArray.GuessArray.length !== 0) {
+      while (cookiesGuessArray.GuessArray.length < 5) {
+        let _array = cookiesGuessArray.GuessArray;
+        _array.push(null);
+        setCookieGuessArray("GuessArray", _array, {
+          path: "/",
+          expires: UTCExpireTime(),
+        });
+      }
+    }
+    
     let result = GenarateCopyText(cookiesDailyWin.DailyWin,cookiesGuessArray.GuessArray)    
     setCopyTextresult(result)
   }
@@ -82,7 +94,6 @@ export const ModalShare = ({ showModal, setShowModal }) => {
     },[keyPress]);  
 
     useEffect(() => {
-
       setCopyText(isToggled ? copyTextResult?.textAccessible : copyTextResult?.textEmoji )
       setCookieIsAccessible("IsAccessible" , isToggled , { path: '/',  expires : UTCNoExpireTime()});  
     }, [isToggled])
@@ -90,29 +101,77 @@ export const ModalShare = ({ showModal, setShowModal }) => {
   return (
     <>
       {showModal ? (
-        <div className='background' onClick={closeModal} ref={modalRef}>
-        <animated.div style={animation}>
-            <div className='modalWrapper'>
-              <div className='modalContent'>   
-                <h1 className='h1'>Share Your Result.</h1>  
-                <div className='div-center'>
-                <div className='div-switch'>
-                <label className='text-switch'>Accessible Mode</label>
-                <label className="toggle-switch">
-                 <input type="checkbox" checked={isToggled} onChange={toggleSwitch} />
-                 <span className="slider round"></span>
-                 </label>
-                </div>           
-                <textarea  className="textarea" defaultValue={copyText}/>                         
-                </div>  
-                <button className="button primary-btn"  onClick={handleCopy}> 
-                   {buttonText.toUpperCase()}
-                    <i className="fa-solid fa-copy" style={{marginLeft:"16px"}}></i>
-                </button>                    
+        <div className="background" onClick={closeModal} ref={modalRef}>
+          <animated.div style={animation}>
+            <div className="modal-wrapper">
+              <div className="modal-header">
+                <h1 className="h1">Share Your Result.</h1>
+                {/* <CloseModalButton
+                  aria-label="Close modal"
+                  onClick={handleClose}
+                /> */}
+              <div className="modalClose-share" onClick={handleClose}></div>
+              </div>
+              <div className="modal-container">
+                <div className="modal-top-content">
+                  <div className="div-switch">
+                    <label className="text-switch">Accessible Mode</label>
+                    <label className="toggle-switch">
+                      <input
+                        type="checkbox"
+                        checked={isToggled}
+                        onChange={toggleSwitch}
+                      />
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+                <div className="modal-mid-content">
+                <textarea className="textarea" defaultValue={copyText} />
+                </div>
+              </div>
+              <div className="modal-footer">
+              <button className="button primary-btn" onClick={handleCopy}>
+                  {buttonText.toUpperCase()}
+                  <i
+                    className="fa-solid fa-copy"
+                    style={{ marginLeft: "16px" }}
+                  ></i>
+                </button>
+              </div>
             </div>
-                 <CloseModalButton aria-label='Close modal' onClick={handleClose}/>
-            </div>
-        </animated.div>
+
+            {/* <div className="modalWrapper">
+              <div className="modalContent">
+                <h1 className="h1">Share Your Result.</h1>
+                <div className="div-center">
+                  <div className="div-switch">
+                    <label className="text-switch">Accessible Mode</label>
+                    <label className="toggle-switch">
+                      <input
+                        type="checkbox"
+                        checked={isToggled}
+                        onChange={toggleSwitch}
+                      />
+                      <span className="slider round"></span>
+                    </label>
+                  </div>
+                  <textarea className="textarea" defaultValue={copyText} />
+                </div>
+                <button className="button primary-btn" onClick={handleCopy}>
+                  {buttonText.toUpperCase()}
+                  <i
+                    className="fa-solid fa-copy"
+                    style={{ marginLeft: "16px" }}
+                  ></i>
+                </button>
+              </div>
+              <CloseModalButton
+                aria-label="Close modal"
+                onClick={handleClose}
+              />
+            </div> */}
+          </animated.div>
         </div>
       ) : null}
     </>

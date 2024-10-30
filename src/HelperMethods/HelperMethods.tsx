@@ -4,15 +4,16 @@ import CryptoJS from "crypto-js";
 
 export async function xlsxDataHandle(setValue) {
   var datePosition = moment().utc().local().dayOfYear();
-  await Papa.parse(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcjHvJtHQqpUVd0FhYmrsZoLXSJUl6zQvh3_UkAuxLOJIQHWIKIJ1U-ZyIAap9z3XoQD3MWqfaIT31/pub?output=csv",
+  var googleSheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vREAa0uyNg1f43n5iiFofXfqR-IhIP0-VFifZoxDhp5DiCLpQK9MO3AaeqMqDQ6ag/pub?output=csv"
+  await Papa.parse(googleSheetURL,
     {
       download: true,
       header: true,
       complete: (results) => {
-       setValue(results.data[datePosition - 1]);
-        //setValue(results.data[78]);
-        console.log(results.data[datePosition - 1]);
+      setValue(results.data[datePosition - 1]);
+      console.log(results.data[datePosition - 1]);
+      // setValue(results.data[114]);
+      // console.log(results.data[114]);
         
       },
     }
@@ -44,19 +45,19 @@ export function UTCNoExpireTime() {
 export function HintGenarator(data) {
     //genarate hint 1
     var Hint1Array = [];
+    var Hint1ArrayTemp = [];
     var Hint2to4Array = [];
     var Hint5Array = [];
 
     if (data["Type A"] !== "") {
-        Hint1Array.push(data["Type A"])       
+      Hint1ArrayTemp.push(data["Type A"])  
     } 
     if (data["Type B"] !== "") {
-        Hint1Array.push(data["Type B"])
+      Hint1ArrayTemp.push(data["Type B"])
     } 
     if (data["Type C"] !== "") {
-        Hint1Array.push(data["Type C"])
+      Hint1ArrayTemp.push(data["Type C"])
     }
-    //console.log(Hint1Array.length);
     
    //genarate hint 2 to 4
    var splitOT =  data["Original Title"].split(/\s+/);
@@ -75,8 +76,8 @@ export function HintGenarator(data) {
    var lastLetterOT = splitOT[splitOT.length-1].charAt(splitOT[splitOT.length-1].length-1).toLowerCase();
    var lastLetterBF = splitBF[splitBF.length-1].charAt(splitBF[splitBF.length-1].length-1).toLowerCase();
 
-   if(lastLetterOT !== lastLetterBF && splitOT[0].toLowerCase() !== splitBF[0].toLowerCase() && splitOT[splitOT.length-1].toLowerCase() !== splitBF[splitBF.length-1].toLowerCase())
-    {
+   if(lastLetterOT !== lastLetterBF && splitOT[splitOT.length-1].toLowerCase() !== splitBF[splitBF.length-1].toLowerCase())
+    {   
         Hint2to4Array.push("The last letter is '" + lastLetterOT.toUpperCase() + "'");        
     }
   
@@ -94,14 +95,42 @@ export function HintGenarator(data) {
     }
 
     //get additonal media type 
-    if(Hint1Array.length === 2)
-    {
-        Hint2to4Array.push("It's also a " + Hint1Array[1]);            
+    // if(Hint1ArrayTemp.length === 1)
+    // {
+    //     Hint1Array.push("It's also a " + Hint1Array[1]);            
+    // }
+    // else if(Hint1Array.length === 3)
+    // {
+    //     Hint2to4Array.push("It's also a " + Hint1Array[2]);      
+    // }
+
+    if (Hint1ArrayTemp.length === 1) {
+      Hint1Array.push(Hint1ArrayTemp[0]);
     }
-    else if(Hint1Array.length === 3)
-    {
-        Hint2to4Array.push("It's also a " + Hint1Array[2]);      
+    else if(Hint1ArrayTemp.length === 2) {
+      Hint1Array.push(`${Hint1ArrayTemp[0]} and It’s also a ${Hint1ArrayTemp[1]}`);    
     }
+    else if (Hint1ArrayTemp.length === 3) {
+      const randomIndex1 = Math.floor(Math.random() * 3);
+      let randomIndex2 = Math.floor(Math.random() * 3);
+      while (randomIndex2 === randomIndex1) {
+        randomIndex2 = Math.floor(Math.random() * 3);
+      }
+      
+      Hint1Array.push(`${Hint1ArrayTemp[randomIndex1]} and It’s also a ${Hint1ArrayTemp[randomIndex2]}`);
+    }
+
+    // if (Hint1ArrayTemp.length === 2) {
+    //   Hint2to4Array.push(`${Hint1ArrayTemp[0]} and It’s also a ${Hint1ArrayTemp[1]}`);
+    // } else if (Hint1ArrayTemp.length === 3) {
+    //   const randomIndex1 = Math.floor(Math.random() * 3);
+    //   let randomIndex2 = Math.floor(Math.random() * 3);
+    //   while (randomIndex2 === randomIndex1) {
+    //     randomIndex2 = Math.floor(Math.random() * 3);
+    //   }
+      
+    //   Hint2to4Array.push(`${Hint1ArrayTemp[randomIndex1]} and It’s also a ${Hint1ArrayTemp[randomIndex2]}`);
+    // }
 
     //get era 
     if (data["Era"] !== "") {  
@@ -229,9 +258,13 @@ export function DecryptOT(value) {
 
   export function AccuracyCheck(OriginalTitle , submitedTitle) {
   const cleanAnswer = submitedTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
-  const cleanCorrectAnswer = OriginalTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+  // const cleanCorrectAnswer = OriginalTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const cleanCorrectAnswer = OriginalTitle.toLowerCase().replace(/[^a-z\u00C0-\u017F0-9]/g, '');
 
-  const similarity = calculateSimilarity(cleanAnswer, cleanCorrectAnswer);
+  const normalizedStr1 = cleanAnswer.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const normalizedStr2 = cleanCorrectAnswer.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); 
+
+  const similarity = calculateSimilarity(normalizedStr1, normalizedStr2);
   
   if (
     similarity >= 90 || 
@@ -354,15 +387,7 @@ export function GenarateCopyText(isWin , guessArray)
   };
 
   const Emojitext = guessArray.map((index) => {
-    return (
-      index === null
-        ? "⬜"
-        : index.Guess === "SKIPPED"
-        ? "⬛"
-        : index.Result
-        ? "🟩"
-        : "🟥"
-    );
+    return index === null ? "⬜" : index.Guess === "SKIPPED" ? "⬛" : index.Result ? "🟩" : "🟥";
   }).join('');
 
   

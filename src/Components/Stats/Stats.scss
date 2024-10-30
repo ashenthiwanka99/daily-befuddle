@@ -1,29 +1,34 @@
 .background {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: #ffffff70;
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 3;
-  top: -10px;
+  top: 0px;
 
-  .modalWrapper-info {
-    width: 800px;
-    height: 600px;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
+  .modalWrapper-stats {
+    max-width: 90vw;
+    width: auto;
+    height: 100%;
+    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.8);
     display: flex;
     grid-template-columns: 1fr 1fr;
     position: relative;
-    right: 40px;
     z-index: 10;
     flex-direction: column;
-    border-radius: 20px;
-    background: linear-gradient(226deg, #000 0%, #101010 100%);
+    border-radius: 8px !important;
+    background: -webkit-radial-gradient(38% -25%, rgba(252, 73, 126, 1) 0, rgba(252, 73, 126, 0.6) 0, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 100%), -webkit-radial-gradient(62% -25%, rgba(127, 48, 255, 0.6) 0, rgba(141, 50, 242, 0) 40%, rgba(141, 50, 242, 0) 100%), -webkit-linear-gradient(-90deg, rgba(237, 56, 56, 1) 0, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 100%) !important;
+    background: -moz-radial-gradient(38% -25%, rgba(252, 73, 126, 1) 0, rgba(252, 73, 126, 0.6) 0, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 100%), -moz-radial-gradient(62% -25%, rgba(127, 48, 255, 0.6) 0, rgba(141, 50, 242, 0) 40%, rgba(141, 50, 242, 0) 100%), -moz-linear-gradient(180deg, rgba(237, 56, 56, 1) 0, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 100%) !important;
+    background: radial-gradient(at 38% -25%, rgba(252, 73, 126, 1) 0, rgba(252, 73, 126, 0.6) 0, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 100%), radial-gradient(at 62% -25%, rgba(127, 48, 255, 0.6) 0, rgba(141, 50, 242, 0) 40%, rgba(141, 50, 242, 0) 100%), linear-gradient(180deg, rgba(237, 56, 56, 1) 0, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 100%) !important;
+    border: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #7f30ff, #ff4880);
   }
 
-  .modalContent-info {
+  .modalContent-stats {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,36 +36,56 @@
     padding: 20px;
     line-height: 1.8;
     color: #141414;
+    overflow: hidden;
+    max-height: 85vh;
 
-    .background-heading {
-      position: relative;
-      right: 80px;
-      width: 40rem;
-      height: 40px;
-      background: linear-gradient(180deg, #622E9F 0%, #CB39FF 100%); 
-      margin-bottom: 20px;
-      margin-top: 20px;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
+    // .background-heading {
+    //   // position: relative;
+    //   // left: -10%;
+    //   // width: 95%;
+    //   // height: 40px;
+    //   // background: linear-gradient(180deg, #622E9F 0%, #CB39FF 100%); 
+    //   // margin-bottom: 20px;
+    //   // margin-top: 20px;
+    //   // border-top-right-radius: 20px;
+    //   // border-bottom-right-radius: 20px;
+    //   .h1 {
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     margin-left: 10%;
+    //     font-size: 2em;
+    //     font-weight: 400;
+    //     color: #fff;
+    //     font-family: "Luckiest Guy", "cursive";//header;
+    //   }
+    // }
+
+    .background-heading-stats {
       .h1 {
         display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        margin-right: 149px;
-        font-size: 2em;
+        align-items: center;
+        justify-content: center;
+        font-size: 4.5rem;
         font-weight: 400;
-        color: #fff;
-        font-family: "Luckiest Guy", "cursive";//header;
+        font-family: "Luckiest Guy", "cursive"; //header
+        background: -webkit-linear-gradient(#7f30ff 0%, #ff4880 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
       }
     }
 
-    .div-center-info {
+    .div-center-stats {
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.1);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       padding: 20px;
+      width: 95%;
+      max-height: 60vh;
+      overflow: hidden;
 
       .text-heading {
         color: #fff;
@@ -84,57 +109,115 @@
       .game-info {
         display: flex;
         flex-direction: row;
-        width: 700px;
+        width: 100%;
         justify-content: space-around;
+        flex-wrap: wrap;
       }
 
       .box-played {
         display: flex;
         flex-direction: column;
         align-items: center;
-        .text-number{
-          color: #fff;
-          font-family: "Lilita One", "cursive";
-          font-size: 24px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-          margin-bottom: 10px;
+        max-width : 125px;
+
+        .box-pink-border {
+          padding: 5px;
+          border-radius: 15px;
+          background: #101010;
+          border: solid 3px #ff4880;
+          text-align: center;
+          width: 100px;
+          margin: 5px;
+
+          .text-number {
+            color: #fff;
+            font-family: "Lilita One", "cursive"; //regular
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-transform: capitalize;
+            margin: 0;
+          }
         }
+        // .text-number{
+        //   color: #fff;
+        //   font-family: "Lilita One", "cursive";
+        //   font-size: 24px;
+        //   font-style: normal;
+        //   font-weight: 400;
+        //   line-height: normal;
+        //   margin-bottom: 10px;
+        // }
         .text-lable{
-          color: #fff;
+          color: #ff4880;
           font-family: "Lilita One", "cursive";
-          font-size: 16px;
+          font-size: 20px;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
           margin-bottom: 10px;
+          text-transform: uppercase;
+          text-align: center;
         }
       }
     }
 
     .next-game-time{
-      margin-top: 30px;
-      .text {
-        color: #fff;
+      .pink-text {
+        color: #ff4880;
         font-family:  "Lilita One", "cursive";//regular
-        font-size: 24px;
+        font-size: 20px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
         margin-bottom: 10px;
+        text-shadow: 2px 2px 6px #000000;
+        text-align: center;
+      }
+      .text {
+        color: #fff;
+        font-family:  "Lilita One", "cursive";//regular
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 6px #000000;
       }
     }
   }
 
   .modalClose {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: -10px;
+    right: -10px;
     width: 32px;
     height: 32px;
     padding: 0;
     z-index: 10;
     cursor: pointer;
+  }
+  .apexcharts-yaxis-labels text {
+    fill: #ff4880;
+  }
+  .apexcharts-yaxis-labels text:contains('Guess') {
+    fill: white;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .background{
+    .modalContent-stats {    
+      .div-center-stats{
+        overflow: auto;
+      }
+      
+      .background-heading-stats {
+        .h1 {
+          font-size: 2.5rem;
+        }
+      }
+    }
   }
 }

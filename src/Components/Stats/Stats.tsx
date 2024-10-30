@@ -1,25 +1,12 @@
 import { useRef, useEffect, useCallback, useState } from "react";
 import { useSpring, animated, to } from "react-spring";
-import styled from "styled-components";
-import { MdClose } from "react-icons/md";
 import ReactApexChart from "react-apexcharts";
 import "./Stats.scss";
 import { useCookies } from "react-cookie";
 
-const CloseModalButton = styled(MdClose)`
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  z-index: 10;
-  color: white;
-`;
-
 export const ModalStats = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
+  const [isMobile, setIsMobile] = useState(false);
   const [countdown, setCountdown] = useState({hours: '00',minutes: '00',seconds: '00',message: '',});
   const [timeDifference, setTimeDifference] = useState(calculateTimeDifference());
   const [cookiesTotalGames, setCookieTotalGames ,removeCookieTotalGames] = useCookies(["TotalGames"]);
@@ -37,6 +24,17 @@ export const ModalStats = ({ showModal, setShowModal }) => {
     const utcMidnight = new Date(Date.UTC(currentTime.getUTCFullYear(),currentTime.getUTCMonth(),currentTime.getUTCDate() + 1, 0, 0,0));
     return  utcMidnight.getTime() - currentTime.getTime();
   }
+
+  useEffect(() => {
+    const checkWindowSize = () => {
+      setIsMobile(window.innerWidth < 768); 
+    };
+    checkWindowSize();
+    window.addEventListener('resize', checkWindowSize);
+    return () => {
+      window.removeEventListener('resize', checkWindowSize);
+    };
+  }, []);
 
   useEffect(() => {
     const timerInterval = setTimeout(() => {
@@ -135,7 +133,7 @@ export const ModalStats = ({ showModal, setShowModal }) => {
         },
       },
       xaxis: {
-        categories: ["1", "2", "3", "4", "5","X"],
+        categories: ["1st Guess", "2nd Guess", "3rd Guess", "4th Guess", "5th Guess","FAIL"],
         labels: {
           show: false,
         },
@@ -144,8 +142,13 @@ export const ModalStats = ({ showModal, setShowModal }) => {
         labels: {
           show: true,
           style: {
-            colors: '#ffffff',
-            fontSize: '14px', 
+            colors: 'white',
+            fontSize: '16px', 
+            fontFamily: '"Lilita One", cursive',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            lineHeight: 'normal'
+
           },
         },
         fill: {
@@ -162,12 +165,12 @@ export const ModalStats = ({ showModal, setShowModal }) => {
     series: [
       {
         data: [
-          { x: "1", y: Guess1Percentage() , fillColor: '#90ee90' },
-          { x: "2", y: Guess2Percentage(), fillColor: '#90ee90' },
-          { x: "3", y: Guess3Percentage(), fillColor: '#90ee90' },
-          { x: "4", y: Guess4Percentage(), fillColor: '#90ee90' },
-          { x: "5", y: Guess5Percentage(), fillColor: '#90ee90' },
-          { x: "X", y: LostPercentage(), fillColor: '#F08080' },
+          { x: "1", y: Guess1Percentage() , fillColor: '#487e1e' },
+          { x: "2", y: Guess2Percentage(), fillColor: '#487e1e' },
+          { x: "3", y: Guess3Percentage(), fillColor: '#487e1e' },
+          { x: "4", y: Guess4Percentage(), fillColor: '#487e1e' },
+          { x: "5", y: Guess5Percentage(), fillColor: '#487e1e' },
+          { x: "X", y: LostPercentage(), fillColor: '#cc2f42' },
         ],
       },
     ],
@@ -210,50 +213,63 @@ export const ModalStats = ({ showModal, setShowModal }) => {
       {showModal ? (
         <div className="background" onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
-            <div className="modalWrapper-info">
-              <div className="modalContent-info">
-                <div className="background-heading">
+            <div className="modalWrapper-stats">
+              <div className="modalContent-stats">
+                <div className="background-heading-stats">
                   <label className="h1">Your Stats.</label>
                 </div>
-                <div className="div-center-info">
+                <div className="next-game-time">
+                  <label className="text">Next Befuddle in: </label>
+                  <span className="pink-text">{countdown.hours}h {countdown.minutes}m {countdown.seconds}s</span> 
+               </div> 
+                <div className="div-center-stats">
                   <div className="chart">
                     <ReactApexChart
                       options={data.options}
                       series={data.series}
                       type="bar"
-                      width={700}
+                      width={isMobile? 325 : 700}
                       height={300}
                     />
                   </div>
 
                   <div className="game-info">
                     <div className="box-played">
-                      <div className="text-number">{cookiesTotalGames.TotalGames === undefined ? 0 : cookiesTotalGames.TotalGames}</div>
+                      <div className="box-pink-border">
+                       <label className="text-number">
+                         {cookiesTotalGames.TotalGames === undefined ? 0 : cookiesTotalGames.TotalGames}
+                        </label>
+                      </div>
                       <div className="text-lable">Played</div>
                     </div>
                     <div className="box-played">
-                      <div className="text-number">{calculateWinPercentage(cookiesTotalGames.TotalGames, cookiesTotalWonGames.TotalWonGames) === "NaN" ? 0+"%" : calculateWinPercentage(cookiesTotalGames.TotalGames, cookiesTotalWonGames.TotalWonGames)+"%"}</div>
+                      <div className="box-pink-border">
+                       <label className="text-number">
+                       {calculateWinPercentage(cookiesTotalGames.TotalGames, cookiesTotalWonGames.TotalWonGames) === "NaN" ? 0+"%" : calculateWinPercentage(cookiesTotalGames.TotalGames, cookiesTotalWonGames.TotalWonGames)+"%"}
+                        </label>
+                      </div>
                       <div className="text-lable">Won</div>
                     </div>
                     <div className="box-played">
-                      <div className="text-number">{cookiesCurrentStreak.CurrentStreak === undefined ? 0 : cookiesCurrentStreak.CurrentStreak}</div>
+                      <div className="box-pink-border">
+                       <label className="text-number">
+                       {cookiesCurrentStreak.CurrentStreak === undefined ? 0 : cookiesCurrentStreak.CurrentStreak}
+                        </label>
+                      </div>
                       <div className="text-lable">Current Streak</div>
                     </div>
                     <div className="box-played">
-                      <div className="text-number">{cookiesMaxStreak.MaxStreak === undefined ? 0 : cookiesMaxStreak.MaxStreak}</div>
+                      <div className="box-pink-border">
+                       <label className="text-number">
+                       {cookiesMaxStreak.MaxStreak === undefined ? 0 : cookiesMaxStreak.MaxStreak}
+                        </label>
+                      </div>
                       <div className="text-lable">Max Streak</div>
                     </div>
                   </div>              
-               </div>  
-               <div className="next-game-time">
-                  <label className="text">Next Befuddle in: </label>
-                  <label className="text">{countdown.hours}h {countdown.minutes}m {countdown.seconds}s</label>
-                  </div>               
+               </div>                            
               </div>
-              <CloseModalButton
-                aria-label="Close modal"
-                onClick={handleClose}
-              />
+              <div className="modalClose-info" onClick={handleClose}></div>
             </div>
           </animated.div>
         </div>

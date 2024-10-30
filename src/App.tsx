@@ -1,15 +1,13 @@
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Result from "./Pages/Result/Result";
-import Navigation from "./Components/Navigation/Navigation";
-import "./App.scss";
 import Header from "./Components/Header/Header";
 import { useCookies } from "react-cookie";
 import { Fragment, useEffect } from "react";
 import { UTCNoExpireTime } from "./HelperMethods/HelperMethods";
-import SnapLogo from "../src/Assets/Images/snapfinger-logo.png";
 import Banner from "../src/Assets/Images/upsellBanner.gif";
-
+import "./App.scss";
 
 
 function App() {
@@ -35,9 +33,13 @@ function App() {
       "_blank"
     );
   };
-  
   return (
-    <div className="body">
+  
+   <>
+    <div className="landscape-block">
+      <p>Please rotate your device to portrait mode</p>
+    </div>
+   <div className="body">
       {cookiesDailyWin.DailyWin?
         <div className="confettis">
           <div className="confetti"></div>
@@ -58,6 +60,7 @@ function App() {
       </>
       <div className="main">
         <BrowserRouter>
+       
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/result" element={<Result />} />
@@ -110,7 +113,12 @@ function App() {
               </a>
         </div> */}
       </div>
+      <div className="background-body">
+        <div className="background-animation"></div>
+      </div>
     </div>
+   </> 
+    
   );
 }
 export default App;
